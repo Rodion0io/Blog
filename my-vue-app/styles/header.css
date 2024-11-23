@@ -1,0 +1,34 @@
+.hero{
+    height: 75px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 100px;
+    display: flex;
+}
+
+.hero-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content__left{
+    display: flex;
+    gap: 50px;
+}
+
+.navbar{
+    display: flex;
+    gap: 25px;
+}
+
+.navbar_link{
+    color: var(--button-grey-color);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.enter{
+    color: var(--button-grey-color);
+    font-size: 17px;
+    font-weight: 500;
+}

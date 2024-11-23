@@ -1,0 +1,17 @@
+@import url(./colors.css);
+@import url(./reset.css);
+@import url(./header.css);
+
+*{
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  width: 80%;
+  margin: auto;
+}
+
+.href{
+  text-decoration: none;
+}
