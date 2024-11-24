@@ -1,0 +1,11 @@
+.notification{
+    margin-top: 8px;
+    color: grey;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.registration-btn{
+    background-color: var(--button-blue-color);
+    color: #fff;
+}

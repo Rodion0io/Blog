@@ -22,10 +22,10 @@ function AuthorizeForm(){
     formTitle.textContent = 'Вход';
 
     let inputBlockEmail = createInputBlock('input-block email', 'email',
-    'Email', 'email', 'name@example.com', 'input-email', true);
+    'Email', 'email', 'name@example.com', 'input-email', true, false, null, null);
 
     let inputBlockPassword = createInputBlock("input-block password", 'name',
-    'Пароль', 'password', null, 'input-password', true);
+    'Пароль', 'password', null, 'input-password', true, false, null, null);
 
     // let inputBlockEmail = document.createElement('div');
     // inputBlockEmail.className += 'input-block email';

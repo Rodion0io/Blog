@@ -1,5 +1,5 @@
 import AuthorizeForm from "./components/authorize/authorizeForm";
-import registrationForm from "./components/registration/registration";
+import registrationForm from "./components/registration/registrationForm";
 
 function router() {
     let pathLink = window.location.pathname;

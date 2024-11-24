@@ -1,5 +1,5 @@
 export function createInputBlock(inputBlockClass, forName, labelValue, inputType,
-    placeholder = null, inputId, isRequired = false){
+    placeholder = null, inputId, isRequired = false, isList = false, options = null, dataListId = null){
 
     
     let inputBlock = document.createElement('div');
@@ -14,9 +14,29 @@ export function createInputBlock(inputBlockClass, forName, labelValue, inputType
     input.className = 'input';
     input.setAttribute('type', inputType);
     input.setAttribute('name', forName);
+    if (inputType === 'date'){
+        input.setAttribute('min', "1924-01-01");
+        input.setAttribute('max', new Date());
+    }
     if (placeholder !== null){
         input.setAttribute('placeholder', placeholder);
     }
+    if (isList){
+
+        let dataList = document.createElement('datalist');
+        dataList.id = dataListId;
+
+        options.forEach(option => {
+            let optionElement = document.createElement('option');
+            optionElement.value = option;
+            dataList.appendChild(optionElement);
+        })
+
+        input.setAttribute('list', dataListId);
+        inputBlock.appendChild(dataList);
+    }
+
+    
 
     input.required = isRequired;
     input.id = inputId;

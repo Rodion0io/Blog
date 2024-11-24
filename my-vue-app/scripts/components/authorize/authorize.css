@@ -17,13 +17,11 @@
 .enter-btn{
     background-color: var(--button-blue-color);
     color: #fff;
-    text-align: center;
 }
 
 .reg-btn{
     background-color: var(--button-grey-color);
     color: #fff;
-    text-align: center;
 }
 
 .error-message{

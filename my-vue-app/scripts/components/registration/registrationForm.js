@@ -1,7 +1,6 @@
 import { PARENT_BLOCK} from "../../../constans"
 import { createInputBlock } from "../../createInputBlock";
 
-
 function registrationForm(){
     let sectionForm = document.createElement('section');
     sectionForm.className += "section-form";
@@ -23,22 +22,22 @@ function registrationForm(){
     formTitle.textContent = 'Регистрация';
 
     let nameUser = createInputBlock('input-block name', 'name',
-    'ФИО', 'text', 'Иванов Иван Иванович', 'input-name', true);
+    'ФИО', 'text', 'Иванов Иван Иванович', 'input-name', true, false, null, null);
 
     let birhdayDate = createInputBlock('input-block birhday', 'date',
-     'Дата рождения', 'date', null, 'input-date', false);
+     'Дата рождения', 'date', null, 'input-date', false, false, null, null);
 
     let gender = createInputBlock('input-block gender', 'gender',
-     'Пол', 'select', 'Мужчина', 'input-gender', true)
+     'Пол', 'text', 'Мужчина', 'input-gender', true, true, ['Мужчина','Женщина'], 'genderListId')
 
     let phoneNumber = createInputBlock('input-block phone', 'phone',
-    'Телефон', 'tel', '+7 (xxx) xxx-xx-xx', 'input-phone-number', false);
+    'Телефон', 'tel', '+7 (xxx) xxx-xx-xx', 'input-phone-number', false, false, null, null);
 
     let inputBlockEmail = createInputBlock('input-block email', 'email',
-    'Email', 'email', 'name@example.com', 'input-email', true);
+    'Email', 'email', 'name@example.com', 'input-email', true, false, null, null);
 
     let inputBlockPassword = createInputBlock("input-block password", 'name',
-    'Пароль', 'password', null, 'input-password', true);
+    'Пароль', 'password', null, 'input-password', true, false, null, null);
 
     let errorMessage = document.createElement('p');
     errorMessage.className += 'error-message';
@@ -47,13 +46,17 @@ function registrationForm(){
     btnBlock.className += 'btn-block';
 
     let enterBtn = document.createElement('a');
-    enterBtn.className += 'href btn enter-btn';
+    enterBtn.className += 'href btn registration-btn';
     enterBtn.textContent = 'Зарегестрироваться';
 
     let infoText = document.createElement('p');
     infoText.className += 'notification';
     infoText.textContent = 'Email будет использоваться для входа в систему';
 
+    let inputDate = document.getElementById('#input-date');
+    console.log(inputDate);
+
+    
 
     inputBlockEmail.appendChild(infoText);
 
