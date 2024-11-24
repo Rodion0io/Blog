@@ -4,6 +4,7 @@ import listAccount from "../components/listAccount/listAccount";
 
 export function sendDatas(){
     let enterButton = document.querySelector('.enter-btn');
+    
 
     enterButton.addEventListener('click', () => {
         let emailInput = document.getElementById('input-email');

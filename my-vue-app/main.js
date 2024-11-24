@@ -4,7 +4,7 @@ import { sendDatas } from './scripts/потом поменяю/enterAccount.js';
 import router from './scripts/router.js';
 import { registrationAccount } from './scripts/потом поменяю/registrationAccount.js';
 
+
 document.addEventListener('DOMContentLoaded', () => {
-  sendDatas();
-  registrationAccount();
+  router(); // Запускаем роутер
 });
