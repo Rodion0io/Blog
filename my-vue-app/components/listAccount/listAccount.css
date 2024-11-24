@@ -1,0 +1,140 @@
+/* Здесь взял */
+/* https://ru.stackoverflow.com/questions/1205655/%D0%9A%D0%B0%D0%BA-%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C-%D0%B2%D1%8B%D0%BF%D0%B0%D0%B4%D0%B0%D1%8E%D1%89%D0%B5%D0%B5-%D0%BC%D0%B5%D0%BD%D1%8E-%D0%B8-%D1%81%D1%82%D1%80%D0%B5%D0%BB%D0%BA%D1%83-%D0%B4%D0%BB%D1%8F-%D1%80%D0%B0%D1%81%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D1%8F */
+
+.dropdown {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .dropdown .-hover {
+    color: var(--button-grey-color);
+  }
+  
+  .dropdown .-hover > span {
+    font-style: italic;
+  }
+  
+  .dropdown .-hover::after {
+    content: '\25BC';
+    font-size: 50%;
+    margin-left: 4px;
+  }
+  
+  .dropdown .-list {
+
+    /*  */
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: var(--radius-size);
+    border: 1px solid var(--border-color);
+    height: 70px;
+    text-align: center;
+    gap: 15px;
+    width: calc(100% + 10px);
+    background: #fff;
+    box-shadow: 0 2px 3px rgba(0,0,0,.35);
+    padding: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    left: -5px;
+    z-index: 10;
+  }
+  
+  .dropdown .-list a {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .dropdown .-list a:hover {
+    color: var(--button-grey-color);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .dropdown:hover .-list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .dropdown:hover .-hover::after {
+    content: '\25B2';
+  }
+
+  /* .-list{
+    border-radius: var(--radius-size);
+    border: 1px solid var(--border-color);
+    height: 70px;
+    text-align: center;
+  } */
+
+
+
+
+
+  /* .dropdown {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .dropdown #menu {
+    display: none;
+  }
+  
+  .dropdown .-hover {
+    color: var(--button-grey-color);
+  }
+  
+  .dropdown .-hover > span {
+    text-decoration: underline dashed;
+    font-style: italic;
+  }
+  
+  .dropdown .-arrow::after {
+    content: '\25BC';
+    font-size: 50%;
+    cursor: pointer;
+  }
+  
+  .dropdown .-list {
+    display: none;
+    width: calc(100% + 10px);
+    background: #fff;
+    box-shadow: 0 2px 3px rgba(0,0,0,.35);
+    padding: 5px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    left: -5px;
+    z-index: 10;
+  }
+  
+  .dropdown .-list a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .dropdown .-list a:hover {
+    color: #fdac7a;
+  }
+  
+  .dropdown #menu:checked ~ .-list {
+    display: block;
+  }
+  
+  .dropdown #menu:checked ~ .-arrow::after {
+    content: '\25B2';
+  } */

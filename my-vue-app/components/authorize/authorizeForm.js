@@ -33,6 +33,8 @@ function AuthorizeForm(){
     inputEmail.setAttribute('type', 'email');
     inputEmail.setAttribute('name', 'email');
     inputEmail.setAttribute('placeholder', 'name@example.com');
+    inputEmail.required = true;
+    inputEmail.id = 'input-email';
 
     let inputBlockPassword = document.createElement('div');
     inputBlockPassword.className += "input-block password"
@@ -46,6 +48,12 @@ function AuthorizeForm(){
     inputPassword.className += 'input';
     inputPassword.setAttribute('type', 'password');
     inputPassword.setAttribute('name', 'name');
+    inputPassword.id = 'input-password';
+
+    let errorMessage = document.createElement('p');
+    errorMessage.className += 'error-message';
+    // errorMessage.setAttribute()
+    // errorMessage.textContent = 'bi bim bam bam'
 
 
     let btnBlock = document.createElement('div');
@@ -58,6 +66,7 @@ function AuthorizeForm(){
     let regBtn = document.createElement('a');
     regBtn.className += 'href btn reg-btn';
     regBtn.textContent = 'Зарегистрироваться';
+    regBtn.setAttribute('href', '/registration/')
 
     btnBlock.appendChild(enterBtn);
     btnBlock.appendChild(regBtn);
@@ -71,6 +80,7 @@ function AuthorizeForm(){
     formContainer.appendChild(formTitle);
     formContainer.appendChild(inputBlockEmail);
     formContainer.appendChild(inputBlockPassword);
+    formContainer.appendChild(errorMessage);
     formContainer.appendChild(btnBlock);
 
     form.appendChild(formContainer);

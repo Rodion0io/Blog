@@ -39,3 +39,8 @@
     color: #fff;
     text-align: center;
 }
+
+.error-message{
+    display: none;
+    color: red;
+}
