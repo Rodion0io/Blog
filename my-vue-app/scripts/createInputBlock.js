@@ -1,5 +1,5 @@
 export function createInputBlock(inputBlockClass, forName, labelValue, inputType,
-    placeholder = null, inputId, isRequired){
+    placeholder = null, inputId, isRequired = false){
 
     
     let inputBlock = document.createElement('div');

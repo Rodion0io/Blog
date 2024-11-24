@@ -22,49 +22,52 @@ function registrationForm(){
     formTitle.className += 'block-title';
     formTitle.textContent = 'Регистрация';
 
+    let nameUser = createInputBlock('input-block name', 'name',
+    'ФИО', 'text', 'Иванов Иван Иванович', 'input-name', true);
+
+    let birhdayDate = createInputBlock('input-block birhday', 'date',
+     'Дата рождения', 'date', null, 'input-date', false);
+
+    let gender = createInputBlock('input-block gender', 'gender',
+     'Пол', 'select', 'Мужчина', 'input-gender', true)
+
+    let phoneNumber = createInputBlock('input-block phone', 'phone',
+    'Телефон', 'tel', '+7 (xxx) xxx-xx-xx', 'input-phone-number', false);
+
+    let inputBlockEmail = createInputBlock('input-block email', 'email',
+    'Email', 'email', 'name@example.com', 'input-email', true);
+
+    let inputBlockPassword = createInputBlock("input-block password", 'name',
+    'Пароль', 'password', null, 'input-password', true);
+
+    let errorMessage = document.createElement('p');
+    errorMessage.className += 'error-message';
+
+    let btnBlock = document.createElement('div');
+    btnBlock.className += 'btn-block';
+
+    let enterBtn = document.createElement('a');
+    enterBtn.className += 'href btn enter-btn';
+    enterBtn.textContent = 'Зарегестрироваться';
+
+    let infoText = document.createElement('p');
+    infoText.className += 'notification';
+    infoText.textContent = 'Email будет использоваться для входа в систему';
 
 
-    let inputBlockEmail = document.createElement('div');
-    inputBlockEmail.className += 'input-block email';
+    inputBlockEmail.appendChild(infoText);
 
-    let lableInputEmail = document.createElement('label');
-    lableInputEmail.className = 'lable';
-    lableInputEmail.setAttribute('for', 'email');
-    lableInputEmail.textContent = 'Email'
-
-    let inputEmail = document.createElement('input');
-    inputEmail.className += 'input';
-    inputEmail.setAttribute('type', 'email');
-    inputEmail.setAttribute('name', 'email');
-    inputEmail.setAttribute('placeholder', 'name@example.com');
-    inputEmail.required = true;
-    inputEmail.id = 'input-email';
-
-
-    let inputBlockPassword = document.createElement('div');
-    inputBlockPassword.className += "input-block password"
-
-    let lableInputPassword = document.createElement('label');
-    lableInputPassword.className = 'lable';
-    lableInputPassword.setAttribute('for', 'email');
-    lableInputPassword.textContent = 'Пароль'
-
-    let inputPassword = document.createElement('input');
-    inputPassword.className += 'input';
-    inputPassword.setAttribute('type', 'password');
-    inputPassword.setAttribute('name', 'name');
-    inputPassword.id = 'input-password';
-
-
-    inputBlockEmail.appendChild(lableInputEmail);
-    inputBlockEmail.appendChild(inputEmail);
-
-    inputBlockPassword.appendChild(lableInputPassword);
-    inputBlockPassword.appendChild(inputPassword);
+    btnBlock.appendChild(enterBtn);
 
     formContainer.appendChild(formTitle);
+    formContainer.appendChild(nameUser);
+    formContainer.appendChild(birhdayDate);
+    formContainer.appendChild(gender);
+    formContainer.appendChild(phoneNumber);
     formContainer.appendChild(inputBlockEmail);
-    formContainer.appendChild(inputBlockPassword)
+    formContainer.appendChild(inputBlockPassword);
+    formContainer.appendChild(errorMessage);
+    formContainer.appendChild(btnBlock);
 
     form.appendChild(formContainer);
     sectionContent.appendChild(form);

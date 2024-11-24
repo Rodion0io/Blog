@@ -21,40 +21,44 @@ function AuthorizeForm(){
     formTitle.className += 'block-title';
     formTitle.textContent = 'Вход';
 
-    let inputBlockEmail = document.createElement('div');
-    inputBlockEmail.className += 'input-block email';
+    let inputBlockEmail = createInputBlock('input-block email', 'email',
+    'Email', 'email', 'name@example.com', 'input-email', true);
 
-    let lableInputEmail = document.createElement('label');
-    lableInputEmail.className = 'lable';
-    lableInputEmail.setAttribute('for', 'email');
-    lableInputEmail.textContent = 'Email'
+    let inputBlockPassword = createInputBlock("input-block password", 'name',
+    'Пароль', 'password', null, 'input-password', true);
 
-    let inputEmail = document.createElement('input');
-    inputEmail.className += 'input';
-    inputEmail.setAttribute('type', 'email');
-    inputEmail.setAttribute('name', 'email');
-    inputEmail.setAttribute('placeholder', 'name@example.com');
-    inputEmail.required = true;
-    inputEmail.id = 'input-email';
+    // let inputBlockEmail = document.createElement('div');
+    // inputBlockEmail.className += 'input-block email';
 
-    let inputBlockPassword = document.createElement('div');
-    inputBlockPassword.className += "input-block password"
+    // let lableInputEmail = document.createElement('label');
+    // lableInputEmail.className = 'lable';
+    // lableInputEmail.setAttribute('for', 'email');
+    // lableInputEmail.textContent = 'Email'
 
-    let lableInputPassword = document.createElement('label');
-    lableInputPassword.className = 'lable';
-    lableInputPassword.setAttribute('for', 'email');
-    lableInputPassword.textContent = 'Пароль'
+    // let inputEmail = document.createElement('input');
+    // inputEmail.className += 'input';
+    // inputEmail.setAttribute('type', 'email');
+    // inputEmail.setAttribute('name', 'email');
+    // inputEmail.setAttribute('placeholder', 'name@example.com');
+    // inputEmail.required = true;
+    // inputEmail.id = 'input-email';
 
-    let inputPassword = document.createElement('input');
-    inputPassword.className += 'input';
-    inputPassword.setAttribute('type', 'password');
-    inputPassword.setAttribute('name', 'name');
-    inputPassword.id = 'input-password';
+    // let inputBlockPassword = document.createElement('div');
+    // inputBlockPassword.className += "input-block password"
+
+    // let lableInputPassword = document.createElement('label');
+    // lableInputPassword.className = 'lable';
+    // lableInputPassword.setAttribute('for', 'email');
+    // lableInputPassword.textContent = 'Пароль'
+
+    // let inputPassword = document.createElement('input');
+    // inputPassword.className += 'input';
+    // inputPassword.setAttribute('type', 'password');
+    // inputPassword.setAttribute('name', 'name');
+    // inputPassword.id = 'input-password';
 
     let errorMessage = document.createElement('p');
     errorMessage.className += 'error-message';
-    // errorMessage.setAttribute()
-    // errorMessage.textContent = 'bi bim bam bam'
 
 
     let btnBlock = document.createElement('div');
@@ -72,11 +76,11 @@ function AuthorizeForm(){
     btnBlock.appendChild(enterBtn);
     btnBlock.appendChild(regBtn);
 
-    inputBlockEmail.appendChild(lableInputEmail);
-    inputBlockEmail.appendChild(inputEmail);
+    // inputBlockEmail.appendChild(lableInputEmail);
+    // inputBlockEmail.appendChild(inputEmail);
 
-    inputBlockPassword.appendChild(lableInputPassword);
-    inputBlockPassword.appendChild(inputPassword);
+    // inputBlockPassword.appendChild(lableInputPassword);
+    // inputBlockPassword.appendChild(inputPassword);
 
     formContainer.appendChild(formTitle);
     formContainer.appendChild(inputBlockEmail);
