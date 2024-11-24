@@ -1,7 +1,7 @@
 //отвечает за отправку данных из формы при авторизации
 
 import { authorizeRequest } from "../requests/authorizeRequest";
-import { EMAIL_MASK } from "../constans";
+import { EMAIL_MASK } from "../../constans.js";
 import listAccount from "../components/listAccount/listAccount";
 
 export function sendDatas(){

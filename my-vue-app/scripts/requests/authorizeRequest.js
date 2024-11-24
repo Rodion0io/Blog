@@ -1,4 +1,4 @@
-import { URL } from "../constans";
+import { URL } from "../../constans.js";
 
 
 const NEW_URL = `${URL}account/login`;

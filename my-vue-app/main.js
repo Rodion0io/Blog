@@ -1,8 +1,9 @@
 import './styles/style.css'
-import AuthorizeForm from './components/authorize/authorizeForm'
-import { sendDatas } from './потом поменяю/enterAccount';
+import AuthorizeForm from './scripts/components/authorize/authorizeForm.js'
+import { sendDatas } from './scripts/потом поменяю/enterAccount.js';
+import router from './scripts/router.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  AuthorizeForm();
+  
   sendDatas();
 });

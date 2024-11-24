@@ -1,9 +1,10 @@
 @import url(./colors.css);
 @import url(./reset.css);
 @import url(./header.css);
-@import url(../components/authorize/authorize.css);
+@import url(../scripts/components/authorize/authorize.css);
 @import url(./sizes.css);
-@import url(../components/listAccount/listAccount.css);
+@import url(../scripts/components/listAccount/listAccount.css);
+@import url(../scripts/components/registration/registration.css);
 
 *{
   box-sizing: border-box;

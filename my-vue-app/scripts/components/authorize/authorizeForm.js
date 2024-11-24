@@ -1,4 +1,4 @@
-import { PARENT_BLOCK} from "../../constans"
+import { PARENT_BLOCK} from "../../../constans"
 
 function AuthorizeForm(){
     let sectionForm = document.createElement('section');
@@ -66,7 +66,7 @@ function AuthorizeForm(){
     let regBtn = document.createElement('a');
     regBtn.className += 'href btn reg-btn';
     regBtn.textContent = 'Зарегистрироваться';
-    regBtn.setAttribute('href', '/registration/')
+    regBtn.setAttribute('href', '/registration')
 
     btnBlock.appendChild(enterBtn);
     btnBlock.appendChild(regBtn);
