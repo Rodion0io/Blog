@@ -1,4 +1,5 @@
 import { PARENT_BLOCK} from "../../../constans"
+import { createInputBlock } from "../../createInputBlock";
 
 function AuthorizeForm(){
     let sectionForm = document.createElement('section');

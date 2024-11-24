@@ -26,6 +26,29 @@ body{
   text-decoration: none;
 }
 
+.section-content{
+  display: flex;
+  justify-content: center;
+}
+
+.form-block{
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-size);
+  /* height: 38vh; */
+  /* height: 40%; */
+  width: 50%;
+}
+
+.form-container{
+  width: 90%;
+  margin: auto;
+  margin-top: 17px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .block-title{
   font-size: 30px;
   font-weight: 550;

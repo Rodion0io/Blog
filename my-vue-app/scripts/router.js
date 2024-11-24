@@ -1,4 +1,5 @@
 import AuthorizeForm from "./components/authorize/authorizeForm";
+import registrationForm from "./components/registration/registration";
 
 function router() {
     let pathLink = window.location.pathname;
@@ -19,8 +20,7 @@ function router() {
             parentBlock.appendChild(AuthorizeForm());
             break;
         case '/registration':
-            parentBlock.innerHTML = '<h1>bim bim bam bam</h1>';
-            break;
+            parentBlock.appendChild(registrationForm());
     }
 
     // Добавляем обработчик события клика на все ссылки
