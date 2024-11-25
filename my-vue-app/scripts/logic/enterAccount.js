@@ -26,6 +26,7 @@ export function sendDatas(){
 
             authorizeRequest({"email": email, 'password': password})
             .then(data => {console.log(data);
+                localStorage.setItem('token', data['token']);
                 listAccount(email);
                 window.location.pathname = '/';
             })

@@ -38,7 +38,9 @@ export function registrationAccount(){
             registerRequest({"fullName": name, "password": password, 
         'email': email, 'birthDate': birthday, 'gender': gender, 'phoneNumber': phoneNumber})
         .then(data => {console.log(data);
+            localStorage.setItem('token', data['token']);
             listAccount(email);
+            window.location.pathname = '/';
         })
         .catch(error => {
             errorBlock.style = "display: block";
