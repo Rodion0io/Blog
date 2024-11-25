@@ -1,8 +1,8 @@
-import AuthorizeForm from "./components/authorize/authorizeForm";
-import registrationForm from "./components/registration/registrationForm";
-import { sendDatas } from "./потом поменяю/enterAccount";
-import { registrationAccount } from "./потом поменяю/registrationAccount";
-import Profile from "./components/profile/profile";
+import AuthorizeForm from "../components/authorize/authorizeForm";
+import registrationForm from "../components/registration/registrationForm";
+import { sendDatas } from "./enterAccount";
+import { registrationAccount } from "./registrationAccount"
+import Profile from "../components/profile/profile";
 
 function router(){
     let pathLink = window.location.pathname;
@@ -28,7 +28,7 @@ function router(){
     switch (pathLink){
         case '/':
             parentBlock.innerHTML = '';
-            Profile();
+            parentBlock.innerHTML = '<h1>пизда блять</h1>'
             break;
         case '/login':
             parentBlock.innerHTML = '';
@@ -39,6 +39,10 @@ function router(){
             parentBlock.innerHTML = '';
             registrationForm();
             registrationAccount();
+            break;
+        case '/profile':
+            parentBlock.innerHTML = '';
+            Profile();
             break;
     }
     

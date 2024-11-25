@@ -1,5 +1,5 @@
 import { PARENT_BLOCK} from "../../../constans"
-import { createInputBlock } from "../../createInputBlock";
+import { createInputBlock } from "../../components/createInputBlock";
 
 function registrationForm(){
     let sectionForm = document.createElement('section');
