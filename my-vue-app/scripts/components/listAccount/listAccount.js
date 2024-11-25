@@ -16,6 +16,7 @@ function listAccount(email){
     let onProfile = document.createElement('p');
     onProfile.className += 'on-fporile';
     onProfile.textContent = 'Профиль'
+    onProfile.setAttribute('href', '/profile')
 
     let exit = document.createElement('p');
     exit.className += 'exit';

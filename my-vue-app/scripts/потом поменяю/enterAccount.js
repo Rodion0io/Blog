@@ -27,6 +27,7 @@ export function sendDatas(){
             authorizeRequest({"email": email, 'password': password})
             .then(data => {console.log(data);
                 listAccount(email);
+                window.location.pathname = '/';
             })
             .catch(error => {
                 errorBlock.style = "display: block";

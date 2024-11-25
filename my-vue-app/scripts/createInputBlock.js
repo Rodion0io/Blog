@@ -1,5 +1,5 @@
 export function createInputBlock(inputBlockClass, forName, labelValue, inputType,
-    placeholder = null, inputId, isRequired = false, isList = false, options = null, dataListId = null){
+    placeholder = null, inputId, isRequired = false, isList = false, options = null, dataListId = null, inputClass){
 
     
     let inputBlock = document.createElement('div');
@@ -11,7 +11,7 @@ export function createInputBlock(inputBlockClass, forName, labelValue, inputType
     lableInput.textContent = labelValue;
 
     let input = document.createElement('input');
-    input.className = 'input';
+    input.className = inputClass;
     input.setAttribute('type', inputType);
     input.setAttribute('name', forName);
     if (inputType === 'date'){

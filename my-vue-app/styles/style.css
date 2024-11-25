@@ -5,6 +5,7 @@
 @import url(./sizes.css);
 @import url(../scripts/components/listAccount/listAccount.css);
 @import url(../scripts/components/registration/registration.css);
+@import url(../scripts/components/profile/profile.css);
 
 *{
   box-sizing: border-box;

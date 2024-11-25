@@ -22,22 +22,22 @@ function registrationForm(){
     formTitle.textContent = 'Регистрация';
 
     let nameUser = createInputBlock('input-block name', 'name',
-    'ФИО', 'text', 'Иванов Иван Иванович', 'input-name', true, false, null, null);
+    'ФИО', 'text', 'Иванов Иван Иванович', 'input-name', true, false, null, null, 'input');
 
     let birhdayDate = createInputBlock('input-block birhday', 'date',
-     'Дата рождения', 'date', null, 'input-date', false, false, null, null);
+     'Дата рождения', 'date', null, 'input-date', false, false, null, null, 'input');
 
     let gender = createInputBlock('input-block gender', 'gender',
-     'Пол', 'text', 'Мужчина', 'input-gender', true, true, ['Мужчина','Женщина'], 'genderListId')
+     'Пол', 'text', 'Мужчина', 'input-gender', true, true, ['Мужчина','Женщина'], 'genderListId', 'input')
 
     let phoneNumber = createInputBlock('input-block phone', 'phone',
-    'Телефон', 'tel', '+7 (xxx) xxx-xx-xx', 'input-phone-number', false, false, null, null);
+    'Телефон', 'tel', '+7 (xxx) xxx-xx-xx', 'input-phone-number', false, false, null, null, 'input');
 
     let inputBlockEmail = createInputBlock('input-block email', 'email',
-    'Email', 'email', 'name@example.com', 'input-email', true, false, null, null);
+    'Email', 'email', 'name@example.com', 'input-email', true, false, null, null, 'input');
 
     let inputBlockPassword = createInputBlock("input-block password", 'name',
-    'Пароль', 'password', null, 'input-password', true, false, null, null);
+    'Пароль', 'password', null, 'input-password', true, false, null, null, 'input');
 
     let errorMessage = document.createElement('p');
     errorMessage.className += 'error-message';

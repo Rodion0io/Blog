@@ -2,6 +2,7 @@ import AuthorizeForm from "./components/authorize/authorizeForm";
 import registrationForm from "./components/registration/registrationForm";
 import { sendDatas } from "./потом поменяю/enterAccount";
 import { registrationAccount } from "./потом поменяю/registrationAccount";
+import Profile from "./components/profile/profile";
 
 function router(){
     let pathLink = window.location.pathname;
@@ -27,7 +28,7 @@ function router(){
     switch (pathLink){
         case '/':
             parentBlock.innerHTML = '';
-            parentBlock.innerHTML = '<h1>bim bim bam bam</h1>';
+            Profile();
             break;
         case '/login':
             parentBlock.innerHTML = '';
@@ -43,4 +44,4 @@ function router(){
     
 }
 
-export default router;
+export default router; 

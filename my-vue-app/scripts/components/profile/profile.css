@@ -1,0 +1,27 @@
+.input-block-redact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-input{
+    width: 80%;
+}
+
+
+.form-profile{
+    width: 90% !important;
+}
+
+.changes-button{
+    background-color: var(--button-blue-color);
+    color: #fff;
+    width: 15%;
+}
+
+.footer-block-form{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 14px;
+}

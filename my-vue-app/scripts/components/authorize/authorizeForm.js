@@ -1,4 +1,4 @@
-import { PARENT_BLOCK} from "../../../constans"
+import { PARENT_BLOCK } from "../../../constans"
 import { createInputBlock } from "../../createInputBlock";
 
 function AuthorizeForm(){
@@ -22,10 +22,10 @@ function AuthorizeForm(){
     formTitle.textContent = 'Вход';
 
     let inputBlockEmail = createInputBlock('input-block email', 'email',
-    'Email', 'email', 'name@example.com', 'input-email', true, false, null, null);
+    'Email', 'email', 'name@example.com', 'input-email', true, false, null, null, 'input');
 
     let inputBlockPassword = createInputBlock("input-block password", 'name',
-    'Пароль', 'password', null, 'input-password', true, false, null, null);
+    'Пароль', 'password', null, 'input-password', true, false, null, null, 'input');
 
     // let inputBlockEmail = document.createElement('div');
     // inputBlockEmail.className += 'input-block email';
