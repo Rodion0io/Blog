@@ -3,6 +3,7 @@ import registrationForm from "../components/registration/registrationForm";
 import { sendDatas } from "./enterAccount";
 import { registrationAccount } from "./registrationAccount"
 import Profile from "../components/profile/profile";
+import listAccount from "../components/listAccount/listAccount";
 
 function router(){
     let pathLink = window.location.pathname;
@@ -29,6 +30,7 @@ function router(){
         case '/':
             parentBlock.innerHTML = '';
             parentBlock.innerHTML = '<h1>пизда блять</h1>'
+            listAccount(null);
             break;
         case '/login':
             parentBlock.innerHTML = '';
@@ -43,6 +45,7 @@ function router(){
         case '/profile':
             parentBlock.innerHTML = '';
             Profile();
+            listAccount(null);
             break;
     }
     

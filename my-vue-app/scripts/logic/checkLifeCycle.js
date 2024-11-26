@@ -1,5 +1,6 @@
 export function checkLifeCycle(jwt){
-    let tokenParts = jwt['token'].split('.');
+    console.log(jwt);
+    let tokenParts = jwt.split('.');
     let decodePayload = JSON.parse(atob(tokenParts[1]));
     let dethTokenTime = decodePayload['exp'];
     let currentTimeOnSeconds = Math.floor(Date.now() / 1000);
@@ -8,7 +9,7 @@ export function checkLifeCycle(jwt){
         return true;
     }
     else{
-        console.log('еще работает')
-        return false;
+        localStorage.clear();
+        window.location.pathname = '/';
     }
 }

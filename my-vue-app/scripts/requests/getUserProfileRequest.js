@@ -1,15 +1,15 @@
 import { URL } from "../../constans";
 
-const NEW_URL = `${URL}account/logout`;
+const NEW_URL = `${URL}account/profile`
 
-export function logoutRequest(token){
+export function getUserProfileRequest(token){
     const headers = {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
     };
 
     return fetch(NEW_URL, {
-        method: "POST",
+        method: "GET",
         headers: headers,
     }).then(response => {
         if (response.ok){
