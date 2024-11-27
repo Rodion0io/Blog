@@ -11,7 +11,7 @@ function mainPage(){
     sectionContent.className += 'section-content';
 
     let form = document.createElement('form');
-    // врмененно класс поставил
+    
     form.className += 'form-block form-filter';
 
     let formContainer = document.createElement('div');
