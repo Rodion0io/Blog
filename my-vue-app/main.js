@@ -4,6 +4,7 @@ import { checkLifeCycle } from './scripts/logic/checkLifeCycle.js';
 import { logout } from './scripts/logic/logout.js';
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
   router();
   logout();

@@ -21,7 +21,7 @@ function listAccount(email){
         onProfile.textContent = 'Профиль'
         onProfile.setAttribute('href', '/profile')
 
-        let exit = document.createElement('p');
+        let exit = document.createElement('button');
         exit.className += 'exit';
         exit.textContent += 'Выйти'
 

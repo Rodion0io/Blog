@@ -10,6 +10,7 @@ export function logout(){
             logoutRequest(token).then(data => {
                 console.log(data);
                 localStorage.clear();
+                window.location.pathname = '/';
             })
         }
     });

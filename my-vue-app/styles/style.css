@@ -6,6 +6,8 @@
 @import url(../scripts/components/listAccount/listAccount.css);
 @import url(../scripts/components/registration/registration.css);
 @import url(../scripts/components/profile/profile.css);
+@import url(../scripts/components/filter/filter.css);
+@import url(../scripts/components/mainPage/mainPage.css);
 
 *{
   box-sizing: border-box;
@@ -41,7 +43,7 @@ body{
 }
 
 .form-container{
-  width: 90%;
+  width: 95%;
   margin: auto;
   margin-top: 17px;
   height: 100%;
@@ -58,7 +60,7 @@ body{
 .input{
   border-radius: var(--radius-size);
   border: 1px solid var(--border-color);
-  height: 40px;
+  height: 35px;
   padding: 10px;
 }
 

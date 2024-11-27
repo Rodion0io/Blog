@@ -4,6 +4,10 @@ import { sendDatas } from "./enterAccount";
 import { registrationAccount } from "./registrationAccount"
 import Profile from "../components/profile/profile";
 import listAccount from "../components/listAccount/listAccount";
+import { getUserProfile } from "./getUserProfile";
+import filter from "../components/filter/filter";
+import mainPage from "../components/mainPage/mainPage";
+import createMainPage from "./createMainPage";
 
 function router(){
     let pathLink = window.location.pathname;
@@ -29,7 +33,8 @@ function router(){
     switch (pathLink){
         case '/':
             parentBlock.innerHTML = '';
-            parentBlock.innerHTML = '<h1>пизда блять</h1>'
+            createMainPage();
+            // parentBlock.innerHTML = '<h1>варапврапврблять</h1>'
             listAccount(null);
             break;
         case '/login':
@@ -45,7 +50,9 @@ function router(){
         case '/profile':
             parentBlock.innerHTML = '';
             Profile();
+            // getUserProfile();
             listAccount(null);
+            
             break;
     }
     
