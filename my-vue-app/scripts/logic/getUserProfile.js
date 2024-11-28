@@ -1,5 +1,6 @@
 import { checkLifeCycle } from "./checkLifeCycle";
 import { getUserProfileRequest } from "../requests/getUserProfileRequest.js";
+import { modifyDate } from "./modifyDate.js";
 
 export function getUserProfile(){
     let token = localStorage.getItem('token');
@@ -15,14 +16,12 @@ export function getUserProfile(){
             emailInput.value = data['email'];
             fullNameInput.value = data['fullName'];
             phoneNumberInput.value = data['phoneNumber'];
-            genderInput.value = data['gender'];
-            birthday.value = data['birthDate'];
+            genderInput.value = data['gender'] === 'Male' ? 'Мужчина' : 'Женщина';
+            console.log(data['birthDate'].slice(0,9))
+            birthday.value = modifyDate(data['birthDate']);
+            console.log(modifyDate(data['birthDate']));
         })
     }
-    // else{
-    //     localStorage.clear();
-    //     window.location.pathname = '/';
-    // }
 
     
 }

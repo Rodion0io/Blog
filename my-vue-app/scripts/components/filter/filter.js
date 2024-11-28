@@ -131,7 +131,7 @@ function filter(){
 
     
 
-    // filterHeader.appendChild(headerContent);
+    filterHeader.appendChild(headerContent);
 
     // leftFormPart.appendChild(nameInput);
     // leftFormPart.appendChild(listBlock);

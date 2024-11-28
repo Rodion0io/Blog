@@ -50,7 +50,7 @@ function router(){
         case '/profile':
             parentBlock.innerHTML = '';
             Profile();
-            // getUserProfile();
+            getUserProfile();
             listAccount(null);
             
             break;

@@ -19,6 +19,7 @@
     flex-direction: column;
     gap: 40px;
     width: 48%;
+    margin-bottom: 10px;
 }
 
 .name{
@@ -40,6 +41,7 @@
     flex-direction: column;
     gap: 12px;
     width: 48%;
+    margin-bottom: 10px;
 }
 
 .select-list{
@@ -48,6 +50,7 @@
     width: 100%;
     height: 60px;
     border-radius: var(--radius-size);
+    border-color: var(--border-color);
 }
 
 .right-bottom-left-block{

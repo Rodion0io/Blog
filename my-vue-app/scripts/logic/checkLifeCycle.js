@@ -4,10 +4,11 @@ export function checkLifeCycle(jwt){
     let dethTokenTime = decodePayload['exp'];
     let currentTimeOnSeconds = Math.floor(Date.now() / 1000);
 
-    if (currentTimeOnSeconds >= dethTokenTime){
+    if (currentTimeOnSeconds <= dethTokenTime){
         return true;
     }
     else{
-        return false;
+        localStorage.clear();
+        window.location.pathname = '/';
     }
 }

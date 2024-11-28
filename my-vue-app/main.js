@@ -7,8 +7,13 @@ import { logout } from './scripts/logic/logout.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   router();
-  logout();
+  if (localStorage.getItem('token') !== null){
+    logout();
+  }
+  
   // localStorage.clear();
+
+  //imaskjs
 });
 
 
