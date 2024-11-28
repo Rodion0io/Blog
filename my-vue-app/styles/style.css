@@ -8,6 +8,7 @@
 @import url(../scripts/components/profile/profile.css);
 @import url(../scripts/components/filter/filter.css);
 @import url(../scripts/components/mainPage/mainPage.css);
+@import url(../scripts/components/post/post.css);
 
 *{
   box-sizing: border-box;
@@ -32,6 +33,9 @@ body{
 .section-content{
   display: flex;
   justify-content: center;
+
+  /* нужно везед перепроврить */
+  margin-bottom: 15px;
 }
 
 .form-block{

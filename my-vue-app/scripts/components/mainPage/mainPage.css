@@ -2,3 +2,17 @@
     width: 90% !important;
 }
 
+.new-post{
+    display: flex;
+    justify-content: center;
+}
+
+.section-posts{
+    display: flex;
+    justify-content: center;
+}
+
+.post-component{
+    width: 90%;
+}
+

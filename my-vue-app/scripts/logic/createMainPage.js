@@ -6,7 +6,8 @@ function createMainPage(){
     mainPage();
     filter();
     post({'name': 'охламон', 'createTime': '19.12.2022 17:15', 'communityName': 'Стажировка',
-'postName': 'Проблема с процессором'});
+'postName': 'Выселю', 'tags': [{'id':'rdhiu43', 'name':'18+'}, {'id':'dsgosj2', 'name':'eda'}], 'readingTime': 7,
+'countComment': 4});
 
     // console.log(filterComponent);
 

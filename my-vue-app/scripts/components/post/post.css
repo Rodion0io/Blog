@@ -1,0 +1,60 @@
+.post-component{
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-size);
+}
+
+.post-name-block{
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-name{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.main-infa{
+    margin-bottom: 20px;
+}
+
+.photo-block{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.tags{
+    /* Не знаю зачем флексы использу, ну пускай будут */
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tag{
+    color: grey;
+}
+
+.reading-time{
+    margin-bottom: 3px;
+}
+
+.post-footer{
+    background-color: var(--footer-elements-color);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.comments-infa-block{
+    display: flex;
+    align-items: center;
+}
+
+.like-infa-block{
+    display: flex;
+    align-items: center;
+}

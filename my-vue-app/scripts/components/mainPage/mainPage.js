@@ -10,7 +10,7 @@ function mainPage(){
     let newPost = document.createElement('button');
     newPost.className += 'btn new-post';
     newPost.textContent = 'Написать пост';
-    newPost.setAttribute('style', 'width: 90%')
+    
 
     let sectionContent = document.createElement('div');
     sectionContent.className += 'section-content';
