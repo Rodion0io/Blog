@@ -7,6 +7,13 @@ function mainPage(){
     let container = document.createElement('div');
     container.className += 'container';
 
+    let buttonBlock = document.createElement('div');
+    buttonBlock.className += 'button-block';
+
+    let buttonBlockContainer = document.createElement('div');
+    buttonBlockContainer.className += 'button-block__container';
+
+
     let newPost = document.createElement('button');
     newPost.className += 'btn new-post';
     newPost.textContent = 'Написать пост';
@@ -19,16 +26,17 @@ function mainPage(){
     
     form.className += 'form-block form-filter';
 
-    let formContainer = document.createElement('div');
-    formContainer.className += 'form-container'; 
+    
 
     let sectionPosts = document.createElement('div');
     sectionPosts.className += 'section-posts';
 
 
-    form.appendChild(formContainer);
+    // form.appendChild(formContainer);
     sectionContent.appendChild(form);
-    container.appendChild(newPost)
+    buttonBlockContainer.appendChild(newPost);
+    buttonBlock.appendChild(buttonBlockContainer);
+    container.appendChild(buttonBlock)
     container.appendChild(sectionContent);
     container.appendChild(sectionPosts);
     block.appendChild(container);

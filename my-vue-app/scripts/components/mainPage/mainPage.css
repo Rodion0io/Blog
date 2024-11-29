@@ -2,9 +2,22 @@
     width: 90% !important;
 }
 
-.new-post{
+.button-block{
+    /* width: 90%; */
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+}
+
+.button-block__container{
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.new-post{
+    background-color: var(--button-blue-color);
+    color: #fff;
 }
 
 .section-posts{

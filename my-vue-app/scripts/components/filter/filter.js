@@ -3,7 +3,14 @@ import { getTagList } from "../../requests/getTagList";
 
 function filter(){
 
-    let parentBlock = document.querySelector('.form-container');
+
+    let parentBlock = document.querySelector('.form-filter');
+
+    let formContainerMain = document.createElement('div');
+    formContainerMain.className += 'form-container'; 
+
+    let formContainerHeader = document.createElement('div');
+    formContainerHeader.className += 'form-container header'; 
 
     let block = document.createElement('div');
     block.className += 'filter-component';
@@ -16,6 +23,13 @@ function filter(){
     let headerContent = document.createElement('p');
     headerContent.className += 'header-name';
     headerContent.textContent = 'Фильтры';
+
+    filterHeader.appendChild(formContainerHeader);
+    formContainerHeader.appendChild(headerContent);
+    
+
+
+
 
     // let topFormPart = document.createElement('div');
     // topFormPart.className += 'top-part';
@@ -113,47 +127,16 @@ function filter(){
     rightFormPart.appendChild(listBlock);
     rightFormPart.appendChild(rightBottomBlock);
 
-
-
-    // let bottomFormPart = document.createElement('div');
-    // bottomFormPart.className += 'bottom-part';
-
-
-
-
-
-    // let rightBottomBlock = document.createElement('div');
-    // rightBottomBlock.className += 'right-bottom-block'
-
-
-    // let settingsBlock = document.createElement('div');
-    // settingsBlock.className += 'settings-block';
-
     
 
-    filterHeader.appendChild(headerContent);
-
-    // leftFormPart.appendChild(nameInput);
-    // leftFormPart.appendChild(listBlock);
-
-    // settingsBlock.appendChild(sortInput);
-    // settingsBlock.appendChild(startTimeInput);
-    // settingsBlock.appendChild(endTimeInput);
-    // settingsBlock.appendChild(flagInput);
-
-
-    // bottomFormPart.appendChild(settingsBlock);
-    // bottomFormPart.appendChild(selectButton);
-
-    // block.appendChild(filterHeader);
-    // block.appendChild(leftFormPart);
-    // block.appendChild(rightFormPart);
-
+    
+    // block.appendChild(filterHeader)
     block.appendChild(leftFormPart);
     block.appendChild(rightFormPart);
+    formContainerMain.appendChild(block);
 
-
-    parentBlock.appendChild(block);
+    parentBlock.appendChild(filterHeader)
+    parentBlock.appendChild(formContainerMain);
 }
 
 export default filter;

@@ -23,6 +23,7 @@ export function createInputBlock(inputBlockClass, forName, labelValue, inputType
     }
     if (isList){
 
+        // let dataList = document.createElement('select');
         let dataList = document.createElement('datalist');
         dataList.id = dataListId;
 

@@ -1,6 +1,7 @@
 .filter-header{
-    background-color: aqua;
+    background-color: var(--footer-header-elements-color);
     margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .input-block-filter{
@@ -75,6 +76,14 @@
     gap: 5px;
 }
 
+.header{
+    margin-top: 0px !important;
+}
+
+.header-name{
+    padding-top: 17px;
+    padding-bottom: 17px;
+}
 
 
 
