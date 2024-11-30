@@ -47,11 +47,28 @@
     justify-content: space-between;
     align-items: center;
     height: 40px;
+    margin-top: 10px;
+}
+
+.footer-container{
+    display: flex;
+    flex-direction: row !important;
+    margin-top: 0 !important;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .comments-infa-block{
     display: flex;
     align-items: center;
+}
+
+.comment-icon{
+    cursor: pointer;
+}
+
+.like-icon{
+    cursor: pointer;
 }
 
 .like-infa-block{

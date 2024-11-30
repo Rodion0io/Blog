@@ -7,6 +7,9 @@ function post(data){
     let container = document.createElement('div');
     container.className += 'form-container';
 
+    let footerContainer = document.createElement('div');
+    footerContainer.className += 'form-container footer-container';
+
     let headerPost = document.createElement('div');
     headerPost.className += 'header-post';
 
@@ -108,8 +111,8 @@ function post(data){
     commentsInfaBlock.appendChild(commentIcon);
 
 
-    postFooter.appendChild(commentsInfaBlock);
-    postFooter.appendChild(likeInfaBlock);
+    footerContainer.appendChild(commentsInfaBlock);
+    footerContainer.appendChild(likeInfaBlock);
 
 
     postNameBlock.appendChild(postName);
@@ -124,9 +127,11 @@ function post(data){
     container.appendChild(postNameBlock);
     container.appendChild(mainInfa);
     container.appendChild(otherInfa);
-    container.appendChild(postFooter);
+    // container.appendChild(postFooter);
 
+    postFooter.appendChild(footerContainer);
     postComponent.appendChild(container);
+    postComponent.appendChild(postFooter);
     // postComponent.appendChild(postFooter);
     parentBlock.appendChild(postComponent);
 }

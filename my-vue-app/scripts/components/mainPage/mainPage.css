@@ -6,7 +6,7 @@
     /* width: 90%; */
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .button-block__container{
@@ -22,10 +22,58 @@
 
 .section-posts{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
 .post-component{
     width: 90%;
 }
 
+.pagination-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination-cover{
+    padding-top: 18px;
+    cursor: pointer;
+}
+
+.pagination{
+    display: flex;
+    /* Сомнительно */
+    border: 1px solid var(--button-blue-color);
+    border-radius: var(--radius-size);
+}
+
+.pagination-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row !important;
+    align-items: center;
+    width: 90% !important;
+}
+
+.pagination-item{
+    /* Очень сомнительно */
+    border: 1px solid var(--button-blue-color);
+    /* border-radius: var(--radius-size); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    color: var(--button-blue-color);
+}
+
+.pagination-item:hover{
+    background-color: var(--button-blue-color);
+    color: #fff;
+}
+
+.count-posts{
+    width: 20%;
+}

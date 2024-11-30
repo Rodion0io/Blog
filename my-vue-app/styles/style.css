@@ -64,7 +64,7 @@ body{
 .input{
   border-radius: var(--radius-size);
   border: 1px solid var(--border-color);
-  height: 35px;
+  height: 40px;
   padding: 10px;
 }
 

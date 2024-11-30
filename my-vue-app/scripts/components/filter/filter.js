@@ -47,7 +47,8 @@ function filter(){
 
     let sortInput = createInputBlock('input-block-filter sort', 'name',
     'Сортировать', 'text', null, 'input-name',
-     true, false, null, null, 'input');
+     true, true, ['По дате создания (сначала новые)','по дате создания (сначала старые)',
+     'по количеству лайков (по убыванию)', 'по количеству лайков (по возрастанию)'], null, 'input');
 
     let startTimeInput = createInputBlock('input-block-filter start', 'name',
     'Время чтения от', 'text', null, 'input-name',
