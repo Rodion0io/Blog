@@ -9,6 +9,7 @@ import filter from "../components/filter/filter";
 import mainPage from "../components/mainPage/mainPage";
 import createMainPage from "./createMainPage";
 
+
 function router(){
     let pathLink = window.location.pathname;
     let parentBlock = document.getElementById('app');
@@ -33,9 +34,9 @@ function router(){
     switch (pathLink){
         case '/':
             parentBlock.innerHTML = '';
+            
             createMainPage();
             // parentBlock.innerHTML = '<h1>варапврапврблять</h1>'
-            listAccount(null);
             break;
         case '/login':
             parentBlock.innerHTML = '';

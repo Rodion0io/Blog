@@ -1,17 +1,17 @@
 import { URL } from "../../constans";
 
-const NEW_URL = `${URL}account/profile`;
-
-export function getUserProfileRequest(token) {
+export function getUserProfileRequest(body, maskUrl) {
     const headers = {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        'Accept': "application/json"
+        // "Authorization": `Bearer ${token}`,
     };
+
+    const NEW_URL = `${URL}${maskUrl}`;
 
     return fetch(NEW_URL, {
         method: "GET",
-        headers: headers
+        headers: headers,
+        body: JSON.stringify(body)
     }).then(response => {
         console.log(response);
         if (response.ok) {

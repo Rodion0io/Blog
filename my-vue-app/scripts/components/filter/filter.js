@@ -43,16 +43,16 @@ function filter(){
 
     let nameInput = createInputBlock('input-block-filter name', 'name',
     'Поиск по имени автора', 'text', null, 'input-name',
-     true, false, null, null, 'input');
+    false, false, null, null, 'input');
 
     let sortInput = createInputBlock('input-block-filter sort', 'name',
-    'Сортировать', 'text', null, 'input-name',
-     true, true, ['По дате создания (сначала новые)','по дате создания (сначала старые)',
+    'Сортировать', 'text', null, 'input-sort',
+    false, true, ['По дате создания (сначала новые)','по дате создания (сначала старые)',
      'по количеству лайков (по убыванию)', 'по количеству лайков (по возрастанию)'], null, 'input');
 
     let startTimeInput = createInputBlock('input-block-filter start', 'name',
-    'Время чтения от', 'text', null, 'input-name',
-    true, false, null, null, 'input');
+    'Время чтения от', 'text', null, 'input-start-time',
+    false, false, null, null, 'input');
 
 
     leftBottomBlock.appendChild(sortInput);
@@ -101,12 +101,12 @@ function filter(){
 
 
     let endTimeInput = createInputBlock('input-block-filter end', 'name',
-    'Время чтения от до', 'text', null, 'input-name',
-    true, false, null, null, 'input');
+    'Время чтения от до', 'text', null, 'input-end-time',
+    false, false, null, null, 'input');
 
     let flagInput = createInputBlock('input-block-filter flag', 'name',
-    'Только мои группы', 'checkbox', null, 'input-name',
-    true, false, null, null, 'input');
+    'Только мои группы', 'checkbox', null, 'input-flag',
+    false, false, null, null, 'input');
 
     let selectButton = document.createElement('button');
     selectButton.className += 'btn select-filters-button';
