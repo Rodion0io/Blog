@@ -1,0 +1,22 @@
+.pagination-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination-cover{
+    padding-top: 18px;
+    cursor: pointer;
+}
+
+.pagination-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row !important;
+    align-items: center;
+    width: 90% !important;
+}
+
+.count-posts{
+    width: 20%;
+}

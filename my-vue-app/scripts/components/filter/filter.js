@@ -2,8 +2,6 @@ import {createInputBlock} from "../../components/createInputBlock"
 import { getTagList } from "../../requests/getTagList";
 
 function filter(){
-
-
     let parentBlock = document.querySelector('.form-filter');
 
     let formContainerMain = document.createElement('div');

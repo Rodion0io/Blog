@@ -9,6 +9,8 @@
 @import url(../scripts/components/filter/filter.css);
 @import url(../scripts/components/mainPage/mainPage.css);
 @import url(../scripts/components/post/post.css);
+@import url(../scripts/components/paginationBar/paginationBar.css);
+@import url(../scripts/components/paginationBlock/paginationBlock.css);
 
 *{
   box-sizing: border-box;

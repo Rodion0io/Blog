@@ -57,4 +57,13 @@ export function getPosts(){
             // window.location.search = `/${urlMask}`;
         })
     })
+
+    document.querySelectorAll('.pagination-item').forEach(el => {
+        el.addEventListener('click', (event) => {
+            let currentSelectedElement = document.querySelector('.selected-pagination');
+            currentSelectedElement.className = 'pagination-item';
+            event.target.className = 'pagination-item selected-pagination';
+            console.log(event.target.id);
+        })
+    })
 }
