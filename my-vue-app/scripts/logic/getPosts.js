@@ -1,11 +1,13 @@
 import { getPostRequest } from "../requests/getPostsRequest";
 import post from "../components/post/post";
 import { createUrl } from "./createUrl";
+import { readFilterDatas } from "./readFilterDatas";
 
 export function getPosts(){
-    // const NEW_URL = `${URL}post?onlyMyCommunities=${true}&page=${1}&size=${8}`;
+    document.querySelector('.section-posts').innerHTML = ''
 
     let sendButton = document.querySelector('.select-filters-button');
+    let pageSizeList = document.getElementById('input-count-post');
 
     let body = {'tags': [], 'author': '', 'minTime': '', 'maxTime': '', 'sorting': '',
             'onlyMyCommunities': false, 'page': 1, 'size': 5};
@@ -21,41 +23,12 @@ export function getPosts(){
     })
     
     sendButton.addEventListener('click', () => {
-
-        body = {'tags': [], 'author': '', 'minTime': '', 'maxTime': '', 'sorting': '',
-            'onlyMyCommunities': false, 'page': 1, 'size': 5};
-
-        let tags = document.querySelector('.select-list');
-        let author = document.getElementById('input-name');
-        let minTime = document.getElementById('input-start-time');
-        let maxTime = document.getElementById('input-end-time');
-        let sorting = document.getElementById('input-sort');
-        let onlyMyCommunities = document.getElementById('input-flag');
-        // console.log(onlyMyCommunities.checked)
-        // let page = document.getElementById('input-count-posts')
-        let size = document.getElementById('input-count-post');
-
-        for (let i = 0; i < tags.options.length; i++){
-            let option = tags.options[i];
-            if (option.selected){
-                let obj = {'id': option.id, 'tagName': option}
-                body['tags'].push(obj);
-            }
-        }
-
-        body['author'] = author.value;
-        body['minTime'] = minTime.value;
-        body['maxTime'] = maxTime.value;
-        body['sorting'] = sorting.value;
-        body['onlyMyCommunities'] = onlyMyCommunities.checked;
-        body['page'] = 1;
-        body['size'] = size.value;
-
-        // console.log(body);
+        body = readFilterDatas(body);
         urlMask = createUrl(body);
-        
 
         window.history.pushState({}, 'some title', `/${urlMask}`);
+
+        document.querySelector('.section-posts').innerHTML = ''
 
         getPostRequest(urlMask).then(data => {
             console.log(data);
@@ -65,10 +38,23 @@ export function getPosts(){
             console.log(urlMask);
             // window.location.search = `/${urlMask}`;
         })
-        
-        
-        // return result
+    })
 
-        // return result;
+    pageSizeList.addEventListener('change', () => {
+        body = readFilterDatas(body);
+        urlMask = createUrl(body);
+
+        window.history.pushState({}, 'some title', `/${urlMask}`);
+
+        document.querySelector('.section-posts').innerHTML = ''
+
+        getPostRequest(urlMask).then(data => {
+            console.log(data);
+            data['posts'].forEach(element => {
+                post(element);
+            });
+            console.log(urlMask);
+            // window.location.search = `/${urlMask}`;
+        })
     })
 }
