@@ -6,9 +6,10 @@ import { getPosts } from "./getPosts";
 function createMainPage(){
     mainPage();
     filter();
+    getPosts();
     // let arr = getPosts();
     // getPosts().then(data => console.log(data));
-    console.log(getPosts());
+    // console.log(getPosts().then(data => data));
 
 
     // let arr = [{'name': 'охламон', 'createTime': '19.12.2022 17:15', 'communityName': 'Стажировка',

@@ -15,39 +15,38 @@ function post(data){
 
     let postInfa = document.createElement('div');
     postInfa.className += 'post-infa';
-    postInfa.textContent = `${data['name']} - ${data['createTime']} в сообществе ${data['communityName']}`;
+    postInfa.textContent = `${data['author']} - ${data['createTime']} в сообществе ${data['communityName']}`;
 
     let postNameBlock = document.createElement('div');
     postNameBlock.className += 'post-name-block';
 
     let postName = document.createElement('h2');
     postName.className += 'post-name';
-    postName.textContent = `${data['postName']}`;
+    postName.textContent = `${data['title']}`;
 
 
     let mainInfa = document.createElement('div');
     mainInfa.className += 'main-infa';
 
 
-    //Пока условию закомментим, потом, как сделаем запрос-раскоментим
-    // if (data['image'] !== null){
+    if (data['image'] !== null){
         let photoBlock = document.createElement('div')
         photoBlock.className += 'photo-block';
 
         let postPhoto = document.createElement('img');
         postPhoto.className += 'post-photo';
-        // postPhoto.src = `${data['image']}`
-        postPhoto.src = '../public/petrovich.jpeg'
+        postPhoto.src = `${data['image']}`
+        // postPhoto.src = '../public/petrovich.jpeg'
         postPhoto.alt = 'Фото поста';
 
         photoBlock.appendChild(postPhoto);
 
         mainInfa.appendChild(photoBlock);
-    // }
+    }
     
     let postText = document.createElement('p');
     postText.className += 'post-text';
-    postText.textContent = 'Микэилян выселю!';
+    postText.textContent = `${data['description']}`;
 
 
     let otherInfa = document.createElement('div');
@@ -62,7 +61,6 @@ function post(data){
         let tag = document.createElement('span');
         tag.className += 'tag';
 
-        //id and name пока так, потом подогнать под api
         tag.id = element['id'];
         tag.textContent = `#${element['name']}`;
 
@@ -84,7 +82,7 @@ function post(data){
 
     let countComments = document.createElement('span');
     countComments.className = 'count-comments';
-    countComments.textContent = `${data['countComment']}`
+    countComments.textContent = `${data['commentsCount']}`
 
     let commentIcon = document.createElement('img');
     commentIcon.className += 'comment-icon';
@@ -97,11 +95,12 @@ function post(data){
 
     let countLikes = document.createElement('span');
     countLikes.className = 'count-likes';
-    countLikes.textContent = `${data['countComment']}`
+    countLikes.textContent = `${data['likes']}`
 
     let likeIcon = document.createElement('img');
     likeIcon.className += 'like-icon';
-    likeIcon.src = '../public/heart.svg'
+    likeIcon.src = `${data['hasLike'] ? '../public/slectedHeart.svg'
+     : '../public/heart.svg'}`
     likeIcon.alt = 'лайк';
 
     likeInfaBlock.appendChild(countLikes);

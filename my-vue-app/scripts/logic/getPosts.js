@@ -1,16 +1,29 @@
-import { getUserProfileRequest } from "../requests/getPostsRequest";
+import { getPostRequest } from "../requests/getPostsRequest";
+import post from "../components/post/post";
+import { createUrl } from "./createUrl";
 
 export function getPosts(){
     // const NEW_URL = `${URL}post?onlyMyCommunities=${true}&page=${1}&size=${8}`;
 
     let sendButton = document.querySelector('.select-filters-button');
-    
-    // sendButton.addEventListener('click', () => {
 
-        let body = {'tags': [], 'author': null, 'minTime': null, 'maxTime': null, 'sorting': null,
+    let body = {'tags': [], 'author': '', 'minTime': '', 'maxTime': '', 'sorting': '',
             'onlyMyCommunities': false, 'page': 1, 'size': 5};
 
-        let urlMask = '';
+    let urlMask = createUrl(body)
+
+    getPostRequest(urlMask).then(data => {
+        // console.log(data);
+        console.log(urlMask);
+        data['posts'].forEach(element => {
+            post(element);
+        });
+    })
+    
+    sendButton.addEventListener('click', () => {
+
+        body = {'tags': [], 'author': '', 'minTime': '', 'maxTime': '', 'sorting': '',
+            'onlyMyCommunities': false, 'page': 1, 'size': 5};
 
         let tags = document.querySelector('.select-list');
         let author = document.getElementById('input-name');
@@ -22,15 +35,11 @@ export function getPosts(){
         // let page = document.getElementById('input-count-posts')
         let size = document.getElementById('input-count-post');
 
-
-        // page временно, добавим везде его и поменяем тута
-        urlMask = `post?onlyMyCommunities=${onlyMyCommunities}&page=${1}&size=${size}`
-
         for (let i = 0; i < tags.options.length; i++){
-            let option = a.options[i];
+            let option = tags.options[i];
             if (option.selected){
-                body['tags'].push(option);
-                
+                let obj = {'id': option.id, 'tagName': option}
+                body['tags'].push(obj);
             }
         }
 
@@ -39,10 +48,27 @@ export function getPosts(){
         body['maxTime'] = maxTime.value;
         body['sorting'] = sorting.value;
         body['onlyMyCommunities'] = onlyMyCommunities.checked;
+        body['page'] = 1;
         body['size'] = size.value;
 
-        getUserProfileRequest(body, urlMask).then(data => console.log(data));
+        // console.log(body);
+        urlMask = createUrl(body);
+        
+
+        window.history.pushState({}, 'some title', `/${urlMask}`);
+
+        getPostRequest(urlMask).then(data => {
+            console.log(data);
+            data['posts'].forEach(element => {
+                post(element);
+            });
+            console.log(urlMask);
+            // window.location.search = `/${urlMask}`;
+        })
+        
+        
+        // return result
 
         // return result;
-    // })
+    })
 }

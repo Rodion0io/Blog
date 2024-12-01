@@ -1,19 +1,17 @@
 import { URL } from "../../constans";
 
-export function getUserProfileRequest(body, maskUrl) {
+export function getPostRequest(maskUrl) {
     const headers = {
         "Content-Type": "application/json",
         // "Authorization": `Bearer ${token}`,
     };
 
-    const NEW_URL = `${URL}${maskUrl}`;
+    const NEW_URL = `${URL}post?${maskUrl}`;
 
     return fetch(NEW_URL, {
         method: "GET",
         headers: headers,
-        body: JSON.stringify(body)
     }).then(response => {
-        console.log(response);
         if (response.ok) {
             return response.json();
         }

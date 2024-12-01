@@ -31,31 +31,40 @@ function router(){
         console.log(event);
     })
 
-    switch (pathLink){
-        case '/':
-            parentBlock.innerHTML = '';
-            
-            createMainPage();
-            // parentBlock.innerHTML = '<h1>варапврапврблять</h1>'
-            break;
-        case '/login':
-            parentBlock.innerHTML = '';
-            AuthorizeForm();
-            sendDatas();
-            break;
-        case '/registration':
-            parentBlock.innerHTML = '';
-            registrationForm();
-            registrationAccount();
-            break;
-        case '/profile':
-            parentBlock.innerHTML = '';
-            Profile();
-            getUserProfile();
-            listAccount(null);
-            
-            break;
+
+    //Это условие выдал чат гпт
+    if (pathLink.startsWith('/?')) {
+        parentBlock.innerHTML = '';
+        createMainPage();
+        listAccount(null);
     }
+    else{
+        switch (pathLink){
+            case '/':
+                parentBlock.innerHTML = '';
+                createMainPage();
+                listAccount(null);
+                // parentBlock.innerHTML = '<h1>варапврапврблять</h1>'
+                break;
+            case '/login':
+                parentBlock.innerHTML = '';
+                AuthorizeForm();
+                sendDatas();
+                break;
+            case '/registration':
+                parentBlock.innerHTML = '';
+                registrationForm();
+                registrationAccount();
+                break;
+            case '/profile':
+                parentBlock.innerHTML = '';
+                Profile();
+                getUserProfile();
+                listAccount(null);
+                break;
+        }
+    }
+    
     
 }
 

@@ -26,13 +26,6 @@ function filter(){
 
     filterHeader.appendChild(formContainerHeader);
     formContainerHeader.appendChild(headerContent);
-    
-
-
-
-
-    // let topFormPart = document.createElement('div');
-    // topFormPart.className += 'top-part';
 
 
     let leftFormPart = document.createElement('div');
@@ -41,16 +34,16 @@ function filter(){
     let leftBottomBlock = document.createElement('div');
     leftBottomBlock.className += 'left-bottom-part'
 
-    let nameInput = createInputBlock('input-block-filter name', 'name',
+    let nameInput = createInputBlock('input-block-filter name', 'author',
     'Поиск по имени автора', 'text', null, 'input-name',
     false, false, null, null, 'input');
 
-    let sortInput = createInputBlock('input-block-filter sort', 'name',
+    let sortInput = createInputBlock('input-block-filter sort', 'sorting',
     'Сортировать', 'text', null, 'input-sort',
-    false, true, ['По дате создания (сначала новые)','по дате создания (сначала старые)',
+    false, true, ['','По дате создания (сначала новые)','по дате создания (сначала старые)',
      'по количеству лайков (по убыванию)', 'по количеству лайков (по возрастанию)'], null, 'input');
 
-    let startTimeInput = createInputBlock('input-block-filter start', 'name',
+    let startTimeInput = createInputBlock('input-block-filter start', 'min',
     'Время чтения от', 'text', null, 'input-start-time',
     false, false, null, null, 'input');
 
@@ -100,16 +93,17 @@ function filter(){
     });
 
 
-    let endTimeInput = createInputBlock('input-block-filter end', 'name',
+    let endTimeInput = createInputBlock('input-block-filter end', 'max',
     'Время чтения от до', 'text', null, 'input-end-time',
     false, false, null, null, 'input');
 
-    let flagInput = createInputBlock('input-block-filter flag', 'name',
+    let flagInput = createInputBlock('input-block-filter flag', 'onlyMyCommunities',
     'Только мои группы', 'checkbox', null, 'input-flag',
     false, false, null, null, 'input');
 
     let selectButton = document.createElement('button');
     selectButton.className += 'btn select-filters-button';
+    selectButton.setAttribute('type', 'button');
     selectButton.textContent = 'Применить';
 
     let rightBottomBlock = document.createElement('div');
