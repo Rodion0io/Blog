@@ -1,8 +1,11 @@
 function post(data){
     let parentBlock = document.querySelector('.section-posts');
 
+    // console.log(parentBlock);
+
     let postComponent = document.createElement('article');
     postComponent.className += 'post-component';
+    postComponent.id = data['id'];
 
     let container = document.createElement('div');
     container.className += 'form-container';
@@ -102,6 +105,7 @@ function post(data){
     likeIcon.src = `${data['hasLike'] ? '../public/slectedHeart.svg'
      : '../public/heart.svg'}`
     likeIcon.alt = 'лайк';
+    // console.log(data['hasLike']);
 
     likeInfaBlock.appendChild(countLikes);
     likeInfaBlock.appendChild(likeIcon);

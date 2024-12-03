@@ -1,22 +1,22 @@
 import { URL } from "../../constans";
 
 
-export function likeRequest(token, postId) {
-    const NEW_URL = `${URL}post/${postId}/like`;
 
+export function getConcretePost(postId) {
     const headers = {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        'Accept': "application/json"
+        // "Authorization": `Bearer ${token}`,
     };
 
+    const NEW_URL = `${URL}post/${postId}`;
+
     return fetch(NEW_URL, {
-        method: "POST",
+        method: "GET",
         headers: headers
     }).then(response => {
+        console.log(response);
         if (response.ok) {
-            console.log('ok')
-            return null;
+            return response.json();
         }
         return response.json().then(error => {
             const e = new Error('Увы!');

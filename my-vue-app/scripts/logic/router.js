@@ -8,43 +8,55 @@ import { getUserProfile } from "./getUserProfile";
 import filter from "../components/filter/filter";
 import mainPage from "../components/mainPage/mainPage";
 import createMainPage from "./createMainPage";
+import { markPost } from "./markPost";
+import { getPosts } from "./getPosts";
+import { parseUrlParams } from "./parseUrlParams"; // Вспомогательная функция для парсинга URL
 
-
-function router(){
-    let pathLink = window.location.pathname;
+function router() {
+    let pathLink = window.location.pathname; // Учитываем query параметры
     let parentBlock = document.getElementById('app');
 
-    document.querySelectorAll('.href')
-    .forEach(link => link.addEventListener('click', (event) => {
-        event.preventDefault();
+    // временные значения для mainPage
+    const currentPage = 1;
+    const totalPages = 10;
+    const groupSize = 3;
 
-        let path = event.target.href;
+    // Навигация по ссылкам
+    document.querySelectorAll('.href').forEach(link => 
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
 
-        window.history.pushState({route: path}, 'some title', path);
-        router()
-    }))
+            let path = event.target.href;
 
+            window.history.pushState({ route: path }, 'some title', path);
+            router();
+        })
+    );
+
+    // Попытка вернуть состояние при возврате назад
     window.addEventListener('popstate', (event) => {
-        if (event.state){
-            console.log(event.state);
+        if (event.state) {
+            router();
         }
-        console.log(event);
-    })
+    });
 
-
-    //Это условие выдал чат гпт
+    // Роутинг
     if (pathLink.startsWith('/?')) {
+        // Получаем параметры из URL
+        const params = parseUrlParams(pathLink);
         parentBlock.innerHTML = '';
-        createMainPage();
+        mainPage(params.page || currentPage, totalPages, groupSize);
+        filter(params); // Передаем параметры в фильтр
+        getPosts(params.page || currentPage, params.size || 5, groupSize, params); // Передаем параметры
         listAccount(null);
-    }
-    else{
-        switch (pathLink){
+    } else {
+        switch (pathLink) {
             case '/':
                 parentBlock.innerHTML = '';
-                createMainPage();
+                mainPage(currentPage, totalPages, groupSize);
+                filter();
+                getPosts();
                 listAccount(null);
-                // parentBlock.innerHTML = '<h1>варапврапврблять</h1>'
                 break;
             case '/login':
                 parentBlock.innerHTML = '';
@@ -64,8 +76,6 @@ function router(){
                 break;
         }
     }
-    
-    
 }
 
-export default router; 
+export default router;

@@ -2,15 +2,19 @@ import mainPage from "../components/mainPage/mainPage";
 import filter from "../components/filter/filter";
 import post from "../components/post/post";
 import { getPosts } from "./getPosts";
+import { markPost } from "./markPost";
 
-function createMainPage(){
-    mainPage();
+async function createMainPage(){
+
+    const currentPage = 1;
+    const totalPages = 10;
+    const groupSize = 3;
+
+
+    mainPage(currentPage, totalPages, groupSize);
     filter();
     getPosts();
-    // let arr = getPosts();
-    // getPosts().then(data => console.log(data));
-    // console.log(getPosts().then(data => data));
-
+    
 
     // let arr = [{'name': 'охламон', 'createTime': '19.12.2022 17:15', 'communityName': 'Стажировка',
     // 'postName': 'Выселю', 'tags': [{'id':'rdhiu43', 'name':'18+'}, {'id':'dsgosj2', 'name':'eda'}], 'readingTime': 7,

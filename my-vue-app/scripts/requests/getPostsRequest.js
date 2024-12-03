@@ -1,10 +1,14 @@
 import { URL } from "../../constans";
 
-export function getPostRequest(maskUrl) {
+export function getPostRequest(maskUrl, token) {
     const headers = {
         "Content-Type": "application/json",
         // "Authorization": `Bearer ${token}`,
     };
+
+    if (token !== null){
+        headers["Authorization"] = `Bearer ${token}`
+    }
 
     const NEW_URL = `${URL}post?${maskUrl}`;
 

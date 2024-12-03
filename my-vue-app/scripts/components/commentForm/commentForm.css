@@ -1,0 +1,18 @@
+.form-blockk{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.comment-form{
+    width: 90%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-size);
+}
+
+.button-block_container{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}

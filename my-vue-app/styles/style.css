@@ -11,6 +11,10 @@
 @import url(../scripts/components/post/post.css);
 @import url(../scripts/components/paginationBar/paginationBar.css);
 @import url(../scripts/components/paginationBlock/paginationBlock.css);
+@import url(../scripts/components/comment/comment.css);
+@import url(../scripts/components/commentBlock/commentBlock.css);
+@import url(../scripts/components/fullPostPage/fullPostPage.css);
+@import url(../scripts/components/commentForm/commentForm.css);
 
 *{
   box-sizing: border-box;

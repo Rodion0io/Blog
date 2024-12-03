@@ -29,6 +29,12 @@
     margin-bottom: 10px;
 }
 
+.post-photo{
+    width: 50%;
+    height: auto;
+    object-fit: contain;
+}
+
 .tags{
     /* Не знаю зачем флексы использу, ну пускай будут */
     display: flex;
@@ -41,8 +47,21 @@
     color: grey;
 }
 
+.other-infa{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .reading-time{
     margin-bottom: 3px;
+}
+
+.coordinate-block{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
 }
 
 .post-footer{

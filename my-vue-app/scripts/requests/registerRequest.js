@@ -22,7 +22,7 @@ export function registerRequest(datas){
                 }
             );
         }
-    }) .then(data => data)
+    }).then(data => data)
     .catch(error => {error;
          throw error});
 }

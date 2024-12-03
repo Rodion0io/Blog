@@ -1,7 +1,12 @@
-function paginationBar(){
+function paginationBar(currentPage, pages, groupSize){
 
     let pagination = document.createElement('ul');
     pagination.className += 'pagination';
+
+    pagination.innerHTML = '';
+
+    const startPage = Math.floor((currentPage - 1) / groupSize) * groupSize + 1;
+    const endPage = Math.min(startPage + groupSize - 1, pages);
 
     let leftItem = document.createElement('li');
     leftItem.className += 'pagination-item left-item';
@@ -9,20 +14,16 @@ function paginationBar(){
 
     pagination.appendChild(leftItem);
 
-    let paginationArray = [1,2,3];
-
-    paginationArray.forEach(el => {
-        let item = document.createElement('li');
-        if (el === 1){
-            item.className += 'pagination-item selected-pagination';
+    for (let i = startPage; i <= endPage; i++) {
+        const item = document.createElement('li');
+        item.className = 'pagination-item';
+        if (i === currentPage) {
+            item.classList.add('selected-pagination');
         }
-        else{
-            item.className += 'pagination-item';
-        }
-        item.textContent = el;
-        item.id = el;
+        item.textContent = i;
+        item.id = i;
         pagination.appendChild(item);
-    })
+    }
 
     let rightItem = document.createElement('li');
     rightItem.className += 'pagination-item right-item';

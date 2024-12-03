@@ -5,11 +5,14 @@ import { logout } from './scripts/logic/logout.js';
 
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
-  router();
-  if (localStorage.getItem('token') !== null){
-    logout();
-  }
+    router();
+    if (localStorage.getItem('token') !== null){
+      logout();
+    }
+
+    
   
   // localStorage.clear();
 

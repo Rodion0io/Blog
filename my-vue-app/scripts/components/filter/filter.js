@@ -14,7 +14,6 @@ function filter(){
     block.className += 'filter-component';
 
 
-
     let filterHeader = document.createElement('div');
     filterHeader.className += 'filter-header';
 
@@ -73,6 +72,7 @@ function filter(){
     listBlock.appendChild(nameSelectBlock);
     listBlock.appendChild(selectList);
     
+    // const responseTag = await getTagList()
 
     getTagList().then(data => {
         selectList.setAttribute('size', `${data.length}`);

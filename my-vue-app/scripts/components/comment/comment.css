@@ -1,0 +1,56 @@
+.comment{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment-author{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16.76px;
+}
+
+.content-block{
+    display: flex;
+    gap: 5px;
+}
+
+.changed-message{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16.76px;
+    color: grey;
+}
+
+.other-infa-block{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-text{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16.76px;
+}
+
+.answer-comment{
+    border: none;
+    background-color: #fff;
+    color: var(--button-blue-color);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16.76px;
+    padding: 0;
+}
+
+.open-answer{
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    color: var(--button-blue-color);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16.76px;
+    text-align: start;
+}

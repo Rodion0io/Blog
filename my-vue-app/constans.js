@@ -3,3 +3,7 @@ export const PARENT_BLOCK = document.getElementById("app");
 export const EMAIL_MASK = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+$/;
 // export const PHONE_NUMBER_MASK = /^\+7\d{3}\d{3}\-\d{2}\-\d{2}/;
 export const PHONE_NUMBER_MASK = /^\+7\d{10}/
+export const CHANGED_COMMENT_MESSAGE = '(изменен)';
+export const ANSWER_TEXT = 'Ответить';
+export const OPEN_ANSWERS = 'Раскрыть ответы'
+export const DELETE_COMMENT_MESSAGE = '[Коментарий удален]'
