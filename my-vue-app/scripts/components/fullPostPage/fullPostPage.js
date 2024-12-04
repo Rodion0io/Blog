@@ -20,15 +20,17 @@ async function fullPostPage(data){
     commentBlock(data);
 
     if (data['comments'].length !== 0){
-        data['comments'].forEach(element => {
-            comment(element, deleteComment);
-        })
+        for (const element of data['comments']) {
+            await comment(element);
+        }
+        await deleteComment();
     }
 
     commentForm();
     markPost();
 
     addComment();
+    
     let otherInfaBlock = document.querySelector('.other-infa');
 
     let coordinateBlock = document.createElement('div');

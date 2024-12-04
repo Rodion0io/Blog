@@ -4,7 +4,7 @@ import { OPEN_ANSWERS } from "../../../constans";
 import { DELETE_COMMENT_MESSAGE } from "../../../constans";
 import { checkAuthorId } from "../../logic/checkAuthorId";
 
-async function comment(data, callback){
+async function comment(data){
     let parentBlock = document.querySelector('.comment-container');
 
     let commentBlock = document.createElement('div');
@@ -99,7 +99,7 @@ async function comment(data, callback){
 
     parentBlock.appendChild(commentBlock);
 
-    callback();
+    // callback();
 }
 
 export default comment;
