@@ -1,0 +1,27 @@
+.redact-block{
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.redact-input{
+    width: 80%;
+}
+
+.redact-button{
+    background-color: var(--dark-yellow-color);
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+}
+
+@media (max-width: 1150px){
+    .redact-block{
+        margin-left: 15px;
+        /* display: flex; */
+        /* align-items: center;
+        justify-content: space-between; */
+        width: 100%;
+    } 
+}

@@ -6,15 +6,15 @@ import commentForm from "../commentForm/commentForm";
 import { markPost } from "../../logic/markPost";
 import { addComment } from "../../logic/addComment";
 import { deleteComment } from "../../logic/deleteComment";
+import { redactComment } from "../../logic/redactComment";
+import redactInput from "../redactInput/redactInput";
+import answerCommentInput from "../answerComment/answerCommentInput";
+import { answerComment } from "../../logic/answerComment";
+
 
 async function fullPostPage(data){
 
     let address = '';
-    // let parentBlock = document.querySelector('.section-post');
-
-    
-    // let container = document.createElement('div');
-    // container.className += 'container';
 
     post(data);
     commentBlock(data);
@@ -23,13 +23,36 @@ async function fullPostPage(data){
         for (const element of data['comments']) {
             await comment(element);
         }
+        let redactButton = document.querySelectorAll('.redact-icon');
+        for (const elem of redactButton) {
+            elem.addEventListener('click', async (event) => {
+                let commentId = event.target.closest('.comment').id;
+                console.log(commentId);
+                    await redactInput();
+                    await redactComment(commentId);
+            });
+        }
+
+        let answerLink = document.querySelectorAll('.answer-comment');
+        for (const elem of answerLink) {
+            elem.addEventListener('click', async (event) => {
+                let commentId = event.target.closest('.comment').id;
+                console.log(commentId);
+                await answerCommentInput();
+                await answerComment(commentId);
+            });
+        }
         await deleteComment();
+        
+        
     }
 
     commentForm();
     markPost();
 
     addComment();
+
+    
     
     let otherInfaBlock = document.querySelector('.other-infa');
 

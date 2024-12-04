@@ -15,6 +15,8 @@
 @import url(../scripts/components/commentBlock/commentBlock.css);
 @import url(../scripts/components/fullPostPage/fullPostPage.css);
 @import url(../scripts/components/commentForm/commentForm.css);
+@import url(../scripts/components/redactInput/redactInput.css);
+@import url(../scripts/components/answerComment/answerCommentInput.css);
 
 *{
   box-sizing: border-box;
