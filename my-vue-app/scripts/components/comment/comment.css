@@ -4,6 +4,19 @@
     gap: 10px;
 }
 
+.header-comment{
+    display: flex;
+    align-items: center;
+}
+
+.redact-icon{
+    cursor: pointer;
+}
+
+.delete-icon{
+    cursor: pointer;
+}
+
 .comment-author{
     font-weight: 500;
     font-size: 15px;

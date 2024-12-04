@@ -2,6 +2,7 @@ import { CHANGED_COMMENT_MESSAGE } from "../../../constans";
 import { ANSWER_TEXT } from "../../../constans";
 import { OPEN_ANSWERS } from "../../../constans";
 import { DELETE_COMMENT_MESSAGE } from "../../../constans";
+import { checkAuthorId } from "../../logic/checkAuthorId";
 
 function comment(data){
     let parentBlock = document.querySelector('.comment-container');
@@ -9,10 +10,18 @@ function comment(data){
     let commentBlock = document.createElement('div');
     commentBlock.className += 'comment';
 
-    // let headerComment = document.createElement('div');
-    // headerComment.className += 'header-comment';
+    let headerComment = document.createElement('div');
+    headerComment.className += 'header-comment';
 
-    // headerComment.appendChild(commentAuthor);
+    let redactIcon = document.createElement('img');
+    redactIcon.className += 'redact-icon';
+    redactIcon.src = '../../../public/pen.svg';
+    redactIcon.alt = 'Редактировать';
+
+    let deleteIcon = document.createElement('img');
+    deleteIcon.className += 'delete-icon';
+    deleteIcon.src = '../../../public/trash.svg';
+    deleteIcon.alt = 'Удалить';
 
 
     let commentAuthor = document.createElement('h3');
@@ -41,14 +50,21 @@ function comment(data){
 
     otherInfa.appendChild(dateText);
 
+    headerComment.appendChild(commentAuthor);
+
     if (data['deleteDate'] == null){
         let answerComment = document.createElement('button');
         answerComment.className += 'answer-comment';
         answerComment.textContent = ANSWER_TEXT;
         otherInfa.appendChild(answerComment);
+        console.log(data['authorId'])
+        if (checkAuthorId(data['authorId']) === null){
+            headerComment.appendChild(redactIcon);
+            headerComment.appendChild(deleteIcon);
+        }
         if (data["modifiedDate"] !== null){
-            contentBlock.appendChild(changedMessage);
             commentText.textContent = data['content']
+            contentBlock.appendChild(changedMessage);
         }
         else{
             commentText.textContent = data['content']
@@ -68,11 +84,9 @@ function comment(data){
 
     contentBlock.appendChild(commentText);
     
-
     
-    
-
-    commentBlock.appendChild(commentAuthor);
+    // commentBlock.appendChild(commentAuthor);
+    commentBlock.appendChild(headerComment)
     commentBlock.appendChild(contentBlock);
     commentBlock.appendChild(otherInfa);
     

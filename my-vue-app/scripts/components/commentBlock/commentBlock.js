@@ -1,4 +1,4 @@
-function commentBlock(data){
+function commentBlock(){
 
     let parentBlock = document.querySelector('.section-post .container');
 
@@ -17,8 +17,6 @@ function commentBlock(data){
 
     let commentContainer = document.createElement('div');
     commentContainer.className += 'comment-container';
-    
-    console.log(data);
     
     container.appendChild(blockTitle);
     container.appendChild(commentContainer);

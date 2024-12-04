@@ -3,23 +3,19 @@ import { addressChain } from "../../logic/addressChain";
 import commentBlock from "../commentBlock/commentBlock";
 import comment from "../comment/comment";
 import commentForm from "../commentForm/commentForm";
+import { markPost } from "../../logic/markPost";
 
-function fullPostPage(data){
+async function fullPostPage(data){
 
     let address = '';
-    let parentBlock = document.querySelector('.section-post');
+    // let parentBlock = document.querySelector('.section-post');
 
-    if (data["addressId"] !== null){
-        address = addressChain(data["addressId"]);
-    }
-
-    console.log(address);
     
     // let container = document.createElement('div');
     // container.className += 'container';
 
     post(data);
-    commentBlock(data);
+    commentBlock();
 
     if (data['comments'].length !== 0){
         data['comments'].forEach(element => {
@@ -27,7 +23,8 @@ function fullPostPage(data){
         })
     }
 
-    commentForm()
+    commentForm();
+    markPost();
 
     let otherInfaBlock = document.querySelector('.other-infa');
 
@@ -41,16 +38,18 @@ function fullPostPage(data){
 
     let locationText = document.createElement('p');
     locationText.className += ' location-text';
-    //временно, сейчас бахнем запрос
-    // locationText.textContent = 'Томская область, г. Томск, пр. Ленина, д. 36 к.2';
-    locationText.textContent = address;
 
-
-    if (address !== undefined){
+    if (data["addressId"] !== null){
         coordinateBlock.appendChild(locationImage);
         coordinateBlock.appendChild(locationText);
         otherInfaBlock.appendChild(coordinateBlock);
+        address = await addressChain(data["addressId"]);
+        // locationText.textContent = 
     }
+
+    // if (address !== undefined){
+        
+    // }
     
     // container.appendChild(postBlock)
     // parentBlock.appendChild(container);

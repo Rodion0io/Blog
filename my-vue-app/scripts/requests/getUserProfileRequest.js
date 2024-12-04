@@ -13,7 +13,6 @@ export function getUserProfileRequest(token) {
         method: "GET",
         headers: headers
     }).then(response => {
-        console.log(response);
         if (response.ok) {
             return response.json();
         }

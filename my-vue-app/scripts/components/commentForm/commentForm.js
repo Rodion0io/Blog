@@ -24,7 +24,7 @@ function commentForm(){
     buttonBlockContainer.className += 'button-block_container'
 
     let sendButton = document.createElement('button');
-    sendButton.className += 'btn send-commend';
+    sendButton.className += 'btn send-comment';
     sendButton.textContent = 'Отправить'
 
     buttonBlockContainer.appendChild(sendButton);

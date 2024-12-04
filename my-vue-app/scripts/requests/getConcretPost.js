@@ -1,7 +1,5 @@
 import { URL } from "../../constans";
 
-
-
 export function getConcretePost(postId) {
     const headers = {
         "Content-Type": "application/json",
@@ -14,7 +12,6 @@ export function getConcretePost(postId) {
         method: "GET",
         headers: headers
     }).then(response => {
-        console.log(response);
         if (response.ok) {
             return response.json();
         }
