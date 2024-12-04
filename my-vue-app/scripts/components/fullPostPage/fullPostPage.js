@@ -14,8 +14,9 @@ async function fullPostPage(data){
     // let container = document.createElement('div');
     // container.className += 'container';
 
+    console.log(data['hasLike']);
     post(data);
-    commentBlock();
+    commentBlock(data);
 
     if (data['comments'].length !== 0){
         data['comments'].forEach(element => {

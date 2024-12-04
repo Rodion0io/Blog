@@ -1,4 +1,4 @@
-function commentBlock(){
+function commentBlock(data){
 
     let parentBlock = document.querySelector('.section-post .container');
 

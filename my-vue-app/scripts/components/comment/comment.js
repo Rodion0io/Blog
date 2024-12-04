@@ -4,7 +4,7 @@ import { OPEN_ANSWERS } from "../../../constans";
 import { DELETE_COMMENT_MESSAGE } from "../../../constans";
 import { checkAuthorId } from "../../logic/checkAuthorId";
 
-function comment(data){
+async function comment(data){
     let parentBlock = document.querySelector('.comment-container');
 
     let commentBlock = document.createElement('div');
@@ -52,13 +52,15 @@ function comment(data){
 
     headerComment.appendChild(commentAuthor);
 
-    if (data['deleteDate'] == null){
+    if (data['deleteDate'] === null){
         let answerComment = document.createElement('button');
         answerComment.className += 'answer-comment';
         answerComment.textContent = ANSWER_TEXT;
         otherInfa.appendChild(answerComment);
-        console.log(data['authorId'])
-        if (checkAuthorId(data['authorId']) === null){
+        // console.log(data['authorId'])
+        // console.log(await checkAuthorId(data['authorId']))
+        if (await checkAuthorId(data['authorId']) === true){
+            // console.log('bim bim bam bam')
             headerComment.appendChild(redactIcon);
             headerComment.appendChild(deleteIcon);
         }

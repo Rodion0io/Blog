@@ -1,9 +1,9 @@
 import { URL } from "../../constans";
 
-export function getConcretePost(postId) {
+export function getConcretePost(postId, token) {
     const headers = {
         "Content-Type": "application/json",
-        // "Authorization": `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
     };
 
     const NEW_URL = `${URL}post/${postId}`;
