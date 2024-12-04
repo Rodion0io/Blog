@@ -4,6 +4,8 @@ import commentBlock from "../commentBlock/commentBlock";
 import comment from "../comment/comment";
 import commentForm from "../commentForm/commentForm";
 import { markPost } from "../../logic/markPost";
+import { addComment } from "../../logic/addComment";
+import { deleteComment } from "../../logic/deleteComment";
 
 async function fullPostPage(data){
 
@@ -14,19 +16,19 @@ async function fullPostPage(data){
     // let container = document.createElement('div');
     // container.className += 'container';
 
-    console.log(data['hasLike']);
     post(data);
     commentBlock(data);
 
     if (data['comments'].length !== 0){
         data['comments'].forEach(element => {
-            comment(element);
+            comment(element, deleteComment);
         })
     }
 
     commentForm();
     markPost();
 
+    addComment();
     let otherInfaBlock = document.querySelector('.other-infa');
 
     let coordinateBlock = document.createElement('div');

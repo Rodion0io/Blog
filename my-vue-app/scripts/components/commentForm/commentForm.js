@@ -15,7 +15,7 @@ function commentForm(){
     blockName.textContent = 'Оставить коментарий';
 
     let inputBlock = document.createElement('textarea');
-    inputBlock.className += 'input-block';
+    inputBlock.className += 'input-block-text-area';
 
     let buttonBlock = document.createElement('div');
     buttonBlock.className += 'button-block';

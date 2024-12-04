@@ -8,6 +8,7 @@ export function checkLifeCycle(jwt){
         return true;
     }
     else{
+        return false;
         localStorage.clear();
         window.location.pathname = '/';
     }

@@ -11,6 +11,12 @@
     border-radius: var(--radius-size);
 }
 
+.input-block-text-area{
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-size);
+    height: 100px;
+}
+
 .button-block_container{
     display: flex;
     justify-content: flex-end;

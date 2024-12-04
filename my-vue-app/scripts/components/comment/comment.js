@@ -4,11 +4,12 @@ import { OPEN_ANSWERS } from "../../../constans";
 import { DELETE_COMMENT_MESSAGE } from "../../../constans";
 import { checkAuthorId } from "../../logic/checkAuthorId";
 
-async function comment(data){
+async function comment(data, callback){
     let parentBlock = document.querySelector('.comment-container');
 
     let commentBlock = document.createElement('div');
     commentBlock.className += 'comment';
+    commentBlock.id = data['id'];
 
     let headerComment = document.createElement('div');
     headerComment.className += 'header-comment';
@@ -97,6 +98,8 @@ async function comment(data){
     }
 
     parentBlock.appendChild(commentBlock);
+
+    callback();
 }
 
 export default comment;

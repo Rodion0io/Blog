@@ -1,7 +1,7 @@
 import { URL } from "../../constans";
 
-export function addCommentRequest(token, postId, body){
-    const NEW_URL = `${URL}post/${postId}/comment`;
+export function deleteCommentRequest(token, commentId){
+    const NEW_URL = `${URL}comment/${commentId}`
 
     const headers = {
         "Content-Type": "application/json",
@@ -10,9 +10,8 @@ export function addCommentRequest(token, postId, body){
     };
 
     return fetch(NEW_URL, {
-        method: "POST",
+        method: "DELETE",
         headers: headers,
-        body: JSON.stringify(body)
     }).then(response => {
         if (response.ok) {
             return null
@@ -29,5 +28,4 @@ export function addCommentRequest(token, postId, body){
     });
 }
 
-//https://blog.kreosoft.space/api/post/9c140594-9fea-4e6f-ac8d-08dd141b62e2/comment
-//https://blog.kreosoft.space/api/post/9c140594-9fea-4e6f-ac8d-08dd141b62e2/comment
+//https://blog.kreosoft.space/api/comment/4398feae-6b39-4e41-4bbf-08dd140b048e
