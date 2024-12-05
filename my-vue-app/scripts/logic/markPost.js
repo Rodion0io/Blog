@@ -9,7 +9,6 @@ export async function markPost() {
 
     likeButton.forEach(element => {
         element.addEventListener('click', async (e) => {
-            console.log('нажалось');
             if (token !== null){
                 if (checkLifeCycle(token)) {
                     let postId = e.target.closest('.post-component').id;
