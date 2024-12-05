@@ -12,7 +12,8 @@ export function subscribe(){
                 try {
                     let request = await subscribeGroupRequest(token, parentBlockId);
                     if (request === null){
-                        currentBtn.className = 'unsubscribe';
+                        currentBtn.className = 'btn unsubscribe';
+                        currentBtn.textContent = 'Отписаться';
                     }
                     else{
                         console.log('ошибка');
