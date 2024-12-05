@@ -1,0 +1,11 @@
+.section-list{
+    display: flex;
+    justify-content: center;
+}
+
+.list-group{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 2px;
+}

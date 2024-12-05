@@ -4,8 +4,7 @@ import { OPEN_ANSWERS } from "../../../constans";
 import { DELETE_COMMENT_MESSAGE } from "../../../constans";
 import { checkAuthorId } from "../../logic/checkAuthorId";
 
-async function comment(data){
-    let parentBlock = document.querySelector('.comment-container');
+async function comment(data, parentBlock){
 
     let commentBlock = document.createElement('div');
     commentBlock.className += 'comment';

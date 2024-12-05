@@ -7,12 +7,13 @@ import listAccount from "../components/listAccount/listAccount";
 import { getUserProfile } from "./getUserProfile";
 import filter from "../components/filter/filter";
 import mainPage from "../components/mainPage/mainPage";
-import createMainPage from "./createMainPage";
-import { markPost } from "./markPost";
 import { getPosts } from "./getPosts";
-import { parseUrlParams } from "./parseUrlParams"; // Вспомогательная функция для парсинга URL
+import { parseUrlParams } from "./parseUrlParams";
+import listGroups from "../components/listGroups/listGroups";
+import { getCommunity } from "./getCommunity";
+import { getUserCommunity } from "./getUserCommunity";
 
-function router() {
+async function router() {
     let pathLink = window.location.pathname; // Учитываем query параметры
     let parentBlock = document.getElementById('app');
 
@@ -49,14 +50,16 @@ function router() {
         filter(params); // Передаем параметры в фильтр
         getPosts(params.page || currentPage, params.size || 5, groupSize, params); // Передаем параметры
         listAccount(null);
-    } else {
+    } 
+    else {
         switch (pathLink) {
             case '/':
                 parentBlock.innerHTML = '';
                 mainPage(currentPage, totalPages, groupSize);
                 filter();
                 getPosts();
-                listAccount(null);
+                //заглушка
+                listAccount("email@mail.ru");
                 break;
             case '/login':
                 parentBlock.innerHTML = '';
@@ -72,7 +75,14 @@ function router() {
                 parentBlock.innerHTML = '';
                 Profile();
                 getUserProfile();
-                listAccount(null);
+                //заглушка
+                listAccount("email@mail.ru");
+                break;
+            case '/communities':
+                parentBlock.innerHTML = '';
+                listGroups();
+                await getCommunity();
+                getUserCommunity();
                 break;
         }
     }

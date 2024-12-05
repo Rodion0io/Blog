@@ -17,6 +17,9 @@
 @import url(../scripts/components/commentForm/commentForm.css);
 @import url(../scripts/components/redactInput/redactInput.css);
 @import url(../scripts/components/answerComment/answerCommentInput.css);
+@import url(../scripts/components/treeComment/treeComment.css);
+@import url(../scripts/components/listGroups/listGroups.css);
+@import url(../scripts/components/group/group.css);
 
 *{
   box-sizing: border-box;

@@ -1,0 +1,17 @@
+.answer-block{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.answer-input{
+    width: 80%;
+}
+
+.answer-button{
+    color: #fff;
+    background-color: var(--button-blue-color);
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+}
