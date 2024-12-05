@@ -1,18 +1,17 @@
 import { URL } from "../../constans";
 
-export function informationCommunity(postId) {
+export function getInformationCommunityRequest(groupId, token) {
     const headers = {
         "Content-Type": "application/json",
-        // "Authorization": `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
     };
 
-    const NEW_URL = `${URL}community/${postId}`;
+    const NEW_URL = `${URL}community/${groupId}`;
 
     return fetch(NEW_URL, {
         method: "GET",
         headers: headers
     }).then(response => {
-        console.log(response);
         if (response.ok) {
             return response.json();
         }
@@ -27,3 +26,5 @@ export function informationCommunity(postId) {
         throw error;
     });
 }
+
+// https://blog.kreosoft.space/api/community/c5639aab-3a25-4efc-17e1-08dbea521a96

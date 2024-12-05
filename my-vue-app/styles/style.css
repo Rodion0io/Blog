@@ -20,6 +20,7 @@
 @import url(../scripts/components/treeComment/treeComment.css);
 @import url(../scripts/components/listGroups/listGroups.css);
 @import url(../scripts/components/group/group.css);
+@import url(../scripts/components/groupInfaHeader/groupInfaHeader.css);
 
 *{
   box-sizing: border-box;

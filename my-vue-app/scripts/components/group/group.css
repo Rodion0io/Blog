@@ -26,6 +26,11 @@
     line-height: 20px;
 }
 
+.group-title:hover{
+    color: #545252;
+    cursor: pointer;
+}
+
 .unsubscribe{
     color: #fff;
     background-color: var(--button-red-color);

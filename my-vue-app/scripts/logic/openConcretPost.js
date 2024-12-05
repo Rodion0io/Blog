@@ -1,5 +1,4 @@
 import { getConcretePost } from "../requests/getConcretPost";
-import { informationCommunity } from "../requests/informationCommunity";
 import fullPostPage from "../components/fullPostPage/fullPostPage";
 
 
