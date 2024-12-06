@@ -14,6 +14,7 @@ import { getCommunity } from "./getCommunity";
 import { getUserCommunity } from "./getUserCommunity";
 import { subscribe } from "./subscribe";
 import { unSubscribe } from "./unsubscribe";
+import { getInformationCommunity } from "./getInformationCommunity";
 
 async function router() {
     let pathLink = window.location.pathname; // Учитываем query параметры
@@ -87,6 +88,7 @@ async function router() {
                 await getUserCommunity();
                 subscribe();
                 unSubscribe();
+                getInformationCommunity();
                 break;
         }
     }

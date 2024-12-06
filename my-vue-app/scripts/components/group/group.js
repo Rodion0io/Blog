@@ -14,6 +14,7 @@ function group(dataGroup){
     let groupTitle = document.createElement('h2');
     groupTitle.className += 'group-title';
     groupTitle.textContent = dataGroup['name'];
+    groupTitle.id = dataGroup['id'];
 
     contentGroup.appendChild(groupTitle);
 

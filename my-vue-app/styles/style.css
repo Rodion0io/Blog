@@ -21,6 +21,8 @@
 @import url(../scripts/components/listGroups/listGroups.css);
 @import url(../scripts/components/group/group.css);
 @import url(../scripts/components/groupInfaHeader/groupInfaHeader.css);
+@import url(../scripts/components/adminCommunityBlock/adminCommunityBlock.css);
+@import url(../scripts/components/shortFilterBlock/shortFilterBlock.css);
 
 *{
   box-sizing: border-box;

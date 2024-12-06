@@ -1,0 +1,48 @@
+.section-header{
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 15px; */
+}
+
+.header-grop{
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-size);
+    width: 90%;
+}
+
+.header-community-infa{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.community-name{
+    font-weight: 600;
+    font-size: 33px;
+    line-height: 20px;
+}
+
+.actions-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infa-community-block{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.count-subscribers{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.admins-block-title{
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 20px;
+    margin-bottom: 27px;
+}

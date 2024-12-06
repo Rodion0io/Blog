@@ -1,0 +1,13 @@
+.admin-card{
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 9px;
+    /* padding-left: 10px; */
+    gap: 15px;
+}
+
+.admin-photo{
+    width: 70px;
+    height: 70px;
+}

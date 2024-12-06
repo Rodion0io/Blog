@@ -1,9 +1,9 @@
 import { URL } from "../../constans";
 
-export function getInformationCommunityRequest(groupId, token) {
+export function getInformationCommunityRequest(groupId) {
     const headers = {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        // "Authorization": `Bearer ${token}`,
     };
 
     const NEW_URL = `${URL}community/${groupId}`;
