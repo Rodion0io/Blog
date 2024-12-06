@@ -1,10 +1,10 @@
 function groupInfaHeader(data){
-    let parentBlock = document.querySelector('.group');
+    let parentBlock = document.querySelector('.section-header');
 
     // console.log(parentBlock);
 
-    let sectionHeader = document.createElement('div');
-    sectionHeader.className += 'section-header';
+    // let sectionHeader = document.createElement('div');
+    // sectionHeader.className += 'section-header';
 
     let headerBlock = document.createElement('div');
     headerBlock.className += 'header-grop';
@@ -93,8 +93,8 @@ function groupInfaHeader(data){
     blockContainer.appendChild(infaBlock);
     blockContainer.appendChild(adminsBlock);
     headerBlock.appendChild(blockContainer);
-    sectionHeader.appendChild(headerBlock);
-    parentBlock.appendChild(sectionHeader);
+    // sectionHeader.appendChild(headerBlock);
+    parentBlock.appendChild(headerBlock);
 }
 
 export default groupInfaHeader;

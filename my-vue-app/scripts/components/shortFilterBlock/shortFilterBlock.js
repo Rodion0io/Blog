@@ -2,11 +2,11 @@ import { createInputBlock } from "../createInputBlock";
 import { getTagList } from "../../requests/getTagList";
 
 function shortFilterBlock(){
-    let parentBlock = document.querySelector('.group');
+    let parentBlock = document.querySelector('.section-filter');
 
 
-    let section = document.createElement('div');
-    section.className += 'section-filter';
+    // let section = document.createElement('div');
+    // section.className += 'section-filter';
 
     let form = document.createElement('form');
     form.className += 'form-block short-form';
@@ -40,7 +40,7 @@ function shortFilterBlock(){
 
     //Вынести в отдельную функцию
     let listBlock = document.createElement('div');
-    listBlock.className += 'list-block';
+    listBlock.className += 'list-block short-list';
 
     let nameSelectBlock = document.createElement('p');
     nameSelectBlock.className += 'name-select';
@@ -92,8 +92,8 @@ function shortFilterBlock(){
 
     form.appendChild(filterHeader);
     form.appendChild(formContainerMain)
-    section.appendChild(form);
-    parentBlock.appendChild(section)
+    // section.appendChild(form);
+    parentBlock.appendChild(form)
 }
 
 export default shortFilterBlock;

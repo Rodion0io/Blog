@@ -6,7 +6,15 @@ function groupPage(){
 
     let container = document.createElement('div');
     container.className += 'container group';
+
+    let sectionHeader = document.createElement('div');
+    sectionHeader.className += 'section-header';
     
+    let section = document.createElement('div');
+    section.className += 'section-filter';
+
+    let sectionPosts = document.createElement('div');
+    sectionPosts.className += 'section-posts';
 
     // let sectionFilter = document.createElement('div');
     // sectionFilter.className += 'section-filter';
@@ -18,7 +26,8 @@ function groupPage(){
     // formFilter.className += 'form-block';
 
 
-    // container.appendChild(sectionFilter);
+    container.appendChild(sectionHeader);
+    container.appendChild(section);
     sectionGroup.appendChild(container);
     PARENT_BLOCK.appendChild(sectionGroup);
 }
