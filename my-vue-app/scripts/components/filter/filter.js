@@ -58,6 +58,9 @@ function filter(){
     rightFormPart.className += 'right-part';
     
 
+
+
+    //Вынести в отдельную функцию
     let listBlock = document.createElement('div');
     listBlock.className += 'list-block';
 
@@ -90,6 +93,9 @@ function filter(){
         console.error(error);
     });
 
+
+
+    
 
     let endTimeInput = createInputBlock('input-block-filter end', 'max',
     'Время чтения от до', 'text', null, 'input-end-time',
@@ -128,7 +134,7 @@ function filter(){
     block.appendChild(rightFormPart);
     formContainerMain.appendChild(block);
 
-    parentBlock.appendChild(filterHeader)
+    parentBlock.appendChild(filterHeader);
     parentBlock.appendChild(formContainerMain);
 }
 

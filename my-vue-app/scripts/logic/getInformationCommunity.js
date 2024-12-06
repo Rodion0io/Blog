@@ -3,6 +3,7 @@ import { getInformationCommunityRequest } from "../requests/getInformationCommun
 import groupInfaHeader from "../components/groupInfaHeader/groupInfaHeader";
 import adminCommunityBlock from "../components/adminCommunityBlock/adminCommunityBlock";
 import groupPage from "../components/groupPage/groupPage";
+import shortFilterBlock from "../components/shortFilterBlock/shortFilterBlock";
 
 export function getInformationCommunity(){
     let mainBlock = document.getElementById('app');
@@ -19,8 +20,8 @@ export function getInformationCommunity(){
                     await groupInfaHeader(data);
                     data['administrators'].forEach(async (el) => {
                         await adminCommunityBlock(el);
-                    })
-                    
+                    });
+                    shortFilterBlock();
                 }
             )
         })

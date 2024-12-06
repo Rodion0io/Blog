@@ -1,0 +1,34 @@
+.section-filter{
+    display: flex;
+    justify-content: center;
+}
+
+.short-form{
+    width: 90% !important;
+    padding-bottom: 15px;
+}
+
+.inputs-block{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.short{
+    width: 45%;
+}
+
+.list-block{
+    width: 45%;
+}
+
+.button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.send-filter-button{
+    background-color: var(--button-blue-color);
+    color: #fff;
+    width: 15%;
+}
