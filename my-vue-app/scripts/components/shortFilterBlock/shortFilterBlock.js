@@ -78,6 +78,7 @@ function shortFilterBlock(){
     let sendButton = document.createElement('button');
     sendButton.className += 'btn send-filter-button';
     sendButton.textContent = 'Применить';
+    sendButton.type = 'button';
 
     buttonContainer.appendChild(sendButton);
 

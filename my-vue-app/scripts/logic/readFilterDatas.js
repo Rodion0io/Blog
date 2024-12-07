@@ -8,7 +8,6 @@ export function readFilterDatas(body){
     let maxTime = document.getElementById('input-end-time');
     let sorting = document.getElementById('input-sort');
     let onlyMyCommunities = document.getElementById('input-flag');
-    // console.log(onlyMyCommunities.checked)
     // let page = document.getElementById('input-count-posts')
     let size = document.getElementById('input-count-post');
 
@@ -20,13 +19,28 @@ export function readFilterDatas(body){
         }
     }
 
-    body['author'] = author.value;
-    body['minTime'] = minTime.value;
-    body['maxTime'] = maxTime.value;
-    body['sorting'] = sorting.value;
-    body['onlyMyCommunities'] = onlyMyCommunities.checked;
-    body['page'] = 1;
-    body['size'] = size.value;
+    if (author){
+        body['author'] = author.value;
+    }
+    if (minTime){
+        body['minTime'] = minTime.value;
+    }
+    if (maxTime){
+        body['maxTime'] = maxTime.value;
+    }
+    if (sorting){
+        body['sorting'] = sorting.value;
+    }
+    if (onlyMyCommunities){
+        body['onlyMyCommunities'] = onlyMyCommunities.checked;
+    }
+    if (body['page'] !== undefined || body['page'] !== null){
+        body['page'] = 1;
+    }
+    if (size){
+        body['size'] = size.value;
+    }
+    
 
     return body;
 }

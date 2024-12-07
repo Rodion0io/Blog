@@ -23,11 +23,6 @@
     width: 45%;
 }
 
-.button-container{
-    display: flex;
-    justify-content: flex-end;
-}
-
 .send-filter-button{
     background-color: var(--button-blue-color);
     color: #fff;

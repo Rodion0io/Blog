@@ -15,6 +15,7 @@ import { getUserCommunity } from "./getUserCommunity";
 import { subscribe } from "./subscribe";
 import { unSubscribe } from "./unsubscribe";
 import { getInformationCommunity } from "./getInformationCommunity";
+import createPostForm from "../components/createPostForm/createPostForm";
 
 async function router() {
     let pathLink = window.location.pathname; // Учитываем query параметры
@@ -92,7 +93,7 @@ async function router() {
                 break;
             case '/post/create':
                 parentBlock.innerHTML = ''
-                parentBlock.innerHTML = '<h1>fshg</h1>';
+                createPostForm();
                 break;
         }
     }

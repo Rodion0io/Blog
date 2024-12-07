@@ -20,6 +20,7 @@ export function getInformationCommunity(){
     let groupLink = document.querySelectorAll('.group-title');
     let userCommunityRole;
     let groupId;
+    let sendButton;
 
     let body = {'tags' : [], 'sorting': '', 'page': 1, 'size': 5};
 
@@ -66,13 +67,8 @@ export function getInformationCommunity(){
                                 })
                                 markPost();
                                 openConcretePost();
-                                // subscribe();
-                                // unSubscribe();
-                           })
-                            
+                           })   
                         }
-                        
-                        
                     }
                     else if ((token === null || !checkLifeCycle(token)) && data['isClosed']){
                         block.appendChild(textBlock);
@@ -81,23 +77,40 @@ export function getInformationCommunity(){
                         getCommunityPostsRequest(newUrl, token, groupId).then(data => {
                              data['posts'].forEach(el => {
                                 post(el);
-                                // markPost();
-                                // openConcretePost();
                              })
                             markPost();
                             openConcretePost();
                             
                         })
-                        
                      }
                     subscribe();
                     unSubscribe();
-                        // await markPost();
-                        // await openConcretePost();
+                    sendButton = document.querySelector('.send-filter-button');
+
+                    console.log(sendButton);
+                    
+                    //По-хорошему это надо выносить отдельным файлом!!!!!!!!!!
+                    sendButton.addEventListener('click', () => {
+                        body = readFilterDatas(body);
+                        let urlMask = createUrl(body);
+
+                        window.history.pushState({}, 'some title', `/${urlMask}`);
+                        // console.log(urlMask);
+                        // console.log(body);
+
+                        getCommunityPostsRequest(newUrl, token, groupId).then(data => {
+                            data['posts'].forEach(el => {
+                                document.querySelector('.section-posts').innerHTML = '';
+                                post(el);
+                            })
+                            markPost();
+                            openConcretePost();
+                       })
+                    });
                 }
             );
         })
     })
-    
+
     
 }

@@ -23,6 +23,7 @@
 @import url(../scripts/components/groupInfaHeader/groupInfaHeader.css);
 @import url(../scripts/components/adminCommunityBlock/adminCommunityBlock.css);
 @import url(../scripts/components/shortFilterBlock/shortFilterBlock.css);
+@import url(../scripts/components/createPostForm/createPostForm.css);
 
 *{
   box-sizing: border-box;
@@ -96,4 +97,10 @@ body{
   border-radius: var(--radius-size);
   border: none;
   text-align: center;
+}
+
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
 }
