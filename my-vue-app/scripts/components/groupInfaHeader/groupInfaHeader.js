@@ -1,7 +1,7 @@
 function groupInfaHeader(data, currentStatusUser){
     let parentBlock = document.querySelector('.section-header');
 
-    console.log(currentStatusUser);
+    // console.log(currentStatusUser);
 
     // console.log(parentBlock);
 

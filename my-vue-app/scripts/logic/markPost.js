@@ -11,8 +11,8 @@ export async function markPost() {
         element.addEventListener('click', async (e) => {
             if (token !== null){
                 if (checkLifeCycle(token)) {
-                    let postId = e.target.closest('.post-component').id;
-                    console.log(postId);
+                    let postId = e.target.id;
+                    // console.log(postId);
     
                     try {
                         let data = await likeRequest(token, postId);

@@ -1,6 +1,8 @@
 function group(dataGroup){
     let parentBlock = document.querySelector('.list-group');
 
+    
+
     let groupBlock = document.createElement('li');
     groupBlock.className += 'group-block';
     groupBlock.id = dataGroup['id'];

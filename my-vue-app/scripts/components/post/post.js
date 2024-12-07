@@ -91,6 +91,7 @@ function post(data){
     commentIcon.className += 'comment-icon';
     commentIcon.src = '../public/comment.svg'
     commentIcon.alt = 'Комментарий';
+    commentIcon.id = data['id'];
 
 
     let likeInfaBlock = document.createElement('div');
@@ -105,6 +106,7 @@ function post(data){
     likeIcon.src = `${data['hasLike'] ? '../public/slectedHeart.svg'
      : '../public/heart.svg'}`
     likeIcon.alt = 'лайк';
+    likeIcon.id = data['id'];
     // console.log(data['hasLike']);
 
     likeInfaBlock.appendChild(countLikes);

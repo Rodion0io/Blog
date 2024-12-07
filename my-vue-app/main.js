@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
   
-  // localStorage.c lear();
+  // localStorage.clear();
 
   //imaskjs
 });

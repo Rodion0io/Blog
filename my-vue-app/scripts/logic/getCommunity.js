@@ -15,5 +15,5 @@ export async function getCommunity(){
 
     communityList.forEach(currentGroup => {
         group(currentGroup);
-    })
+    });
 }

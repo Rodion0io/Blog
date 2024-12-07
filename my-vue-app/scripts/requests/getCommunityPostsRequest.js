@@ -10,7 +10,7 @@ export function getCommunityPostsRequest(maskUrl, token, groupId){
         headers["Authorization"] = `Bearer ${token}`
     }
 
-    console.log(groupId);
+    // console.log(groupId);
 
     const NEW_URL = `${URL}community/${groupId}/post?${maskUrl}`;
 

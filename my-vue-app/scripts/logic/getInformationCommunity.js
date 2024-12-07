@@ -63,14 +63,16 @@ export function getInformationCommunity(){
                             getCommunityPostsRequest(newUrl, token, groupId).then(data => {
                                 data['posts'].forEach(el => {
                                     post(el);
-                                    
                                 })
+                                markPost();
+                                openConcretePost();
+                                // subscribe();
+                                // unSubscribe();
                            })
+                            
                         }
-                        subscribe();
-                        unSubscribe();
-                        await markPost();
-                        await openConcretePost()
+                        
+                        
                     }
                     else if ((token === null || !checkLifeCycle(token)) && data['isClosed']){
                         block.appendChild(textBlock);
@@ -82,14 +84,20 @@ export function getInformationCommunity(){
                                 // markPost();
                                 // openConcretePost();
                              })
+                            markPost();
+                            openConcretePost();
+                            
                         })
+                        
                      }
-                     subscribe();
-                        unSubscribe();
-                        await markPost();
-                        await openConcretePost();
+                    subscribe();
+                    unSubscribe();
+                        // await markPost();
+                        // await openConcretePost();
                 }
             );
         })
     })
+    
+    
 }
