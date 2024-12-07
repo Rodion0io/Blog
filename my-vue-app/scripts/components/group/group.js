@@ -24,6 +24,7 @@ function group(dataGroup){
     let subscribeButton = document.createElement('button');
     subscribeButton.className += 'btn subscribe';
     subscribeButton.textContent = 'Подписаться';
+    subscribeButton.id = dataGroup['id'];
     buttonBlock.appendChild(subscribeButton);
 
     contentGroup.appendChild(buttonBlock);

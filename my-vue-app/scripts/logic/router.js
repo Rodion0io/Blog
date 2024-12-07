@@ -90,6 +90,10 @@ async function router() {
                 unSubscribe();
                 getInformationCommunity();
                 break;
+            case '/post/create':
+                parentBlock.innerHTML = ''
+                parentBlock.innerHTML = '<h1>fshg</h1>';
+                break;
         }
     }
 }

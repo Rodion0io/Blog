@@ -1,6 +1,6 @@
 import { URL } from "../../constans";
 
-export function getCommunityPost(maskUrl, token) {
+export function getCommunityPostsRequest(maskUrl, token, groupId){
     const headers = {
         "Content-Type": "application/json",
         // "Authorization": `Bearer ${token}`,
@@ -10,7 +10,9 @@ export function getCommunityPost(maskUrl, token) {
         headers["Authorization"] = `Bearer ${token}`
     }
 
-    const NEW_URL = `${URL}post?${maskUrl}`;
+    console.log(groupId);
+
+    const NEW_URL = `${URL}community/${groupId}/post?${maskUrl}`;
 
     return fetch(NEW_URL, {
         method: "GET",

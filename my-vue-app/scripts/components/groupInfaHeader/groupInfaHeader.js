@@ -1,5 +1,7 @@
-function groupInfaHeader(data){
+function groupInfaHeader(data, currentStatusUser){
     let parentBlock = document.querySelector('.section-header');
+
+    console.log(currentStatusUser);
 
     // console.log(parentBlock);
 
@@ -28,9 +30,29 @@ function groupInfaHeader(data){
     let actionsBlock = document.createElement('div');
     actionsBlock.className += 'actions-block';
 
-    let createPostButton = document.createElement('button');
-    createPostButton.className += 'btn new-post';
-    createPostButton.textContent = 'Написать пост';
+    if (currentStatusUser === 'Administrator'){
+        let createPostButton = document.createElement('button');
+        createPostButton.className += 'btn new-post';
+        createPostButton.textContent = 'Написать пост';
+        createPostButton.id = data['id'];
+        actionsBlock.appendChild(createPostButton);
+    }
+    else if (currentStatusUser === 'Subscriber'){
+        let unSubscribeButton = document.createElement('button');
+        unSubscribeButton.className += 'btn unsubscribe';
+        unSubscribeButton.textContent = 'Отписаться';
+        unSubscribeButton.id = data['id'];
+        actionsBlock.appendChild(unSubscribeButton);
+    }
+    else {
+        let SubscribeButton = document.createElement('button');
+        SubscribeButton.className += 'btn subscribe';
+        SubscribeButton.textContent = 'Подписться';
+        SubscribeButton.id = data['id'];
+        actionsBlock.appendChild(SubscribeButton);
+    }
+
+    
 
     // let unsubscribeButton = 
     // let subscribe
@@ -70,7 +92,7 @@ function groupInfaHeader(data){
     let listAdmins = document.createElement('div');
     listAdmins.className += 'list-admin';
 
-    actionsBlock.appendChild(createPostButton);
+    
 
 
     countSubscribersBlock.appendChild(iconSubscriber);

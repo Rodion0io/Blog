@@ -1,5 +1,4 @@
 import { PARENT_BLOCK } from "../../../constans";
-import { createInputBlock } from "../createInputBlock";
 import paginationBlock from "../paginationBlock/paginationBlock";
 
 function mainPage(currentPage, pages, groupSize){

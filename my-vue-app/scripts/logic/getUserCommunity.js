@@ -23,6 +23,7 @@ export async function getUserCommunity(){
             if (currentGroup['role'] === 'Subscriber'){
                 let unsubscribeButton = document.createElement('button');
                 unsubscribeButton.className += 'btn unsubscribe';
+                unsubscribeButton.id = currentGroup['communityId']
                 unsubscribeButton.textContent = 'Отписаться';
                 childBlock.appendChild(unsubscribeButton);
             }

@@ -6,47 +6,88 @@ import groupPage from "../components/groupPage/groupPage";
 import shortFilterBlock from "../components/shortFilterBlock/shortFilterBlock";
 import { getUserRoleCommunityRequest } from "../requests/getUserRoleCommunityRequest";
 import post from "../components/post/post";
+import { readFilterDatas } from "./readFilterDatas";
+import { createUrl } from "./createUrl";
+import { getCommunityPostsRequest } from "../requests/getCommunityPostsRequest";
+import { markPost } from "./markPost";
+import { openConcretePost } from "./openConcretPost";
+import { subscribe } from "./subscribe";
+import { unSubscribe } from "./unsubscribe";
 
 export function getInformationCommunity(){
     let token = localStorage.getItem('token');
     let mainBlock = document.getElementById('app');
     let groupLink = document.querySelectorAll('.group-title');
     let userCommunityRole;
+    let groupId;
 
-    try {
-        userCommunityRole = getUserRoleCommunityRequest(groupId, token);
-    }
-    catch{
-        (error) => {
-            console.log(error);
-        }
-    }
+    let body = {'tags' : [], 'sorting': '', 'page': 1, 'size': 5};
+
+    
 
     groupLink.forEach(el => {
-        el.addEventListener('click', (event) => {
-            let groupId = event.target.id;
+        el.addEventListener('click', async (event) => {
+            groupId = event.target.id;
+            try {
+                userCommunityRole = await getUserRoleCommunityRequest(groupId, token);
+            }
+            catch{
+                (error) => {
+                    console.log(error);
+                    userCommunityRole = null;
+                    console.log(userCommunityRole);
+                }
+            }
             getInformationCommunityRequest(groupId).then(
                 async (data) => {
                     window.history.pushState({}, 'some title', `/communities/${groupId}`);
                     mainBlock.innerHTML = '';
                     await groupPage();
-                    await groupInfaHeader(data);
+                    await groupInfaHeader(data, userCommunityRole);
                     data['administrators'].forEach(async (el) => {
                         await adminCommunityBlock(el);
                     });
-                    shortFilterBlock();
+                    await shortFilterBlock();
+                    let newUrl = createUrl(body);
+                    
+                    let block = document.querySelector('.section-posts');
+                    let textBlock = document.createElement('p');
+                    textBlock.className += 'unauthorized-text';
+                    textBlock.textContent = 'Родной, ты не подписан на группу';
                     if (token !== null && checkLifeCycle(token)){
-                        if (userCommunityRole === null && data['isClosed']){
-                            let block = document.querySelector('.section-posts');
-                            let textBlock = document.createElement('p');
-                            textBlock.className += 'unauthorized-text';
-                            textBlock.textContent = 'Родной, ты не подписан на группу';
+                        console.log(userCommunityRole)
+                        if ((userCommunityRole === null || userCommunityRole === undefined) && data['isClosed']){
                             block.appendChild(textBlock);
                         }
-                        // else{
-                        //     post()
-                        // }
+                        else{
+                            getCommunityPostsRequest(newUrl, token, groupId).then(data => {
+                                data['posts'].forEach(el => {
+                                    post(el);
+                                    
+                                })
+                           })
+                        }
+                        subscribe();
+                        unSubscribe();
+                        await markPost();
+                        await openConcretePost()
                     }
+                    else if ((token === null || !checkLifeCycle(token)) && data['isClosed']){
+                        block.appendChild(textBlock);
+                    }
+                    else{
+                        getCommunityPostsRequest(newUrl, token, groupId).then(data => {
+                             data['posts'].forEach(el => {
+                                post(el);
+                                // markPost();
+                                // openConcretePost();
+                             })
+                        })
+                     }
+                     subscribe();
+                        unSubscribe();
+                        await markPost();
+                        await openConcretePost();
                 }
             );
         })

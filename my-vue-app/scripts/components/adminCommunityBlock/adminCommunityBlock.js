@@ -1,10 +1,6 @@
 function adminCommunityBlock(data){
     let parentBlock = document.querySelector('.list-admin');
 
-    console.log(data);
-
-    console.log(data['fullName']);
-
     let adminCard = document.createElement('div');
     adminCard.className += 'admin-card';
 

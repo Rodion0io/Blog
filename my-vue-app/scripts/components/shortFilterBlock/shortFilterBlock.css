@@ -1,6 +1,7 @@
 .section-filter{
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .short-form{

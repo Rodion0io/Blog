@@ -1,32 +1,32 @@
 import { subscribeGroupRequest } from "../requests/subscribeGroupRequest";
 import { checkLifeCycle } from "./checkLifeCycle";
 
-export function subscribe(){
+export function subscribe() {
     let token = localStorage.getItem('token');
     let subscribeButton = document.querySelectorAll('.subscribe');
 
     subscribeButton.forEach(currentBtn => {
         currentBtn.addEventListener('click', async (event) => {
-            if (token !== null && checkLifeCycle(token)){
-                let parentBlockId = event.target.closest('.group-block').id;
+            if (token !== null && checkLifeCycle(token)) {
+                // let parentBlockId = event.target.closest('.subscribe').id;
                 try {
-                    let request = await subscribeGroupRequest(token, parentBlockId);
-                    if (request === null){
+                    let request = await subscribeGroupRequest(token, event.target.id);
+                    if (request === null) {
                         currentBtn.className = 'btn unsubscribe';
                         currentBtn.textContent = 'Отписаться';
-                    }
-                    else{
+                        currentBtn.id = event.target.id;
+                        location.reload();
+                    } else {
                         console.log('ошибка');
                     }
-                }
-                catch (error){
+                } catch (error) {
                     console.log(error);
                 }
+            } else {
+                alert('Авторизуйтесь!');
             }
-            else{
-                alert('Авторизуйтесь!')
-            }
-        })
-    })
+        });
+    });
 }
+
 
