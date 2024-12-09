@@ -10,12 +10,14 @@ import mainPage from "../components/mainPage/mainPage";
 import { getPosts } from "./getPosts";
 import { parseUrlParams } from "./parseUrlParams";
 import listGroups from "../components/listGroups/listGroups";
-import { getCommunity } from "./getCommunity";
+import { createCommunityBlock } from "./createCommunityBlocks";
 import { getUserCommunity } from "./getUserCommunity";
 import { subscribe } from "./subscribe";
 import { unSubscribe } from "./unsubscribe";
 import { getInformationCommunity } from "./getInformationCommunity";
 import createPostForm from "../components/createPostForm/createPostForm";
+import { loadInputAddress } from "./loadInputAddress";
+import { sendPost } from "./SendPost";
 
 async function router() {
     let pathLink = window.location.pathname; // Учитываем query параметры
@@ -85,7 +87,7 @@ async function router() {
             case '/communities':
                 parentBlock.innerHTML = '';
                 listGroups();
-                await getCommunity();
+                await createCommunityBlock();
                 await getUserCommunity();
                 subscribe();
                 unSubscribe();
@@ -93,7 +95,13 @@ async function router() {
                 break;
             case '/post/create':
                 parentBlock.innerHTML = ''
-                createPostForm();
+                await createPostForm();
+                loadInputAddress();
+                sendPost()
+                break;
+            case '/authors':
+                parentBlock.innerHTML = ''
+                parentBlock.innerHTML = '<h1>sdjgherhg</h1>';
                 break;
         }
     }

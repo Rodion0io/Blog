@@ -1,7 +1,7 @@
 import group from "../components/group/group";
 import { getCommunityRequest } from "../requests/getCommunityRequest";
 
-export async function getCommunity(){
+export async function createCommunityBlock(){
     let communityList;
 
     try {
@@ -10,6 +10,7 @@ export async function getCommunity(){
     catch{
         (error) => {
             console.log(error);
+            return;
         }
     }
 

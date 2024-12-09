@@ -1,6 +1,8 @@
 export function createInputBlock(inputBlockClass, forName, labelValue, inputType,
     placeholder = null, inputId, isRequired = false, isList = false,
-     options = null, dataListId = null, inputClass){
+     options = null, dataListId = null, inputClass, selectFieldId = null, objId = null){
+
+        //objId пришлось добавить для создания input для адресов;
 
     
     let inputBlock = document.createElement('div');
@@ -13,7 +15,6 @@ export function createInputBlock(inputBlockClass, forName, labelValue, inputType
 
     inputBlock.appendChild(lableInput);
 
-
     if (isList){
 
         let dataList = document.createElement('select');
@@ -21,17 +22,25 @@ export function createInputBlock(inputBlockClass, forName, labelValue, inputType
         dataList.id = dataListId;
         dataList.setAttribute('name', forName);
 
-        options.forEach(option => {
-            let optionElement = document.createElement('option');
-            optionElement.value = option;
-            optionElement.textContent = option
-            dataList.appendChild(optionElement);
-        })
+        for (let i = 0; i < options.length; i++){
+           let optionElement = document.createElement('option');
+           optionElement.value = options[i];
+           optionElement.textContent = options[i];
+           if (selectFieldId !== null){
+                optionElement.id = selectFieldId[i];
+           }
+           if (objId !== null){
+                optionElement.dataset.objid = objId[i];
+           }
+           dataList.appendChild(optionElement);
+        }
 
         dataList.required = isRequired;
         dataList.id = inputId;
         // dataList.setAttribute('list', dataListId);
         inputBlock.appendChild(dataList);
+
+        
     }
     else{
         let input = document.createElement('input');

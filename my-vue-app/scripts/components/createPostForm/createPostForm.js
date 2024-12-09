@@ -1,8 +1,10 @@
 import { PARENT_BLOCK } from "../../../constans";
 import { getTagList } from "../../requests/getTagList";
 import { createInputBlock } from "../createInputBlock";
+import { getGruopsList } from "../../logic/getGroupsList";
+import { loadAddressSearchDatasToComponent } from "../../logic/loadAddressSearchToComponent";
 
-function createPostForm(){
+async function createPostForm(){
     let mainSection = document.createElement('section');
     mainSection.className += 'create-post-section';
 
@@ -42,15 +44,18 @@ function createPostForm(){
     let secondSectionParametrs = document.createElement('div');
     secondSectionParametrs.className += 'second-section-parametrs';
 
+    let goupsList = await getGruopsList();
+    let arrNamesGroup = [''];
+    let arrIdGroups = [''];
 
-    // Здесь надо будет подгрузить с сервера список групп и, наверное, хранить объекты
+    goupsList.forEach(el => {
+        arrNamesGroup.push(el['name']);
+        arrIdGroups.push(el['id']);
+    })
+
     let groupList = createInputBlock('input-block-filter group', 'group',
     'Группа', 'text', null, 'input-groups',
-    false, true, ['','По дате создания (сначала новые)','по дате создания (сначала старые)',
-     'по количеству лайков (по убыванию)', 'по количеству лайков (по возрастанию)'], null, 'input');
-
-
-
+    false, true, arrNamesGroup, null, 'input', arrIdGroups);
 
     let listBlock = document.createElement('div');
     listBlock.className += 'list-block create-group';
@@ -60,7 +65,7 @@ function createPostForm(){
     nameSelectBlock.textContent = 'Тэги';
  
     let selectList = document.createElement('select');
-    selectList.className += 'select-list';
+    selectList.className += 'select-list tags';
     selectList.setAttribute('multiple', true);
  
     listBlock.appendChild(nameSelectBlock);
@@ -82,8 +87,6 @@ function createPostForm(){
     }).catch(error => {
         console.error(error);
     });
-
-
 
     secondSectionParametrs.appendChild(groupList);
     secondSectionParametrs.appendChild(listBlock);
@@ -114,11 +117,12 @@ function createPostForm(){
     addressBlockTitle.textContent = 'Адрес';
 
 
-    //здесь тоже параметры подгружаются с сервера
-    let subjectCountry = createInputBlock('input-block-filter subject', 'subject',
+    const SUBJECT_PARAM = await loadAddressSearchDatasToComponent();
+
+
+    let subjectCountry = createInputBlock('input-block-filter address', 'subject',
     'Субъект РФ', 'text', null, 'input-subject',
-    false, true, ['','По дате создания (сначала новые)','по дате создания (сначала старые)',
-     'по количеству лайков (по убыванию)', 'по количеству лайков (по возрастанию)'], null, 'input');
+    false, true, SUBJECT_PARAM.addressListName, null, 'input', SUBJECT_PARAM.addressListGuid, SUBJECT_PARAM.addressParObj);
 
     addressBlock.appendChild(addressBlockTitle);
     addressBlock.appendChild(subjectCountry);
@@ -129,6 +133,7 @@ function createPostForm(){
     let createNewPostButton = document.createElement('button');
     createNewPostButton.className += 'btn create-new-post';
     createNewPostButton.textContent = 'Создать пост';
+    createNewPostButton.type = 'button'
 
     buttonContainer.appendChild(createNewPostButton);
 
