@@ -12,6 +12,13 @@ export function loadInputAddress(){
         if (lastBlock.classList.contains('input')){
             // console.log(lastBlock.dataset.objid);
             let selectedField = lastBlock.options[lastBlock.options.selectedIndex];
+
+            console.log(selectedField.value);
+
+            if (selectedField.value === ""){
+                console.log(selectedField.nextElementSibling)
+            }
+
             let datasArr = await loadAddressSearchDatasToComponent(selectedField.dataset.objid);
 
             let newInputBlock = createInputBlock('input-block-filter address', datasArr.objectLevel,

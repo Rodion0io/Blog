@@ -1,25 +1,21 @@
 import { URL } from "../../constans";
 
-export function addPostInCommunityRequest(communityId, token, body){
-    
-    const NEW_URL = `${URL}community/${communityId}/post`;
+const NEW_URL = `${URL}author/list`;
 
+export function authorListRequest(){
     const headers = {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
     };
 
     return fetch(NEW_URL, {
-        method: 'POST',
+        method: 'GET',
         headers: headers,
-        body: JSON.stringify(body)
     }).then(response => {
         if (response.ok){
             return response.json();
         }
         else{
-            return response.json()
-            .then(err => {
+            return response.json().then(err => {
                 throw new Error(err.message || 'Что-то пошло не так');
               });
         }

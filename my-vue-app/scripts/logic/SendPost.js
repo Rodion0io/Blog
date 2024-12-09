@@ -1,6 +1,7 @@
 import { addPostInCommunityRequest } from "../requests/addPostInCommunityRequest";
 import { addPostRequest } from "../requests/addPostRequest";
 import { checkLifeCycle } from "./checkLifeCycle";
+import { getUserRoleCommunityRequest } from "../requests/getUserRoleCommunityRequest";
 
 
 export function sendPost(){
@@ -8,7 +9,7 @@ export function sendPost(){
     let button = document.querySelector('.create-new-post');
     
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
         let namePost = document.getElementById('input-name').value;
         let timeRead = document.getElementById('input-start-time').value;
         let community = document.getElementById('input-groups');
@@ -29,14 +30,22 @@ export function sendPost(){
 
         // console.log(tagsArray);
 
-        let datas = {"title": String(namePost), "description": String(text), "readingTime": Number(timeRead), "image": linkPhoto !== '' ? String(linkPhoto) : null, "addressId": null, "tags": tagsArray};
+        let datas = {"title": namePost, "description": text, "readingTime": Number(timeRead), "image": linkPhoto !== '' ? linkPhoto : null, "addressId": null, "tags": tagsArray};
 
         console.log(datas);
+
+        // console.log(await getUserRoleCommunityRequest(communityId, token) === "Administrator");
         
         if (token !== null && checkLifeCycle(token)){
             // if (community.id !== null || community.id !== undefined){
             if (communityId !== ""){
-                addPostInCommunityRequest(communityId, token, datas).then(data => console.log(data)).catch(error => console.log(error));
+                if (await getUserRoleCommunityRequest(communityId, token) === "Administrator"){
+                    addPostInCommunityRequest(communityId, token, datas).then(data => console.log(data)).catch(error => console.log(error));
+                    window.location.pathname = '/';
+                }
+                else{
+                    alert("Вы не являетесь администратором данного сообщества!");
+                }
             }
             else{
                 // console.log(namePost);
@@ -46,7 +55,7 @@ export function sendPost(){
                 // console.log(null)
                 // console.log(tags)
                 addPostRequest(token, datas).then(data => console.log(data)).catch(error => console.log(error));
-                window.location.path
+                window.location.pathname = '/';
             } 
         }
         else{

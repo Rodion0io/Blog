@@ -1,0 +1,48 @@
+.card-block{
+    border-bottom: 2px solid red;
+}
+
+.infa-container{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.author-infa{
+    /* width: 25%; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+.text-infa-author{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.text-infa-up{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-photo{
+    width: 50px;
+    height: 50px;
+}
+
+.statistic-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.statistic{
+    background-color: blue;
+    color: #fff;
+    border-radius: var(--radius-size);
+    padding: 5px;
+}

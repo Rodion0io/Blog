@@ -18,6 +18,9 @@ import { getInformationCommunity } from "./getInformationCommunity";
 import createPostForm from "../components/createPostForm/createPostForm";
 import { loadInputAddress } from "./loadInputAddress";
 import { sendPost } from "./SendPost";
+import { openCreaterPost } from "./openCreaterPost";
+import { createAuthorsPage } from "./createAuthorsPage";
+
 
 async function router() {
     let pathLink = window.location.pathname; // Учитываем query параметры
@@ -66,6 +69,7 @@ async function router() {
                 getPosts();
                 //заглушка
                 listAccount("email@mail.ru");
+                openCreaterPost()
                 break;
             case '/login':
                 parentBlock.innerHTML = '';
@@ -101,7 +105,7 @@ async function router() {
                 break;
             case '/authors':
                 parentBlock.innerHTML = ''
-                parentBlock.innerHTML = '<h1>sdjgherhg</h1>';
+                createAuthorsPage();
                 break;
         }
     }

@@ -13,6 +13,7 @@ import { markPost } from "./markPost";
 import { openConcretePost } from "./openConcretPost";
 import { subscribe } from "./subscribe";
 import { unSubscribe } from "./unsubscribe";
+import { openCreaterPost } from "./openCreaterPost";
 
 export function getInformationCommunity(){
     let token = localStorage.getItem('token');
@@ -85,6 +86,7 @@ export function getInformationCommunity(){
                      }
                     subscribe();
                     unSubscribe();
+                    openCreaterPost();
                     sendButton = document.querySelector('.send-filter-button');
 
                     console.log(sendButton);
@@ -105,6 +107,7 @@ export function getInformationCommunity(){
                             })
                             markPost();
                             openConcretePost();
+                            openCreaterPost();
                        })
                     });
                 }
