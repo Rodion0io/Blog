@@ -6,8 +6,12 @@ import { markPost } from "./markPost";
 import { openConcretePost } from "./openConcretPost";
 import router from "./router";
 
-export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters = {}) {
-    document.querySelector('.section-posts').innerHTML = '';
+export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters = {}, nameAuthor = null) {
+
+    if (document.querySelector('.section-posts') !== undefined){
+        document.querySelector('.section-posts').innerHTML = '';    
+    }
+    
 
     let token = localStorage.getItem('token');
 
@@ -17,7 +21,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
     // Заполняем тело запроса из filters
     let body = {
         tags: filters.tags || [],
-        author: filters.authorName || '',
+        author: filters.authorName || '' || nameAuthor ? nameAuthor !== null : '',
         minTime: filters.minTime || '',
         maxTime: filters.maxTime || '',
         sorting: filters.sorting || '',

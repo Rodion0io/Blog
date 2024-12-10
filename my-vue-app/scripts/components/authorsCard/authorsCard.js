@@ -1,7 +1,6 @@
 import { modifyDate } from "../../logic/modifyDate";
 
 function authorsCard(data){
-    console.log(data)
     let modifyCreateTime = modifyDate(data['created']);
     let modifyBrthday = data['birthDate'] !== null ? modifyDate(data['birthDate']) : null;
     let parentBlock = document.querySelector('.authors-list-block');
@@ -20,8 +19,39 @@ function authorsCard(data){
 
     let authorPhoto = document.createElement('img');
     authorPhoto.className += 'author-photo';
-    //Заглушка
-    authorPhoto.src = '../../../public/manWithCrown.png';
+
+    
+    if (data['gender'] === 'Male'){
+        if (data['first'] === true){
+            const goldColor = getComputedStyle(document.documentElement).getPropertyValue('--gold-color');
+            authorPhoto.style.border = `5px solid ${goldColor}`;
+        }
+        else if (data['second'] === true){
+            const silverColor = getComputedStyle(document.documentElement).getPropertyValue('--silver-color');
+            authorPhoto.style.border = `5px solid ${silverColor}`;
+        }
+        else if (data['third'] === true){
+            const bronzeColor = getComputedStyle(document.documentElement).getPropertyValue('--bronze-color');
+            authorPhoto.style.border = `5px solid ${bronzeColor}`;
+        }
+        authorPhoto.src = '../../../public/maleIcon.png';
+    }
+    else{
+        if (data['first'] === true){
+            const goldColor = getComputedStyle(document.documentElement).getPropertyValue('--gold-color');
+            authorPhoto.style.border = `5px solid ${goldColor}`;
+        }
+        else if (data['second'] === true){
+            const silverColor = getComputedStyle(document.documentElement).getPropertyValue('--silver-color');
+            authorPhoto.style.border = `5px solid ${silverColor}`;
+        }
+        else if (data['third'] === true){
+            const bronzeColor = getComputedStyle(document.documentElement).getPropertyValue('--bronze-color');
+            authorPhoto.style.border = `5px solid ${bronzeColor}`;
+        }
+        authorPhoto.src = '../../../public/feemaleIcon.png';
+    }
+    
     authorPhoto.alt = 'Фото';
 
     let authorTextInfa = document.createElement('div');
@@ -46,7 +76,15 @@ function authorsCard(data){
     if (modifyBrthday !== null){
         let authorBirthday = document.createElement('div');
         authorBirthday.className += 'author-birthday';
-        authorBirthday.textContent = `Дата рождения: ${modifyBrthday}`;
+        let authorBirthdayText = document.createElement('p');
+        authorBirthdayText.className += 'bithday-author-text';
+        authorBirthdayText.textContent = `Дата рождения:`;
+        let authorDataText = document.createElement('p');
+        authorDataText.className += 'author-data-text';
+        authorDataText.textContent = `${modifyBrthday}`;
+        authorBirthday.appendChild(authorBirthdayText);
+        authorBirthday.appendChild(authorDataText);
+        // authorBirthday.textContent = `Дата рождения: ${modifyBrthday}`;
         authorTextInfa.appendChild(authorBirthday);
     }
 
@@ -54,7 +92,7 @@ function authorsCard(data){
     statisticBlock.className += 'statistic-block';
 
     let countPostsBlcok = document.createElement('p');
-    countPostsBlcok.className += 'statistic count-posts';
+    countPostsBlcok.className += 'statistic post-counts';
     countPostsBlcok.textContent = `Постов: ${data['posts']}`;
 
     let countLikesBlock = document.createElement('p');

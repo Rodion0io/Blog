@@ -6,4 +6,6 @@ export const PHONE_NUMBER_MASK = /^\+7\d{10}/
 export const CHANGED_COMMENT_MESSAGE = '(изменен)';
 export const ANSWER_TEXT = 'Ответить';
 export const OPEN_ANSWERS = 'Раскрыть ответы'
-export const DELETE_COMMENT_MESSAGE = '[Коментарий удален]'
+export const DELETE_COMMENT_MESSAGE = '[Коментарий удален]';
+export const LIKE_RATIO = 1;
+export const POST_RATIO = 1.5;
