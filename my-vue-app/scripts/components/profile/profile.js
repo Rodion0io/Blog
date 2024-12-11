@@ -32,6 +32,9 @@ function Profile(datas){
     let birhdayDate = createInputBlock('input-block-redact birhday', 'date',
     'Дата рождения', 'date', null, 'input-date', false, false, null, null, 'input profile-input');
 
+    let errorMessage = document.createElement('p');
+    errorMessage.className += 'error-message';
+
     let footerBlock = document.createElement('div');
     footerBlock.className += 'footer-block-form';
 
@@ -50,7 +53,7 @@ function Profile(datas){
     formContainer.appendChild(phoneNumber);
     formContainer.appendChild(gender);
     formContainer.appendChild(birhdayDate);
-    // formContainer.appendChild(saveButton);
+    formContainer.appendChild(errorMessage);
     formContainer.appendChild(footerBlock);
 
 

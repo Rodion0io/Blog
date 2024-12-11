@@ -21,9 +21,6 @@ import { sendPost } from "./SendPost";
 import { openCreaterPost } from "./openCreaterPost";
 import { createAuthorsPage } from "./createAuthorsPage";
 
-
-let cachedAuthorsData = null;
-
 let hrefHandlersAdded = false;
 
 async function router() {

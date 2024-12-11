@@ -99,7 +99,7 @@ export function sendPost(){
             if (communityId !== ""){
                 if (await getUserRoleCommunityRequest(communityId, token) === "Administrator"){
                     addPostInCommunityRequest(communityId, token, datas).then(data => console.log(data)).catch(error => console.log(error));
-                    // window.location.pathname = '/';
+                    window.location.pathname = '/';
                 }
                 else{
                     alert("Вы не являетесь администратором данного сообщества!");
@@ -113,7 +113,7 @@ export function sendPost(){
                 // console.log(null)
                 // console.log(tags)
                 addPostRequest(token, datas).then(data => console.log(data)).catch(error => console.log(error));
-                // window.location.pathname = '/';
+                window.location.pathname = '/';
             } 
         }
         else{

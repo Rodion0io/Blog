@@ -2,7 +2,7 @@ import { URL } from "../../constans";
 
 const NEW_URL = `${URL}account/register`;
 
-export function registerRequest(datas){
+export function registerRequest(datas) {
     const headers = {
         "Content-Type": "application/json"
     };
@@ -12,17 +12,12 @@ export function registerRequest(datas){
         headers: headers,
         body: JSON.stringify(datas)
     }).then(response => {
-        if (response.ok){
+        if (response.ok) {
             return response.json();
+        } else {
+            return response.json().then(errorData => {
+                throw new Error(JSON.stringify(errorData.errors, null, 2));
+            });
         }
-        else{
-            return response.json().then(
-                error => {
-                    throw new Error(err.message || 'Что-то пошло не так');
-                }
-            );
-        }
-    }).then(data => data)
-    .catch(error => {error;
-         throw error});
+    }).then(data => data);
 }
