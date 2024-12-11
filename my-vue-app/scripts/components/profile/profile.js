@@ -41,6 +41,7 @@ function Profile(datas){
     let saveButton = document.createElement('button');
     saveButton.className += 'btn changes-button';
     saveButton.textContent = 'Сохранить';
+    saveButton.type = 'button';
 
     let messageText = document.createElement('p');
     messageText.classList += 'message-text';

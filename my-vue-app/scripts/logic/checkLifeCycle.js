@@ -9,7 +9,7 @@ export function checkLifeCycle(jwt){
     }
     else{
         return false;
-        localStorage.clear();
-        window.location.pathname = '/';
+        // localStorage.clear();
+        // window.location.pathname = '/';
     }
 }

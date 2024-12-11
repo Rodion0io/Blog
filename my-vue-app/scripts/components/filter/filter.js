@@ -94,11 +94,8 @@ function filter(){
     });
 
 
-
-    
-
     let endTimeInput = createInputBlock('input-block-filter end', 'max',
-    'Время чтения от до', 'text', null, 'input-end-time',
+    'Время чтения до', 'text', null, 'input-end-time',
     false, false, null, null, 'input');
 
     let flagInput = createInputBlock('input-block-filter flag', 'onlyMyCommunities',

@@ -20,6 +20,7 @@ import { loadInputAddress } from "./loadInputAddress";
 import { sendPost } from "./SendPost";
 import { openCreaterPost } from "./openCreaterPost";
 import { createAuthorsPage } from "./createAuthorsPage";
+import { changeDatasAccount } from "./changeDatasAccount";
 
 let hrefHandlersAdded = false;
 
@@ -83,6 +84,7 @@ async function router() {
                 Profile();
                 getUserProfile();
                 listAccount("email@mail.ru"); // Заглушка
+                changeDatasAccount();
                 break;
             case '/communities':
                 listGroups();

@@ -14,7 +14,7 @@ export function checkValidationAccountData(nameInput, birthdayInput, genderInput
         let gender = genderInput.value;
         let phoneNumber = phoneNumberInput.value;
         let email = emailInput.value;
-        let password = passwordInput.value;
+        
 
 
     if (birthdayInput.value !== ''){
@@ -62,24 +62,31 @@ export function checkValidationAccountData(nameInput, birthdayInput, genderInput
     }
     
     
-    if (password.length < 6){
-        passwordInput.style = "border: 1px solid red";
-        errorBlock.style = "display: block";
-        errorBlock.textContent = "Длина пароля мин. 6 символов";
-        return 1;
+    
+    if (passwordInput !== null){
+        let password = passwordInput.value;
+        if (password.length < 6){
+            passwordInput.style = "border: 1px solid red";
+            errorBlock.style = "display: block";
+            errorBlock.textContent = "Длина пароля мин. 6 символов";
+            return 1;
+        }
+        else{
+            passwordInput.style = "border: 1px solid #e1e1e1";
+        }
+        if (!(/\d/.test(password))){
+            passwordInput.style = "border: 1px solid red"
+            errorBlock.style = "display: block";
+            errorBlock.textContent = "1 цифра должна быть в пароле";
+            return 1;
+        }
+        else{
+            passwordInput.style = "border: 1px solid #e1e1e1";
+            return {name, birthday, gender, phoneNumber, email, password};
+        }
     }
     else{
-        passwordInput.style = "border: 1px solid #e1e1e1";
+        return {name, birthday, gender, phoneNumber, email};
     }
-    if (!(/\d/.test(password))){
-        passwordInput.style = "border: 1px solid red"
-        errorBlock.style = "display: block";
-        errorBlock.textContent = "1 цифра должна быть в пароле";
-        return 1;
-    }
-    else{
-        passwordInput.style = "border: 1px solid #e1e1e1";
-    }
-
-    return {name, birthday, gender, phoneNumber, email, password}
+    
 }

@@ -2,18 +2,23 @@ import { URL } from "../../constans";
 
 const NEW_URL = `${URL}account/profile`;
 
-export function changeDatasAccountRequest(body){
+export function changeDatasAccountRequest(body, token){
+    
     const headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
     };
 
+    console.log(body);
+    console.log(token);
+
     return fetch(NEW_URL, {
-        method: 'GET',
+        method: 'PUT',
         headers: headers,
         body: JSON.stringify(body),
     }).then(response => {
         if (response.ok){
-            return response.json();
+            return;
         }
         else{
             return response.json().then(err => {
