@@ -1,6 +1,6 @@
 @import url(./colors.css);
 @import url(./reset.css);
-@import url(./header.css);
+@import url(./hero.css);
 @import url(../scripts/components/authorize/authorize.css);
 @import url(./sizes.css);
 @import url(../scripts/components/listAccount/listAccount.css);
@@ -26,6 +26,7 @@
 @import url(../scripts/components/createPostForm/createPostForm.css);
 @import url(../scripts/components/authorsPage/authorsPage.css);
 @import url(../scripts/components/authorsCard/authorsCard.css);
+@import url(../scripts/components/header/header.css);
 
 *{
   box-sizing: border-box;

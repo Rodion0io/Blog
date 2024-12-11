@@ -21,6 +21,7 @@ import { sendPost } from "./SendPost";
 import { openCreaterPost } from "./openCreaterPost";
 import { createAuthorsPage } from "./createAuthorsPage";
 import { changeDatasAccount } from "./changeDatasAccount";
+import header from "../components/header/header";
 
 let hrefHandlersAdded = false;
 
@@ -66,6 +67,7 @@ async function router() {
     } else {
         switch (pathLink) {
             case '/':
+                header();
                 mainPage(currentPage, totalPages, groupSize);
                 filter();
                 getPosts();
@@ -73,20 +75,24 @@ async function router() {
                 openCreaterPost();
                 break;
             case '/login':
+                header();
                 AuthorizeForm();
                 sendDatas();
                 break;
             case '/registration':
+                header();
                 registrationForm();
                 registrationAccount();
                 break;
             case '/profile':
+                header();
                 Profile();
                 getUserProfile();
                 listAccount("email@mail.ru"); // Заглушка
                 changeDatasAccount();
                 break;
             case '/communities':
+                header();
                 listGroups();
                 await createCommunityBlock();
                 await getUserCommunity();
@@ -95,11 +101,13 @@ async function router() {
                 getInformationCommunity();
                 break;
             case '/post/create':
+                header();
                 await createPostForm();
                 loadInputAddress();
                 await sendPost();
                 break;
             case '/authors':
+                header();
                 createAuthorsPage();
                 break;
         }

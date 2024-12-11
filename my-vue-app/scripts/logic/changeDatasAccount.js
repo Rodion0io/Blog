@@ -38,6 +38,7 @@ export function changeDatasAccount(){
                 });
             }
             else{
+                localStorage.removeItem('token');
                 window.location.pathname = '/login'; 
             }
         }

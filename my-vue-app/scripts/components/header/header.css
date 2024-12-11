@@ -1,10 +1,3 @@
-.hero{
-    height: 75px;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 65px;
-    display: flex;
-}
-
 .hero-content{
     display: flex;
     justify-content: space-between;
