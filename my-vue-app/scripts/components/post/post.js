@@ -51,6 +51,8 @@ function post(data){
     postText.className += 'post-text';
     postText.textContent = `${data['description']}`;
 
+    
+
 
     let otherInfa = document.createElement('div');
     otherInfa.className += 'other-infa';
@@ -124,6 +126,9 @@ function post(data){
 
     
     mainInfa.appendChild(postText);
+
+
+    
 
     otherInfa.appendChild(tags);
     otherInfa.appendChild(readingTime);

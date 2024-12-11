@@ -30,9 +30,20 @@
 }
 
 .post-photo{
-    width: 50%;
+    width: 43%;
     height: auto;
     object-fit: contain;
+}
+
+.text-wrapper{
+    margin-top: 10px;
+    color: blue;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.text-wrapper:hover{
+    color: #1888ff;    
 }
 
 .tags{
