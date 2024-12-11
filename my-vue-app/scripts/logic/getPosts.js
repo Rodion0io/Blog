@@ -30,6 +30,8 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         size: pageSize,
     };
 
+    // console.log(body);
+
     let urlMask = createUrl(body);
 
     window.addEventListener('popstate', () => {
@@ -46,13 +48,18 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         openConcretePost();
     });
 
+
+
     // Обработчики событий
     sendButton.addEventListener('click', () => {
         body = readFilterDatas(body);
         urlMask = createUrl(body);
 
+        console.log(body);
+        console.log(urlMask);
+
         // Обновляем URL
-        window.history.pushState({}, 'some title', `/${urlMask}`);
+        window.history.pushState({}, 'some title', `/?${urlMask}`);
 
         getPostRequest(urlMask, token).then(data => {
             document.querySelector('.section-posts').innerHTML = '';
@@ -70,7 +77,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         urlMask = createUrl(body);
 
         // Обновляем URL
-        window.history.pushState({}, 'some title', `/${urlMask}`);
+        window.history.pushState({}, 'some title', `/?${urlMask}`);
 
         getPostRequest(urlMask, token).then(data => {
             document.querySelector('.section-posts').innerHTML = '';
