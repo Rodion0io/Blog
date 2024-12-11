@@ -15,13 +15,13 @@ export function wrapText(){
         //     button.textContent = 'Свернуть';
         // }
     
-    console.log(button);
+    // console.log(button);
     
     button.forEach(el => {
         el.addEventListener('click', (event) => {
-            console.log(event.target);
+            // console.log(event.target);
             let parentBlock = event.target.closest('.main-infa');
-            console.log(parentBlock);
+            // console.log(parentBlock);
             let text = parentBlock.querySelector('.post-text');
             if (isWrap){
                 text.style.height = '50px';

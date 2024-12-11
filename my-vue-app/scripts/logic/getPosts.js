@@ -5,7 +5,7 @@ import { readFilterDatas } from "./readFilterDatas";
 import { markPost } from "./markPost";
 import { openConcretePost } from "./openConcretPost";
 import router from "./router";
-import { wrapText } from "./wrapText";
+import { createWrapperBlock } from "./createWrapperBlock";
 
 export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters = {}, nameAuthor = null) {
 
@@ -42,27 +42,14 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
     });
 
     // Запрос постов
-    getPostRequest(urlMask, token).then(data => {
+    getPostRequest(urlMask, token).then(async data => {
         document.querySelector('.section-posts').innerHTML = '';
         data['posts'].forEach(element => {
             post(element);
         });
         markPost();
         openConcretePost();
-        let mainInfaBlock = document.querySelectorAll('.main-infa');
-        mainInfaBlock.forEach(async el => {
-            let text = el.querySelector('.post-text');
-            if (el.clientHeight >= 100){
-                let wrapper = document.createElement('p');
-                wrapper.className += 'text-wrapper';
-                wrapper.textContent = 'Читать полностью';
-                el.appendChild(wrapper);
-                text.style.height = '50px';
-                text.style.overflow = 'hidden';
-                await wrapText()
-            }
-        })
-        // wrapText();
+        await createWrapperBlock();
     });
 
 
@@ -78,29 +65,15 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         // Обновляем URL
         window.history.pushState({}, 'some title', `/?${urlMask}`);
 
-        getPostRequest(urlMask, token).then(data => {
+        getPostRequest(urlMask, token).then(async data => {
             document.querySelector('.section-posts').innerHTML = '';
             data['posts'].forEach(element => {
                 post(element);
             });
             markPost();
             openConcretePost();
-            let mainInfaBlock = document.querySelectorAll('.main-infa');
-             mainInfaBlock.forEach(async el => {
-            let text = el.querySelector('.post-text');
-            if (el.clientHeight >= 100){
-                let wrapper = document.createElement('p');
-                wrapper.className += 'text-wrapper';
-                wrapper.textContent = 'Читать полностью';
-                el.appendChild(wrapper);
-                text.style.height = '50px';
-                text.style.overflow = 'hidden';
-                await wrapText()
-            }
+            await createWrapperBlock();
         })
-            
-        });
-        // wrapText();
     });
 
     pageSizeList.addEventListener('change', () => {
@@ -111,28 +84,15 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         // Обновляем URL
         window.history.pushState({}, 'some title', `/?${urlMask}`);
 
-        getPostRequest(urlMask, token).then(data => {
+        getPostRequest(urlMask, token).then(async data => {
             document.querySelector('.section-posts').innerHTML = '';
             data['posts'].forEach(element => {
                 post(element);
             });
             markPost();
             openConcretePost();
-            let mainInfaBlock = document.querySelectorAll('.main-infa');
-        mainInfaBlock.forEach(async el => {
-            let text = el.querySelector('.post-text');
-            if (el.clientHeight >= 100){
-                let wrapper = document.createElement('p');
-                wrapper.className += 'text-wrapper';
-                wrapper.textContent = 'Читать полностью';
-                el.appendChild(wrapper);
-                text.style.height = '50px';
-                text.style.overflow = 'hidden';
-                await wrapText()
-            }
+            await createWrapperBlock();
         })
-            
-        });
     });
 
     // Пагинация
@@ -153,19 +113,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
                 });
                 markPost();
                 openConcretePost();
-                let mainInfaBlock = document.querySelectorAll('.main-infa');
-        mainInfaBlock.forEach(async el => {
-            let text = el.querySelector('.post-text');
-            if (el.clientHeight >= 100){
-                let wrapper = document.createElement('p');
-                wrapper.className += 'text-wrapper';
-                wrapper.textContent = 'Читать полностью';
-                el.appendChild(wrapper);
-                text.style.height = '50px';
-                text.style.overflow = 'hidden';
-                await wrapText();
-            }
-        })
+                await createWrapperBlock();
                 
             });
         });

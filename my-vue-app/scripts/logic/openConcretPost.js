@@ -1,6 +1,7 @@
 import { getConcretePost } from "../requests/getConcretPost";
 import fullPostPage from "../components/fullPostPage/fullPostPage";
 import { PARENT_BLOCK } from "../../constans";
+import { createWrapperBlock } from "./createWrapperBlock";
 
 
 export function openConcretePost(){
@@ -27,6 +28,7 @@ export function openConcretePost(){
                 window.history.pushState({}, 'some title', `/${postId}`);
                 fullPostPage(data);
             })
+            await createWrapperBlock();
         })
     })
 }
