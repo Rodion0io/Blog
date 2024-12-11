@@ -1,6 +1,7 @@
-import { EMAIL_MASK, PHONE_NUMBER_MASK, PASSWORD_MASK } from "../../constans";
+import { EMAIL_MASK, PHONE_NUMBER_MASK } from "../../constans";
 import { registerRequest } from "../requests/registerRequest";
 import listAccount from "../components/listAccount/listAccount";
+import { checkValidationAccountData } from "./checkValidationAccountData";
 
 export function registrationAccount(){
     let regButton = document.querySelector('.registration-btn');
@@ -13,104 +14,94 @@ export function registrationAccount(){
         let emailInput = document.getElementById('input-email');
         let passwordInput = document.getElementById('input-password');
         let errorBlock = document.querySelector('.error-message');
-        let currentTime = new Date();
-        currentTime.setHours(0, 0, 0, 0);
-        let minDate = new Date('1900-01-01');
-
         
+        let checker = checkValidationAccountData(nameInput, birthdayInput, genderInput, phoneNumberInput, emailInput, errorBlock, passwordInput);
         
-
-        let name = nameInput.value;
-        let birthday = birthdayInput.value === '' ? null : new Date(birthdayInput.value);
-        if (birthdayInput.value !== ''){
-            birthday = new Date(birthdayInput.value);
-            birthday.setHours(0, 0, 0, 0);
-        }
-        let gender = genderInput.value === 'Мужчина' ? 'Male' : 'Feemale';
-        let phoneNumber = phoneNumberInput.value;
-        let email = emailInput.value;
-        let password = passwordInput.value;
-        
-
-        if (name.trim().length === 0){
-            nameInput.style = "border: 1px solid red";
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "Поля с ФИО обязательно";
+        if (checker === 1){
             return;
         }
         else{
-            nameInput.style = "border: 1px solid #e1e1e1";
-        }
-
-        if (currentTime <= birthday || birthday < minDate){
-            birthdayInput.style = "border: 1px solid red";
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "Неверная дата";
-            return;
-        }
-        else{
-            birthdayInput.style = "border: 1px solid #e1e1e1";
-        }
-
-        if(!PHONE_NUMBER_MASK.test(phoneNumber)){
-            phoneNumberInput.style = "border: 1px solid red";
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "Неверный формат номера телефона";
-            return;
-        }
-        else{
-            phoneNumberInput.style = "border: 1px solid #e1e1e1";
-        }
-
-        if (!EMAIL_MASK.test(email)){
-            emailInput.style = "border: 1px solid red";
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "Неверный Email";
-            return;
-        }
-        else{
-            emailInput.style = "border: 1px solid #e1e1e1";
-        }
-        
-        
-        if (password.length < 6){
-            passwordInput.style = "border: 1px solid red";
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "Длина пароля мин. 6 символов";
-            return;
-        }
-        else{
-            passwordInput.style = "border: 1px solid #e1e1e1";
-        }
-        if (!(/\d/.test(password))){
-            passwordInput.style = "border: 1px solid red"
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "1 цифра должна быть в пароле";
-            return;
-        }
-        else{
-            passwordInput.style = "border: 1px solid #e1e1e1";
-        }
-            
-            
-            
-            
-            
+            console.log(checker.gender)
             errorBlock.style = "display: none";
             errorBlock.textContent = "";
-            emailInput.style = "border: 1px solid var(--border-color)"
-            registerRequest({"fullName": name, "password": password, 
-        'email': email, 'birthDate': birthday, 'gender': gender, 'phoneNumber': phoneNumber})
-        .then(data => {console.log(data);
-            localStorage.setItem('token', data['token']);
-            listAccount(email);
-            window.location.pathname = '/';
-        })
-        .catch(error => {
-            errorBlock.style = "display: block";
-            errorBlock.textContent = "Неверные данные"
-            console.error('Ошибка авторизации:', error);
-        });
+            emailInput.style = "border: 1px solid var(--border-color)";
+            registerRequest({"fullName": checker.name, "password": checker.password, 
+            'email': checker.email, 'birthDate': checker.birthday, 'gender': checker.gender === "Мужчина" ? 'Male' : 'Female', 'phoneNumber': checker.phoneNumber})
+            .then(data => {
+                console.log('успех')
+                localStorage.setItem('token', data['token']);
+                console.log('успех')
+                listAccount(checker.email);
+                console.log('успех')
+                window.location.pathname = '/';
+            })
+            .catch(error => {
+                errorBlock.style = "display: block";
+                errorBlock.textContent = "Неверные данные"
+                console.error('Ошибка авторизации:', error.message);
+            });
+        }
+        // if (name.trim().length === 0){
+        //     nameInput.style = "border: 1px solid red";
+        //     errorBlock.style = "display: block";
+        //     errorBlock.textContent = "Поля с ФИО обязательно";
+        //     return;
+        // }
+        // else{
+        //     nameInput.style = "border: 1px solid #e1e1e1";
+        // }
+
+        // if (currentTime <= birthday || birthday < minDate){
+        //     birthdayInput.style = "border: 1px solid red";
+        //     errorBlock.style = "display: block";
+        //     errorBlock.textContent = "Неверная дата";
+        //     return;
+        // }
+        // else{
+        //     birthdayInput.style = "border: 1px solid #e1e1e1";
+        // }
+
+        // if(!PHONE_NUMBER_MASK.test(phoneNumber)){
+        //     phoneNumberInput.style = "border: 1px solid red";
+        //     errorBlock.style = "display: block";
+        //     errorBlock.textContent = "Неверный формат номера телефона";
+        //     return;
+        // }
+        // else{
+        //     phoneNumberInput.style = "border: 1px solid #e1e1e1";
+        // }
+
+        // if (!EMAIL_MASK.test(email)){
+        //     emailInput.style = "border: 1px solid red";
+        //     errorBlock.style = "display: block";
+        //     errorBlock.textContent = "Неверный Email";
+        //     return;
+        // }
+        // else{
+        //     emailInput.style = "border: 1px solid #e1e1e1";
+        // }
+        
+        
+        // if (password.length < 6){
+        //     passwordInput.style = "border: 1px solid red";
+        //     errorBlock.style = "display: block";
+        //     errorBlock.textContent = "Длина пароля мин. 6 символов";
+        //     return;
+        // }
+        // else{
+        //     passwordInput.style = "border: 1px solid #e1e1e1";
+        // }
+        // if (!(/\d/.test(password))){
+        //     passwordInput.style = "border: 1px solid red"
+        //     errorBlock.style = "display: block";
+        //     errorBlock.textContent = "1 цифра должна быть в пароле";
+        //     return;
+        // }
+        // else{
+        //     passwordInput.style = "border: 1px solid #e1e1e1";
+        // }
+            
+        
 
     })
 }
