@@ -6,6 +6,7 @@ import { markPost } from "./markPost";
 import { openConcretePost } from "./openConcretPost";
 import router from "./router";
 import { createWrapperBlock } from "./createWrapperBlock";
+import { openComments } from "./openComment";
 
 export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters = {}, nameAuthor = null) {
 
@@ -49,6 +50,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         });
         markPost();
         openConcretePost();
+        openComments();
         await createWrapperBlock();
     });
 
@@ -72,6 +74,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
             });
             markPost();
             openConcretePost();
+            openComments();
             await createWrapperBlock();
         })
     });
@@ -91,6 +94,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
             });
             markPost();
             openConcretePost();
+            openComments();
             await createWrapperBlock();
         })
     });
@@ -113,6 +117,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
                 });
                 markPost();
                 openConcretePost();
+                openComments();
                 await createWrapperBlock();
                 
             });
