@@ -14,9 +14,9 @@ function paginationBlock(currentPage, pages, groupSize){
 
     let countsPost = createInputBlock('input-block-filter count-posts', 'countPost',
     'Число постов на странице', 'number', null, 'input-count-post',
-    false, true, [1,2,3,4,5,6,7,8,9,10], null, 'input input-count-posts');
+    false, true, [1,2,3,4,5,6,7,8,9,10], null, 'input input-count-posts', null, null, 5);
 
-    paginationBa.appendChild(paginationBar(currentPage, pages, groupSize));
+    // paginationBa.appendChild(paginationBar(currentPage, pages, groupSize));
 
     paginationContainer.appendChild(paginationBa);
     paginationContainer.appendChild(countsPost);

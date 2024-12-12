@@ -25,7 +25,7 @@ export function openConcretePost(){
                 PARENT_BLOCK.appendChild(concretePostBlock); 
                 
             await getConcretePost(postId, token).then(data => {
-                window.history.pushState({}, 'some title', `/${postId}`);
+                window.history.pushState({}, 'some title', `post/${postId}`);
                 fullPostPage(data);
             })
             await createWrapperBlock();

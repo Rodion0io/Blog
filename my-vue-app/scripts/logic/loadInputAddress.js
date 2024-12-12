@@ -1,149 +1,157 @@
 import { loadAddressSearchDatasToComponent } from "./loadAddressSearchToComponent";
 import { createInputBlock } from "../components/createInputBlock";
 
-export function loadInputAddress(){
+export function loadInputAddress() {
     const parentBlock = document.querySelector('.address-block');
-    let currentInput = document.getElementById('input-subject');
-    let inputsId = ['input-subject'];
+    let currentInput = document.getElementById('0');
+    let inputsId = ['0'];
+    let currentCount = 1;
 
     currentInput.addEventListener('change', async (event) => {
         let lastBlock = event.target;
-        if (lastBlock.classList.contains('input')){
-            // console.log(lastBlock.dataset.objid);
+        if (lastBlock.classList.contains('input')) {
             let selectedField = lastBlock.options[lastBlock.options.selectedIndex];
 
-
-            
-
-            // console.log(lastBlock);
-            // console.log(inputsId.indexOf(lastBlock.id));
- 
-            // console.log(selectedField);
-
-            if (selectedField.value === ''){
+            if (selectedField.value === '') {
+                
                 let delInutsArray = inputsId.slice(inputsId.indexOf(lastBlock.id) + 1, inputsId.length + 1);
-                // console.log(delInutsArray);
                 delInutsArray.forEach(delEl => {
                     let removerElement = document.getElementById(delEl);
-                    let parenti = removerElement.closest('.address')
-                    console.log(removerElement);
-                    parentBlock.removeChild(parenti);
-                    
-                })
+                    let parenti = removerElement.closest('.address');
+                    if (parenti) {
+                        parentBlock.removeChild(parenti);
+                    }
+                });
+
+                
                 inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
 
-            }
-            else{
-
                 
-                    let delInutsArray = inputsId.slice(inputsId.indexOf(lastBlock.id) + 1, inputsId.length + 1);
-                    // console.log(delInutsArray);
-                    delInutsArray.forEach(delEl => {
-                        let removerElement = document.getElementById(delEl);
-                        let parenti = removerElement.closest('.address')
-                        console.log(removerElement);
+                if (inputsId.length === 1) {
+                    currentCount = 1;
+                }
+            } 
+            else {
+                
+                let delInutsArray = inputsId.slice(inputsId.indexOf(lastBlock.id) + 1, inputsId.length + 1);
+                delInutsArray.forEach(delEl => {
+                    let removerElement = document.getElementById(delEl);
+                    let parenti = removerElement.closest('.address');
+                    if (parenti) {
                         parentBlock.removeChild(parenti);
-                        
-                    })
-                    inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
+                    }
+                });
 
-                    console.log(selectedField);
-    
                 
+                inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
 
+                
                 let datasArr = await loadAddressSearchDatasToComponent(selectedField.dataset.objid);
 
-                if (datasArr !== null){
-                    let newInputBlock = createInputBlock('input-block-filter address', datasArr.objectLevel,
-                    datasArr.objectLevelText, 'text', null, `input-${datasArr.objectLevel}`,
-                    false, true, datasArr.addressListName, null, 'input', datasArr.addressListGuid, datasArr.addressParObj);
+                if (datasArr !== null) {
+                    
+                    let uniqueId = `${currentCount}`;
+                    currentCount++; 
+
+                    let newInputBlock = createInputBlock(
+                        'input-block-filter address',
+                        datasArr.objectLevel,
+                        datasArr.objectLevelText,
+                        'text',
+                        null,
+                        uniqueId, 
+                        false,
+                        true,
+                        datasArr.addressListName,
+                        null,
+                        'input',
+                        datasArr.addressListGuid,
+                        datasArr.addressParObj
+                    );
 
                     currentInput = newInputBlock;
-
-                    inputsId.push(`input-${datasArr.objectLevel}`);
-
-                    // console.log(inputsId)
-
-                    // console.log(currentInput);
-
+                    inputsId.push(uniqueId); 
                     parentBlock.appendChild(newInputBlock);
 
-                    currentInput.addEventListener('change', async (event) => {
+                    newInputBlock.addEventListener('change', async (event) => {
                         await eventner(event);
-                    })
+                    });
                 }
-
-                
             }
 
             console.log(inputsId);
-
-            // console.log(parentBlock);/
-        
         }
-        
-    })
+    });
 
-    async function eventner(event){
+    async function eventner(event) {
         let lastBlock = event.target;
-        if (lastBlock.classList.contains('input')){
-            // console.log(lastBlock.dataset.objid);
+        if (lastBlock.classList.contains('input')) {
             let selectedField = lastBlock.options[lastBlock.options.selectedIndex];
 
-            // console.log(selectedField);
- 
-
-            if (selectedField.value === ''){
+            if (selectedField.value === '') {
+                
                 let delInutsArray = inputsId.slice(inputsId.indexOf(lastBlock.id) + 1, inputsId.length + 1);
-                // console.log(delInutsArray);
                 delInutsArray.forEach(delEl => {
                     let removerElement = document.getElementById(delEl);
-                    let parenti = removerElement.closest('.address')
-                    // console.log(removerElement);
-                    parentBlock.removeChild(parenti);
-                    
-                })
-                inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
-            }
-            else{
-
-                let delInutsArray = inputsId.slice(inputsId.indexOf(lastBlock.id) + 1, inputsId.length + 1);
-                    // console.log(delInutsArray);
-                    delInutsArray.forEach(delEl => {
-                        let removerElement = document.getElementById(delEl);
-                        let parenti = removerElement.closest('.address')
-                        // console.log(removerElement);
+                    let parenti = removerElement.closest('.address');
+                    if (parenti) {
                         parentBlock.removeChild(parenti);
-                        
-                    })
-                    inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
+                    }
+                });
 
-                    console.log(selectedField.dataset.objid);
+                
+                inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
 
+                
+                if (inputsId.length === 1) {
+                    currentCount = 1;
+                }
+            } 
+            else {
+                
+                let delInutsArray = inputsId.slice(inputsId.indexOf(lastBlock.id) + 1, inputsId.length + 1);
+                delInutsArray.forEach(delEl => {
+                    let removerElement = document.getElementById(delEl);
+                    let parenti = removerElement.closest('.address');
+                    if (parenti) {
+                        parentBlock.removeChild(parenti);
+                    }
+                });
+
+                
+                inputsId = inputsId.filter((a) => !delInutsArray.includes(a));
+
+                
                 let datasArr = await loadAddressSearchDatasToComponent(selectedField.dataset.objid);
 
-                console.log(datasArr)
+                if (datasArr !== null) {
+                    
+                    let uniqueId = `${currentCount}`;
+                    currentCount++;
 
-                // console.log(datasArr);
-
-                if (datasArr !== undefined){
-                    let newInputBlock = createInputBlock('input-block-filter address', datasArr.objectLevel,
-                    datasArr.objectLevelText, 'text', null, `input-${datasArr.objectLevel}`,
-                    false, true, datasArr.addressListName, null, 'input', datasArr.addressListGuid, datasArr.addressParObj);
+                    let newInputBlock = createInputBlock(
+                        'input-block-filter address',
+                        datasArr.objectLevel,
+                        datasArr.objectLevelText,
+                        'text',
+                        null,
+                        uniqueId,
+                        false,
+                        true,
+                        datasArr.addressListName,
+                        null,
+                        'input',
+                        datasArr.addressListGuid,
+                        datasArr.addressParObj
+                    );
 
                     currentInput = newInputBlock;
-
-                    inputsId.push(`input-${datasArr.objectLevel}`);
-
-                    // console.log(inputsId)
-
-                    // console.log(currentInput);
-
+                    inputsId.push(uniqueId);
                     parentBlock.appendChild(newInputBlock);
 
-                    currentInput.addEventListener('change', async (event) => {
+                    newInputBlock.addEventListener('change', async (event) => {
                         await eventner(event);
-                    })
+                    });
                 }
             }
 
@@ -151,7 +159,7 @@ export function loadInputAddress(){
         }
     }
 
-    function deleteBeforeInputs(){
+    function deleteBeforeInputs() {
 
     }
 }

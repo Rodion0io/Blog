@@ -1,5 +1,8 @@
-function answerCommentInput(){
-    let parentBlock = document.querySelector('.content-block');
+function answerCommentInput(parentBlock) {
+    if (!parentBlock) {
+        console.error('Parent block is not provided for answerCommentInput');
+        return;
+    }
 
     let answerBlock = document.createElement('div');
     answerBlock.className += 'answer-block';

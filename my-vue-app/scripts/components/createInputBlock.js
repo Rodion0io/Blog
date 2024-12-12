@@ -1,6 +1,6 @@
 export function createInputBlock(inputBlockClass, forName, labelValue, inputType,
     placeholder = null, inputId, isRequired = false, isList = false,
-     options = null, dataListId = null, inputClass, selectFieldId = null, objId = null){
+     options = null, dataListId = null, inputClass, selectFieldId = null, objId = null, defSel = null){
 
         //objId пришлось добавить для создания input для адресов;
 
@@ -31,6 +31,9 @@ export function createInputBlock(inputBlockClass, forName, labelValue, inputType
            }
            if (objId !== null){
                 optionElement.dataset.objid = objId[i];
+           }
+           if (options[i] === defSel){
+            optionElement.selected = true;
            }
            dataList.appendChild(optionElement);
         }

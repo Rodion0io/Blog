@@ -71,7 +71,6 @@
 }
 
 .create-new-post{
-    width: 15%;
     background-color: var(--button-blue-color);
     color: #fff;
 }

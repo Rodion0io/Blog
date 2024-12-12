@@ -12,6 +12,7 @@ import answerCommentInput from "../answerComment/answerCommentInput";
 import { answerComment } from "../../logic/answerComment";
 import { treeComment } from "../treeComment/treeComment";
 import { treeCommentRequest } from "../../requests/treeCommentRequest";
+import { addressChainRequest } from "../../requests/addressChainRequest";
 
 async function fullPostPage(data) {
     let address = '';
@@ -50,8 +51,11 @@ async function fullPostPage(data) {
         coordinateBlock.appendChild(locationImage);
         coordinateBlock.appendChild(locationText);
         otherInfaBlock.appendChild(coordinateBlock);
-        address = await addressChain(data["addressId"]);
-        locationText.textContent = address;
+        address = addressChainRequest(data["addressId"]).then(data => {
+            locationText.textContent = (data.map(el => el['text']).join(','));
+        });
+        // console.log(address)
+        
     }
 }
 
@@ -62,10 +66,10 @@ function setupCommentInteractions(parentBlock) {
             console.log(commentId);
             await redactInput();
             await redactComment(commentId);
-        } else if (event.target.classList.contains('answer-comment') || event.target.classList.contains('open-answer')) {
+        } else if (event.target.classList.contains('answer-comment') && !event.target.classList.contains('open-answer')) {
             let commentId = event.target.closest('.comment').id;
-            console.log(commentId);
-            await answerCommentInput();
+            let commentBlock = event.target.closest('.comment');
+            await answerCommentInput(commentBlock);
             await answerComment(commentId);
         }
     });
@@ -82,13 +86,11 @@ function setupCommentInteractions(parentBlock) {
             parentBlockTree.className = 'tree-parent-block';
 
             treeCommentData.forEach(el => {
-                console.log("Adding new comment:", el);
                 comment(el, parentBlockTree);
             });
 
             let fullCommentParent = event.target.closest('.open-answer').parentNode;
 
-            console.log("Replacing fullComment with new block");
             fullCommentParent.replaceChild(parentBlockTree, event.target.closest('.open-answer'));
 
             setupCommentInteractions(parentBlockTree);

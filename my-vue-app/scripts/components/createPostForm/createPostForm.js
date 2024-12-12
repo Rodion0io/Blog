@@ -121,7 +121,7 @@ async function createPostForm(){
 
 
     let subjectCountry = createInputBlock('input-block-filter address', 'subject',
-    'Субъект РФ', 'text', null, 'input-subject',
+    'Субъект РФ', 'text', null, '0',
     false, true, SUBJECT_PARAM.addressListName, null, 'input', SUBJECT_PARAM.addressListGuid, SUBJECT_PARAM.addressParObj);
 
     addressBlock.appendChild(addressBlockTitle);

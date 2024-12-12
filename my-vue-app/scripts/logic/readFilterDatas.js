@@ -7,6 +7,8 @@ export function readFilterDatas(body) {
     let onlyMyCommunities = document.getElementById('input-flag');
     let size = document.getElementById('input-count-post');
 
+    console.log(size)
+
     const previousTags = body['tags'] || [];
 
     body['tags'] = [];

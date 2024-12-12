@@ -40,3 +40,10 @@
     color: #fff;
     background-color: var(--button-blue-color);
 }
+
+
+@media (max-width: 850px) {
+    .group-title{
+        line-height: 30px;
+    }
+}

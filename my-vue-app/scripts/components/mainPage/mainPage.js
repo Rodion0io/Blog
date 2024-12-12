@@ -1,7 +1,7 @@
 import { PARENT_BLOCK } from "../../../constans";
 import paginationBlock from "../paginationBlock/paginationBlock";
 
-function mainPage(currentPage, pages, groupSize){
+function mainPage(){
     let block = document.createElement('section');
     block.className += 'section-post';
 
@@ -30,7 +30,7 @@ function mainPage(currentPage, pages, groupSize){
     let sectionPosts = document.createElement('div');
     sectionPosts.className += 'section-posts';
 
-    let paginationBloc = paginationBlock(currentPage, pages, groupSize);
+    let paginationBloc = paginationBlock();
 
 
     sectionContent.appendChild(form);

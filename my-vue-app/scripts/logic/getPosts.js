@@ -7,19 +7,18 @@ import { openConcretePost } from "./openConcretPost";
 import router from "./router";
 import { createWrapperBlock } from "./createWrapperBlock";
 import { openComments } from "./openComment";
+import paginationBar from "../components/paginationBar/pagintaionBar";
 
-export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters = {}, nameAuthor = null) {
-
-    if (document.querySelector('.section-posts') !== undefined){
-        document.querySelector('.section-posts').innerHTML = '';    
+export function getPosts(currentPage = 1, filters = {}, nameAuthor = null) {
+    
+    if (document.querySelector('.section-posts') !== undefined) {
+        document.querySelector('.section-posts').innerHTML = '';
     }
 
     let token = localStorage.getItem('token');
 
     let sendButton = document.querySelector('.select-filters-button');
-    let pageSizeList = document.getElementById('input-count-post');
 
-    // Заполняем тело запроса из filters
     let body = {
         tags: filters.tags || [],
         author: filters.authorName || '' || nameAuthor ? nameAuthor !== null : '',
@@ -27,8 +26,8 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         maxTime: filters.maxTime || '',
         sorting: filters.sorting || '',
         onlyMyCommunities: filters.onlyMyCommunities || false,
-        page: currentPage,
-        size: pageSize,
+        page: currentPage || 1,
+        size: filters.size || 5,
     };
 
     let urlMask = createUrl(body);
@@ -37,7 +36,7 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         router();
     });
 
-    // Запрос постов
+    
     getPostRequest(urlMask, token).then(async data => {
         document.querySelector('.section-posts').innerHTML = '';
         data['posts'].forEach(element => {
@@ -46,20 +45,22 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         markPost();
         openConcretePost();
         openComments();
+
+        
+        paginationBar(data['pagination'].current, 3, data['pagination'].count);
+
+        
+        addPaginationListeners(body, urlMask, token, data.totalCount);
+
         await createWrapperBlock();
     });
 
-
-
-    // Обработчики событий
+    
     sendButton.addEventListener('click', () => {
         body = readFilterDatas(body);
         urlMask = createUrl(body);
 
-        // console.log(body);
-        // console.log(urlMask);
-
-        // Обновляем URL
+        
         window.history.pushState({}, 'some title', `/?${urlMask}`);
 
         getPostRequest(urlMask, token).then(async data => {
@@ -70,16 +71,23 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
             markPost();
             openConcretePost();
             openComments();
+
+            
+            paginationBar(data['pagination'].current, 3, data['pagination'].count);
+
+            
+            addPaginationListeners(body, urlMask, token, data.totalCount);
+
             await createWrapperBlock();
-        })
+        });
     });
 
-    pageSizeList.addEventListener('change', () => {
+    document.getElementById('input-count-post').addEventListener('change', () => {
         body.page = 1;
         body = readFilterDatas(body);
         urlMask = createUrl(body);
 
-        // Обновляем URL
+        
         window.history.pushState({}, 'some title', `/?${urlMask}`);
 
         getPostRequest(urlMask, token).then(async data => {
@@ -90,21 +98,36 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
             markPost();
             openConcretePost();
             openComments();
-            await createWrapperBlock();
-        })
-    });
 
-    // Пагинация
+            
+            paginationBar(data['pagination'].current, 3, data['pagination'].count);
+
+            
+            addPaginationListeners(body, urlMask, token, data.totalCount);
+
+            await createWrapperBlock();
+        });
+    });
+}
+
+
+function addPaginationListeners(body, urlMask, token, totalCount) {
     document.querySelectorAll('.pagination-item').forEach(el => {
         el.addEventListener('click', (event) => {
             if (event.target.classList.contains('left-item')) {
+                
                 body.page = Math.max(1, body.page - 1);
             } else if (event.target.classList.contains('right-item')) {
-                body.page = Math.min(Math.ceil(data.totalCount / body.size), body.page + 1);
+                
+                body.page = Math.min(Math.ceil(totalCount / body.size), body.page + 1);
             } else if (event.target.id) {
+                
                 body.page = parseInt(event.target.id);
             }
+
+            
             urlMask = createUrl(body);
+            window.history.pushState({}, 'some title', `/?${urlMask}`);
             getPostRequest(urlMask, token).then(async data => {
                 document.querySelector('.section-posts').innerHTML = '';
                 data['posts'].forEach(element => {
@@ -113,11 +136,15 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
                 markPost();
                 openConcretePost();
                 openComments();
-                await createWrapperBlock();
+
+                // Вызываем пагинацию
+                paginationBar(data['pagination'].current, 3, data['pagination'].count);
+
                 
+                addPaginationListeners(body, urlMask, token, data.totalCount);
+
+                await createWrapperBlock();
             });
         });
-        
     });
-    
 }

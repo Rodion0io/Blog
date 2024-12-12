@@ -87,6 +87,40 @@
 
 
 
+
+@media (max-width: 1400px) {
+    .filter-component{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .left-part{
+        width: 100%;
+    }
+    .left-bottom-part{
+        display: flex;
+        flex-direction: column;
+    }
+    .sort{
+        width: 100%;
+    }
+    .start{
+        width: 100%;
+    }
+    .right-part{
+        width: 100%;
+    }
+    .list-block{
+        width: 100%;
+    }
+    .right-bottom-block{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
 /* 
 .top-part{
     display: flex;

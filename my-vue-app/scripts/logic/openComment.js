@@ -24,7 +24,7 @@ export function openComments(){
             PARENT_BLOCK.appendChild(concretePostBlock); 
                 
             await getConcretePost(postId, token).then(async data => {
-                window.history.pushState({}, 'some title', `/${postId}`);
+                window.history.pushState({}, 'some title', `post/${postId}`);
                 await fullPostPage(data);
                 
                 

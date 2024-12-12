@@ -6,9 +6,7 @@ import { markPost } from "./markPost";
 
 async function createMainPage(){
 
-    const currentPage = 1;
-    const totalPages = 10;
-    const groupSize = 3;
+    
 
 
     mainPage(currentPage, totalPages, groupSize);

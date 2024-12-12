@@ -26,5 +26,20 @@
 .send-filter-button{
     background-color: var(--button-blue-color);
     color: #fff;
-    width: 15%;
+}
+
+@media (max-width: 850px) {
+    .inputs-block{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .short{
+        width: 100%;
+    }
+
+    .short-list{
+        width: 100%;
+    }
 }

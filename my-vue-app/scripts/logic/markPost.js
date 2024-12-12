@@ -26,7 +26,6 @@ export async function markPost() {
                             console.error('Ошибка', data.message);
                         }
                     } catch (error) {
-                        console.error('Ошибка при выполнении likeRequest:', error);
                         await unlikeRequest(token, postId);
                         e.target.setAttribute('src', '../../public/heart.svg');
                         let countLikesElement = e.target.closest('.post-component').querySelector('.count-likes');

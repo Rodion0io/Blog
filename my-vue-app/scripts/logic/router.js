@@ -8,7 +8,6 @@ import { getUserProfile } from "./getUserProfile";
 import filter from "../components/filter/filter";
 import mainPage from "../components/mainPage/mainPage";
 import { getPosts } from "./getPosts";
-import { parseUrlParams } from "./parseUrlParams";
 import listGroups from "../components/listGroups/listGroups";
 import { createCommunityBlock } from "./createCommunityBlocks";
 import { getUserCommunity } from "./getUserCommunity";
@@ -33,9 +32,9 @@ async function router() {
     parentBlock.innerHTML = '';
 
     // Временные значения для mainPage
-    const currentPage = 1;
-    const totalPages = 10;
-    const groupSize = 3;
+    // const currentPage = 1;
+    // const totalPages = 10;
+    // const groupSize = 3;
 
     
     if (!hrefHandlersAdded) {
@@ -58,17 +57,17 @@ async function router() {
     });
 
     
-    if (pathLink.startsWith('/?')) {
-        const params = parseUrlParams(pathLink);
-        mainPage(params.page || currentPage, totalPages, groupSize);
-        filter(params);
-        getPosts(params.page || currentPage, params.size || 5, groupSize, params);
-        listAccount(null);
-    } else {
+    // if (pathLink.startsWith('/?')) {
+    //     const params = parseUrlParams(pathLink);
+    //     mainPage(params.page || currentPage, totalPages, groupSize);
+    //     filter(params);
+    //     getPosts(params.page || currentPage, params.size || 5, groupSize, params);
+    //     listAccount(null);
+    // } else {
         switch (pathLink) {
             case '/':
                 header();
-                mainPage(currentPage, totalPages, groupSize);
+                mainPage();
                 filter();
                 getPosts();
                 listAccount("email@mail.ru"); // Заглушка
@@ -112,6 +111,6 @@ async function router() {
                 break;
         }
     }
-}
+// }
 
 export default router;
