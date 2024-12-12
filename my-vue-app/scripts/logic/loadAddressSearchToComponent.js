@@ -1,6 +1,7 @@
 import { getAddressSearch } from "./getAddressSearch";
 
 export async function loadAddressSearchDatasToComponent(parentObjectId = null){
+    console.log(parentObjectId);
     let addressList = await getAddressSearch(parentObjectId);
     let addressListName = [''];
     let addressListGuid = [''];

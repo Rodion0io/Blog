@@ -33,7 +33,6 @@ export function sendPost(){
             errorMessage.textContent = "";
             for (let i = address.length - 1; i > 0; i--){
                 let currentAdress = address[i];
-                console.log(currentAdress);
                 let selectedInput = currentAdress.querySelector('select');
                 if (selectedInput){
                     let selectedOption = selectedInput.options[selectedInput.selectedIndex];
