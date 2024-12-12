@@ -16,7 +16,7 @@ export function unSubscribe() {
                         currentBtn.className = 'btn subscribe';
                         currentBtn.textContent = 'Подписаться';
                         currentBtn.id = event.target.id;
-                        location.reload();
+                        window.location.pathname = '/communities';
                     } else {
                         console.log('ошибка');
                     }

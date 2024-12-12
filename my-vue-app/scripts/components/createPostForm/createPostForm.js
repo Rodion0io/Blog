@@ -127,6 +127,9 @@ async function createPostForm(){
     addressBlock.appendChild(addressBlockTitle);
     addressBlock.appendChild(subjectCountry);
 
+    let errorBlock = document.createElement('p');
+    errorBlock.className = 'error-message';
+
     let buttonContainer = document.createElement('div');
     buttonContainer.className += 'button-container';
 
@@ -144,6 +147,7 @@ async function createPostForm(){
     formContaienr.appendChild(linkPhoto);
     formContaienr.appendChild(textPostBlock);
     formContaienr.appendChild(addressBlock);
+    formContaienr.appendChild(errorBlock);
     formContaienr.appendChild(buttonContainer);
     formBlock.appendChild(formContaienr);
     sectionBlock.appendChild(formBlock);

@@ -8,4 +8,5 @@
 .registration-btn{
     background-color: var(--button-blue-color);
     color: #fff;
+    cursor: pointer;
 }

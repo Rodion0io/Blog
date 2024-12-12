@@ -17,14 +17,12 @@
 .enter-btn{
     background-color: var(--button-blue-color);
     color: #fff;
+    cursor: pointer;
 }
 
 .reg-btn{
     background-color: var(--button-grey-color);
     color: #fff;
+    cursor: pointer;
 }
 
-.error-message{
-    display: none;
-    color: red;
-}

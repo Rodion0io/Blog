@@ -35,10 +35,10 @@ export function checkValidationAccountData(nameInput, birthdayInput, genderInput
         }
     }
 
-    if (name.trim().length === 0) {
+    if (name.trim().length === 0 || name.trim().length > 30) {
         nameInput.style = "border: 1px solid red";
         errorBlock.style = "display: block";
-        errorBlock.textContent = "Поля с ФИО обязательно";
+        errorBlock.textContent = "Поля с ФИО обязательно или слишком длинное имя";
         return 1;
     } else {
         nameInput.style = "border: 1px solid #e1e1e1";

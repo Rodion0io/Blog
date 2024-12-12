@@ -106,3 +106,8 @@ body{
   justify-content: flex-end;
   margin-bottom: 15px;
 }
+
+.error-message{
+  display: none;
+  color: red;
+}

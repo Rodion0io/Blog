@@ -22,10 +22,8 @@ export function changeDatasAccount(){
             return;
         }
         else{
-            console.log(checker.gender)
             errorBlock.style = "display: none";
             errorBlock.textContent = "";
-            emailInput.style = "border: 1px solid var(--border-color)";
             if (checkLifeCycle(token)){
                 changeDatasAccountRequest({'email': checker.email, "fullName": checker.name, 
                 'birthDate': checker.birthday, 'gender': checker.gender === "Мужчина" ? 'Male' : 'Female', 'phoneNumber': checker.phoneNumber}, token)

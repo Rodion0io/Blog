@@ -7,10 +7,16 @@
     width: 90% !important;
 }
 
-.form-title{
+.form-title {
     font-weight: 600;
-    font-size: 35px;
+    font-size: 3vw; /* Базовый размер шрифта */
     line-height: 24px; 
+}
+
+@media (max-width: 2700px) {
+    .form-title {
+        font-size: 2vw; /* Меньше на средних экранах */
+    }
 }
 
 .first-section-parametrs{
