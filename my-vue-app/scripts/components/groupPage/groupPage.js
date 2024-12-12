@@ -28,7 +28,7 @@ function groupPage(){
 
     container.appendChild(sectionHeader);
     container.appendChild(section);
-    //это не правильно
+
     container.appendChild(sectionPosts);
     sectionGroup.appendChild(container);
     PARENT_BLOCK.appendChild(sectionGroup);

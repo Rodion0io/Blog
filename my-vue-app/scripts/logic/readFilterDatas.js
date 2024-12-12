@@ -36,10 +36,10 @@ export function readFilterDatas(body) {
             modifySortText = 'CreateAsc';
             break;
         case 'По количеству лайков (по убыванию)':
-            modifySortText = 'LikeAsc';
+            modifySortText = 'LikeDesc';
             break;
         case 'По количеству лайков (по возрастанию)':
-            modifySortText = 'LikeDesc';
+            modifySortText = 'LikeAsc';
             break;
     }
 

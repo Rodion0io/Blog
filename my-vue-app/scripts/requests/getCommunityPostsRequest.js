@@ -14,6 +14,8 @@ export function getCommunityPostsRequest(maskUrl, token, groupId){
 
     const NEW_URL = `${URL}community/${groupId}/post?${maskUrl}`;
 
+    console.log(NEW_URL);
+
     return fetch(NEW_URL, {
         method: "GET",
         headers: headers,

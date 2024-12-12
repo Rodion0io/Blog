@@ -14,8 +14,11 @@ import { openConcretePost } from "./openConcretPost";
 import { subscribe } from "./subscribe";
 import { unSubscribe } from "./unsubscribe";
 import { openCreaterPost } from "./openCreaterPost";
+import router from "./router";
+import { openComments } from "./openComment";
+import { createWrapperBlock } from "./createWrapperBlock";
 
-export function getInformationCommunity(){
+export function getInformationCommunity(filters = {}) {
     let token = localStorage.getItem('token');
     let mainBlock = document.getElementById('app');
     let groupLink = document.querySelectorAll('.group-title');
@@ -23,97 +26,82 @@ export function getInformationCommunity(){
     let groupId;
     let sendButton;
 
-    let body = {'tags' : [], 'sorting': '', 'page': 1, 'size': 5};
+    let body = {
+        tags: filters.tags || [],
+        sorting: filters.sorting || '',
+        page: 1,
+        size: 5,
+    };
 
-    
+    let urlMask = createUrl(body);
 
     groupLink.forEach(el => {
         el.addEventListener('click', async (event) => {
             groupId = event.target.id;
             try {
                 userCommunityRole = await getUserRoleCommunityRequest(groupId, token);
+            } catch (error) {
+                userCommunityRole = null;
             }
-            catch{
-                (error) => {
-                    console.log(error);
-                    userCommunityRole = null;
-                    console.log(userCommunityRole);
-                }
-            }
-            getInformationCommunityRequest(groupId).then(
-                async (data) => {
-                    window.history.pushState({}, 'some title', `/communities/${groupId}`);
-                    mainBlock.innerHTML = '';
-                    await groupPage();
-                    await groupInfaHeader(data, userCommunityRole);
-                    data['administrators'].forEach(async (el) => {
-                        await adminCommunityBlock(el);
-                    });
-                    await shortFilterBlock();
-                    let newUrl = createUrl(body);
-                    
-                    let block = document.querySelector('.section-posts');
-                    let textBlock = document.createElement('p');
-                    textBlock.className += 'unauthorized-text';
-                    textBlock.textContent = 'Родной, ты не подписан на группу';
-                    if (token !== null && checkLifeCycle(token)){
-                        console.log(userCommunityRole)
-                        if ((userCommunityRole === null || userCommunityRole === undefined) && data['isClosed']){
-                            block.appendChild(textBlock);
-                        }
-                        else{
-                            getCommunityPostsRequest(newUrl, token, groupId).then(data => {
-                                data['posts'].forEach(el => {
-                                    post(el);
-                                })
-                                markPost();
-                                openConcretePost();
-                           })   
-                        }
-                    }
-                    else if ((token === null || !checkLifeCycle(token)) && data['isClosed']){
+
+            getInformationCommunityRequest(groupId).then(async (data) => {
+                window.history.pushState({}, 'some title', `/communities/${groupId}`);
+                mainBlock.innerHTML = '';
+                await groupPage();
+                await groupInfaHeader(data, userCommunityRole);
+                data['administrators'].forEach(async (el) => {
+                    await adminCommunityBlock(el);
+                });
+                await shortFilterBlock();
+
+                let block = document.querySelector('.section-posts');
+                let textBlock = document.createElement('p');
+                textBlock.className += 'unauthorized-text';
+                textBlock.textContent = 'Родной, ты не подписан на группу или не авторизован';
+
+                if (token !== null && checkLifeCycle(token)) {
+                    if ((userCommunityRole === null || userCommunityRole === undefined) && data['isClosed']) {
                         block.appendChild(textBlock);
+                    } else {
+                        await fetchPosts(urlMask, token, groupId, block);
                     }
-                    else{
-                        getCommunityPostsRequest(newUrl, token, groupId).then(data => {
-                             data['posts'].forEach(el => {
-                                post(el);
-                             })
-                            markPost();
-                            openConcretePost();
-                            
-                        })
-                     }
-                    subscribe();
-                    unSubscribe();
-                    openCreaterPost();
-                    sendButton = document.querySelector('.send-filter-button');
-
-                    console.log(sendButton);
-                    
-                    //По-хорошему это надо выносить отдельным файлом!!!!!!!!!!
-                    sendButton.addEventListener('click', () => {
-                        body = readFilterDatas(body);
-                        let urlMask = createUrl(body);
-
-                        window.history.pushState({}, 'some title', `/${urlMask}`);
-                        // console.log(urlMask);
-                        // console.log(body);
-
-                        getCommunityPostsRequest(newUrl, token, groupId).then(data => {
-                            data['posts'].forEach(el => {
-                                document.querySelector('.section-posts').innerHTML = '';
-                                post(el);
-                            })
-                            markPost();
-                            openConcretePost();
-                            openCreaterPost();
-                       })
-                    });
+                } else if ((token === null || !checkLifeCycle(token)) && data['isClosed']) {
+                    block.appendChild(textBlock);
+                } else {
+                    await fetchPosts(urlMask, token, groupId, block);
                 }
-            );
-        })
-    })
 
-    
+                subscribe();
+                unSubscribe();
+                openCreaterPost();
+                sendButton = document.querySelector('.send-filter-button');
+
+                sendButton.addEventListener('click', () => {
+                    body = readFilterDatas(body);
+                    urlMask = createUrl(body);
+
+                    window.history.pushState({}, 'some title', `/communities/${groupId}?${urlMask}`);
+
+                    fetchPosts(urlMask, token, groupId, block);
+                });
+            });
+        });
+    });
+
+    window.addEventListener('popstate', () => {
+        router();
+    });
+}
+
+async function fetchPosts(urlMask, token, groupId, block) {
+    getCommunityPostsRequest(urlMask, token, groupId).then(async data => {
+        block.innerHTML = '';
+        data['posts'].forEach(el => {
+            post(el);
+        });
+        markPost();
+        openConcretePost();
+        openComments();
+        await createWrapperBlock();
+    });
 }

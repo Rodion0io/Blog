@@ -14,9 +14,6 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         document.querySelector('.section-posts').innerHTML = '';    
     }
 
-    
-    
-
     let token = localStorage.getItem('token');
 
     let sendButton = document.querySelector('.select-filters-button');
@@ -33,8 +30,6 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         page: currentPage,
         size: pageSize,
     };
-
-    // console.log(body);
 
     let urlMask = createUrl(body);
 
@@ -61,8 +56,8 @@ export function getPosts(currentPage = 1, pageSize = 5, groupSize = 3, filters =
         body = readFilterDatas(body);
         urlMask = createUrl(body);
 
-        console.log(body);
-        console.log(urlMask);
+        // console.log(body);
+        // console.log(urlMask);
 
         // Обновляем URL
         window.history.pushState({}, 'some title', `/?${urlMask}`);
