@@ -2,8 +2,6 @@ export function createUrl(body){
 
     let parts = [];
 
-    // console.log(body);
-
     if (body['tags'].length !== 0 && body['tags'] !== undefined){
         parts.push(body['tags'].map(tag => `tags=${tag.id}`).join('&'));
     }
@@ -26,7 +24,6 @@ export function createUrl(body){
     parts.push(`size=${body['size']}`);
 
 
-    // let pagePart = body['page'] !== null ? `page=${body['page']}` : '';
 
     let urlMask = `${parts.join('&')}`;
     return urlMask;

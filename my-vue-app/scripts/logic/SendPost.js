@@ -50,7 +50,7 @@ export function sendPost(){
                 // if (community.id !== null || community.id !== undefined){
                 if (communityId !== ""){
                     if (await getUserRoleCommunityRequest(communityId, token) === "Administrator"){
-                        addPostInCommunityRequest(communityId, token, datas).then(data => console.log(data)).catch(error => console.log(error));
+                        await addPostInCommunityRequest(communityId, token, datas).then(data => console.log(data)).catch(error => console.log(error));
                         window.location.pathname = '/';
                     }
                     else{
@@ -64,7 +64,7 @@ export function sendPost(){
                     // console.log(linkPhoto)
                     // console.log(null)
                     // console.log(tags)
-                    addPostRequest(token, datas).then(data => console.log(data)).catch(error => console.log(error));
+                    await addPostRequest(token, datas).then(data => console.log(data)).catch(error => console.log(error));
                     window.location.pathname = '/';
                 } 
             }

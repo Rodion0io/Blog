@@ -102,7 +102,7 @@ export function getPosts(currentPage = 1, filters = {}, nameAuthor = null) {
             
             paginationBar(data['pagination'].current, 3, data['pagination'].count);
 
-            
+            //пагинация
             addPaginationListeners(body, urlMask, token, data.totalCount);
 
             await createWrapperBlock();
